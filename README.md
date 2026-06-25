@@ -16,6 +16,18 @@ Then open:
 http://localhost:3000
 ```
 
+The one-pager version is available at:
+
+```text
+one-pager/index.html
+```
+
+Copy-ready one-pager text is available at:
+
+```text
+one-pager/one-pager-copy.md
+```
+
 ## Edit workflow
 
 The source of truth is:

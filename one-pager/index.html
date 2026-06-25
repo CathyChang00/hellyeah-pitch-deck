@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hellyeah Pitch Deck One-Pager</title>
+  <style>
+    @font-face {
+      font-family: "Hellyeah Geist";
+      src: url("assets/hellyeah-geist-latin.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Hellyeah Mono";
+      src: url("assets/hellyeah-geist-mono-latin.woff2") format("woff2");
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --ink: #080617;
+      --muted: #676271;
+      --line: #ddd7cd;
+      --paper: #f7f2ea;
+      --cream: #fffaf1;
+      --orange: #ff4301;
+      --green: #b8f35c;
+      --dark: #111021;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #1b120d;
+      color: var(--ink);
+      font-family: "Hellyeah Geist", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .actions {
+      position: fixed;
+      right: 22px;
+      top: 18px;
+      z-index: 10;
+      display: flex;
+      gap: 8px;
+    }
+
+    .actions button {
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(17,16,33,.92);
+      color: white;
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: 700 12px/1 "Hellyeah Geist", Arial, sans-serif;
+      cursor: pointer;
+      letter-spacing: .02em;
+    }
+
+    .page {
+      width: min(100vw, 8.5in);
+      min-height: 11in;
+      margin: 0 auto;
+      background:
+        radial-gradient(circle at 78% 8%, rgba(255, 67, 1, .14), transparent 28%),
+        linear-gradient(180deg, #fffaf2 0%, #f3eee5 100%);
+      padding: .44in .48in .38in;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 18px;
+      margin-bottom: 26px;
+    }
+
+    .brand {
+      width: 158px;
+      height: auto;
+      display: block;
+    }
+
+    .doc-type {
+      font-family: "Hellyeah Mono", monospace;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .28em;
+      color: #9a9087;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.32fr .68fr;
+      gap: 30px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 55px;
+      line-height: .94;
+      letter-spacing: 0;
+      font-weight: 900;
+      max-width: 590px;
+    }
+
+    h1 span {
+      color: var(--orange);
+      display: inline-block;
+      white-space: nowrap;
+    }
+
+    .lede {
+      margin: 16px 0 0;
+      max-width: 620px;
+      color: #3f3949;
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 560;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.68);
+      color: #261f2d;
+      border-radius: 999px;
+      padding: 8px 11px;
+      font-family: "Hellyeah Mono", monospace;
+      font-size: 10px;
+      font-weight: 850;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .cred {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .cred-card {
+      min-height: 118px;
+      background: var(--dark);
+      color: white;
+      border-radius: 3px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+    }
+
+    .cred-card:nth-child(2) {
+      background: var(--orange);
+      color: var(--ink);
+    }
+
+    .cred-card strong {
+      font-size: 29px;
+      line-height: .95;
+      font-weight: 900;
+      letter-spacing: -.01em;
+      white-space: nowrap;
+    }
+
+    .cred-card span {
+      margin-top: 12px;
+      display: block;
+      font-size: 11px;
+      line-height: 1.2;
+      font-weight: 780;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 10px;
+      font-family: "Hellyeah Mono", monospace;
+      font-size: 12px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      font-weight: 900;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 7px;
+      height: 22px;
+      background: var(--orange);
+      border-radius: 999px;
+      display: block;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.5);
+      margin-bottom: 22px;
+    }
+
+    .proof-card {
+      min-height: 168px;
+      padding: 16px;
+      border-right: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .proof-card:last-child { border-right: 0; }
+
+    .client-row {
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    .client-row img {
+      max-height: 26px;
+      max-width: 126px;
+      object-fit: contain;
+      object-position: left center;
+    }
+
+    .client-name {
+      margin-left: 0;
+      color: var(--ink);
+      font-family: "Hellyeah Mono", monospace;
+      font-size: 10px;
+      line-height: 1;
+      font-weight: 900;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .client-name-hidden { display: none; }
+
+    .fish-logo { filter: brightness(0); }
+
+    .metric {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .metric strong {
+      color: var(--orange);
+      font-size: 40px;
+      line-height: .9;
+      font-weight: 950;
+      letter-spacing: -.02em;
+    }
+
+    .metric span {
+      color: var(--ink);
+      font-size: 13px;
+      line-height: 1.1;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+    }
+
+    .proof-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.33;
+      font-weight: 620;
+    }
+
+    .proof-card b { color: var(--ink); }
+
+    .middle {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 22px;
+      align-items: stretch;
+    }
+
+    .system {
+      border: 1px solid var(--line);
+      background: var(--cream);
+      padding: 16px;
+      min-height: 0;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .flow-step {
+      min-height: 96px;
+      border: 1px solid var(--line);
+      background: #fffdf7;
+      padding: 10px;
+      position: relative;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -7px;
+      top: 50%;
+      width: 7px;
+      height: 1px;
+      background: var(--orange);
+    }
+
+    .flow-step b {
+      display: block;
+      color: var(--orange);
+      font-family: "Hellyeah Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .flow-step h3 {
+      margin: 0 0 7px;
+      font-size: 13px;
+      line-height: 1.1;
+      font-weight: 890;
+    }
+
+    .flow-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 10.5px;
+      line-height: 1.25;
+      font-weight: 600;
+    }
+
+    .visual {
+      border: 1px solid #25223c;
+      background: var(--dark);
+      overflow: hidden;
+      min-height: 154px;
+      display: grid;
+      grid-template-columns: .43fr .57fr;
+    }
+
+    .visual-copy {
+      padding: 18px 18px 16px;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 14px;
+    }
+
+    .visual-copy h2 {
+      margin: 0;
+      font-size: 25px;
+      line-height: .94;
+      letter-spacing: -.01em;
+    }
+
+    .visual-copy h2 span { color: var(--orange); }
+
+    .visual-copy p {
+      margin: 0;
+      color: #d5d0dd;
+      font-size: 12px;
+      line-height: 1.3;
+      font-weight: 620;
+    }
+
+    .visual-assets {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      padding: 10px 10px 10px 0;
+      min-height: 154px;
+      border-left: 1px solid rgba(255,255,255,.12);
+    }
+
+    .visual-assets img {
+      width: 100%;
+      height: 100%;
+      min-height: 134px;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      opacity: .98;
+      background: #090824;
+    }
+
+    .bottom {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .timeline,
+    .gates {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.55);
+      padding: 16px;
+      min-height: 190px;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .phase {
+      border-top: 5px solid var(--orange);
+      background: #fffdf7;
+      padding: 12px 10px;
+      min-height: 116px;
+    }
+
+    .phase:nth-child(2) {
+      background: var(--orange);
+      color: var(--ink);
+    }
+
+    .phase b {
+      display: block;
+      font-family: "Hellyeah Mono", monospace;
+      font-size: 10px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .phase h3 {
+      margin: 0 0 7px;
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    .phase p {
+      margin: 0;
+      color: #5f5864;
+      font-size: 11px;
+      line-height: 1.28;
+      font-weight: 620;
+    }
+
+    .phase:nth-child(2) p { color: #221a19; }
+
+    .gate-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .gate {
+      background: #fffdf7;
+      border: 1px solid var(--line);
+      padding: 10px;
+      min-height: 74px;
+    }
+
+    .gate b {
+      display: block;
+      color: var(--orange);
+      font-size: 13px;
+      margin-bottom: 5px;
+    }
+
+    .gate p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 10.5px;
+      line-height: 1.25;
+      font-weight: 620;
+    }
+
+    .footer {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      padding-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: #8b8178;
+      font-family: "Hellyeah Mono", monospace;
+      font-size: 10px;
+      line-height: 1.2;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      font-weight: 780;
+    }
+
+    @media print {
+      @page { size: letter; margin: 0; }
+      body { background: white; }
+      .actions { display: none; }
+      .page {
+        width: 8.5in;
+        min-height: 11in;
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      body { background: var(--paper); }
+      .actions { position: static; padding: 12px; background: #1b120d; }
+      .page { width: 100%; min-height: 0; padding: 24px; }
+      .hero, .middle, .bottom { grid-template-columns: 1fr; }
+      h1 { font-size: 42px; }
+      .cred, .proof-grid, .flow, .timeline-grid, .gate-list { grid-template-columns: 1fr; }
+      .proof-card { border-right: 0; border-bottom: 1px solid var(--line); }
+      .proof-card:last-child { border-bottom: 0; }
+      .visual { grid-template-columns: 1fr; }
+      .visual-assets { border-left: 0; border-top: 1px solid rgba(255,255,255,.12); padding: 10px; }
+      .visual-assets img { min-height: 220px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="actions">
+    <button type="button" onclick="window.print()">Print / Save PDF</button>
+  </div>
+
+  <article class="page">
+    <header class="topline">
+      <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+      <div class="doc-type">One-Pager</div>
+    </header>
+
+    <section class="hero">
+      <div>
+        <h1>Revenue-First <span>User Acquisition</span></h1>
+        <p class="lede">We run strategy, creative, media, and measurement as one operating team. Every decision is judged against banked revenue, not the ad platform's version of success.</p>
+        <div class="tags" aria-label="Core fit">
+          <span class="tag">Mobile Application</span>
+          <span class="tag">AI/SaaS</span>
+          <span class="tag">Performance Ads</span>
+          <span class="tag">Managed Service</span>
+        </div>
+      </div>
+
+      <div class="cred" aria-label="Credibility">
+        <div class="cred-card">
+          <strong>15 years</strong>
+          <span>Ads selling, mobile UA, creative testing, and performance growth experience.</span>
+        </div>
+        <div class="cred-card">
+          <strong>$3B+</strong>
+          <span>Ad spend lineage across mobile gaming, mobile apps, AI software, and non-standard proof.</span>
+        </div>
+      </div>
+    </section>
+
+    <section aria-label="Selected proof">
+      <h2 class="section-title">Selected Outcomes</h2>
+      <div class="proof-grid">
+        <article class="proof-card">
+          <div class="client-row"><img src="assets/web-logo-playco.svg" alt="Playco"><span class="client-name">Playco</span></div>
+          <div class="metric"><strong>-31%</strong><span>CPI</span></div>
+          <p><b>Intervention:</b> creative iteration plus UA testing. Supporting signals: 5.7x creative throughput and 20M MAU.</p>
+        </article>
+
+        <article class="proof-card">
+          <div class="client-row"><img src="assets/web-logo-finalround.svg" alt="Final Round AI"><span class="client-name client-name-hidden">Final Round AI</span></div>
+          <div class="metric"><strong>4.2x</strong><span>ROAS</span></div>
+          <p><b>Intervention:</b> revenue-side measurement. Supporting signal: $12M ARR in 14 months.</p>
+        </article>
+
+        <article class="proof-card">
+          <div class="client-row"><img class="fish-logo" src="assets/web-logo-fish-audio-official.svg" alt="Fish Audio"><span class="client-name">Fish Audio</span></div>
+          <div class="metric"><strong>-54%</strong><span>CAC</span></div>
+          <p><b>Intervention:</b> signup economics plus paid and demand-source coordination. Supporting signal: +340% MoM signups.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="middle">
+      <div class="system">
+        <h2 class="section-title">Operating System</h2>
+        <div class="flow" aria-label="Buyer-readable operating loop">
+          <div class="flow-step">
+            <b>Input</b>
+            <h3>Signals in</h3>
+            <p>Ad platforms, client data, sales context, creative assets, and market signals.</p>
+          </div>
+          <div class="flow-step">
+            <b>Queue</b>
+            <h3>AI recommends</h3>
+            <p>Creative variants, anomalies, channel shifts, and optimization candidates.</p>
+          </div>
+          <div class="flow-step">
+            <b>Approve</b>
+            <h3>Operator control</h3>
+            <p>Humans approve material spend changes and scale moves before execution.</p>
+          </div>
+          <div class="flow-step">
+            <b>Act</b>
+            <h3>Campaign action</h3>
+            <p>Launch, pause, allocate, refresh creative, and fix tracking.</p>
+          </div>
+          <div class="flow-step">
+            <b>Learn</b>
+            <h3>Revenue loop</h3>
+            <p>CAC, payback, revenue ROAS, fatigue, and winner quality feed the next cycle.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="visual-copy">
+          <h2>More shots on goal. <span>Cleaner scale gates.</span></h2>
+          <p>Traditional teams may test 5-10 manual concepts. Hellyeah runs a denser creative review surface, then ties creative winners to CPI, CAC, ROAS, activation, and payback.</p>
+        </div>
+        <div class="visual-assets" aria-label="Creative review surface examples">
+          <img src="assets/asset-creative-gallery-mid-aligned.png" alt="Creative review surface, first set">
+          <img src="assets/asset-creative-gallery-video-aligned.png" alt="Creative review surface, second set">
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom">
+      <div class="timeline">
+        <h2 class="section-title">30-Day Engagement</h2>
+        <div class="timeline-grid">
+          <div class="phase">
+            <b>Days 1-5</b>
+            <h3>Audit</h3>
+            <p>Diagnose tracking health, creative fatigue, account setup, KPI truth, and first-test scope.</p>
+          </div>
+          <div class="phase">
+            <b>Days 5-15</b>
+            <h3>Deploy</h3>
+            <p>Launch controlled tests, refresh creative, monitor quality, and collect clean evidence.</p>
+          </div>
+          <div class="phase">
+            <b>Days 15-30</b>
+            <h3>Scale</h3>
+            <p>Increase spend only when tracking is clean, winners repeat, and revenue-side economics hold.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gates">
+        <h2 class="section-title">Scale Rules</h2>
+        <div class="gate-list">
+          <div class="gate"><b>Scale budget</b><p>KPI inside agreed band, tracking clean, winner creative repeats.</p></div>
+          <div class="gate"><b>Kill ad</b><p>Learning spend reached, weak event quality, or CAC/CPI far from target.</p></div>
+          <div class="gate"><b>Replace creative</b><p>CTR/CVR drops, frequency rises, hook fatigue appears, or concept stalls.</p></div>
+          <div class="gate"><b>Fix tracking</b><p>Platform ROAS conflicts with revenue-side result, event loss, or MMP mismatch.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Hellyeah Pitch Deck One-Pager</span>
+      <span>Proof before scale. Revenue before platform optics.</span>
+    </footer>
+  </article>
+</body>
+</html>
