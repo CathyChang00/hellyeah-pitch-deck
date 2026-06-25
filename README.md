@@ -1,4 +1,4 @@
-# Hellyeah Intro Deck
+# Hellyeah Pitch Deck
 
 HTML version of the Hellyeah revenue-first user acquisition pitch deck.
 

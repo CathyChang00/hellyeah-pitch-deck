@@ -4959,7 +4959,7 @@ const html = `<!doctype html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hellyeah AI - Revenue-first user acquisition</title>
+  <title>Hellyeah Pitch Deck</title>
   <style>${css}</style>
 </head>
 <body>
