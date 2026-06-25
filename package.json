@@ -1,0 +1,10 @@
+{
+  "name": "hellyeah-18-page-html-deck",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node src/build-hellyeah-html-deck.mjs",
+    "preview": "python3 -m http.server 3000"
+  }
+}
