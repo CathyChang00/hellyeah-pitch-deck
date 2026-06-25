@@ -1905,11 +1905,6 @@ h1.one-line-title {
   letter-spacing: 0;
 }
 .cover-title span { display: block; }
-.cover-title-single {
-  max-width: 780px;
-  font-size: 58px;
-  line-height: 0.98;
-}
 .cover-title .orange-word {
   color: var(--orange) !important;
   text-shadow: 0 26px 90px rgba(255, 67, 1, 0.22);
@@ -2067,151 +2062,6 @@ h1.one-line-title {
   line-height: 1.35;
   font-weight: 700;
   letter-spacing: 0.08em;
-}
-
-.problem-layout {
-  display: grid;
-  grid-template-columns: 420px 1fr;
-  gap: 20px;
-  margin-top: 34px;
-  align-items: stretch;
-}
-.problem-hero {
-  min-height: 430px;
-  padding: 30px 32px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border-radius: 4px;
-  color: var(--white);
-  background:
-    radial-gradient(circle at 88% 18%, rgba(255, 67, 1, 0.22), transparent 32%),
-    var(--black);
-}
-.problem-hero small {
-  color: var(--orange);
-  font-size: 11px;
-  line-height: 1;
-  letter-spacing: 0.16em;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-.problem-hero h2 {
-  margin: 0;
-  max-width: 340px;
-  font-size: 34px;
-  line-height: 1.02;
-  font-weight: 850;
-}
-.problem-hero p {
-  margin: 0;
-  color: #d4d4d4;
-  font-size: 14px;
-  line-height: 1.28;
-  font-weight: 650;
-}
-.problem-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-}
-.problem-grid section {
-  min-height: 207px;
-  padding: 24px 24px 22px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-top: 5px solid var(--orange);
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.82);
-}
-.problem-grid b {
-  display: block;
-  color: var(--black);
-  font-size: 22px;
-  line-height: 1.05;
-  font-weight: 850;
-}
-.problem-grid p {
-  margin: 20px 0 0;
-  color: var(--text);
-  font-size: 14px;
-  line-height: 1.28;
-  font-weight: 650;
-}
-
-.outcome-layout {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 390px;
-  gap: 28px;
-  margin-top: 42px;
-  align-items: stretch;
-}
-.outcome-main {
-  min-height: 410px;
-  padding: 34px 36px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 4px;
-  background:
-    linear-gradient(135deg, rgba(255, 67, 1, 0.18), transparent 42%),
-    rgba(255, 255, 255, 0.045);
-}
-.outcome-main h2 {
-  margin: 0;
-  color: var(--white);
-  font-size: 46px;
-  line-height: 0.98;
-  font-weight: 900;
-}
-.outcome-main p {
-  max-width: 760px;
-  margin: 0;
-  color: #d4d4d4;
-  font-size: 20px;
-  line-height: 1.28;
-  font-weight: 620;
-}
-.outcome-system-line {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-}
-.outcome-system-line span {
-  min-height: 58px;
-  display: grid;
-  place-items: center;
-  padding: 0 12px;
-  border: 1px solid rgba(255, 67, 1, 0.34);
-  border-radius: 999px;
-  background: rgba(255, 67, 1, 0.12);
-  color: var(--white);
-  font-size: 10px;
-  line-height: 1.1;
-  letter-spacing: 0.09em;
-  font-weight: 900;
-  text-align: center;
-  text-transform: uppercase;
-}
-.outcome-cred {
-  display: grid;
-  grid-template-rows: repeat(3, 1fr);
-  gap: 14px;
-}
-.outcome-cred .stat {
-  padding: 22px 22px 18px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  border-left: 5px solid var(--orange);
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.045);
-}
-.outcome-cred .stat-value {
-  color: var(--orange);
-  font-size: 44px;
-}
-.outcome-cred .stat-label {
-  margin-top: 12px;
-  color: #d4d4d4;
 }
 
 .client-segments {
@@ -4420,10 +4270,11 @@ h1.one-line-title {
 
 const slides = [];
 
-slides.push(slide(1, "Cover", `
+slides.push(slide(1, "Confidential", `
   <main class="cover-content">
     <section class="cover-primary">
-      <h1 class="cover-title cover-title-single">Hellyeah helps growth teams turn paid media into predictable revenue.</h1>
+      <h1 class="cover-title"><span>Revenue First</span><span class="orange-word">User Acquisition.</span></h1>
+      <p class="cover-lead">We run strategy, creative, media, and measurement as one operating team. Every decision is judged against banked revenue, not the ad platform's version of success.</p>
       <div class="cover-tags">
         <span>Mobile Application</span>
         <span>AI/SaaS</span>
@@ -4435,73 +4286,18 @@ slides.push(slide(1, "Cover", `
       <div class="cover-cred-top">
         <div class="cover-logo-mark"><img class="cover-glyph" src="assets/glyph-orange.svg" alt=""></div>
       </div>
+      <div>
+        <div class="stat-row">
+          ${stat("15 years", "ADS SELLING\nAND GROWTH EXPERIENCE*")}
+          ${stat("$3B+", "CUMULATIVE MANAGED SPEND*")}
+        </div>
+        <div class="cover-note-left">*Includes prior agency and operator experience of the delivery team.</div>
+      </div>
     </aside>
   </main>
-`, "dark", false, "01 / 12"));
+`, "dark", false, "01 / 10"));
 
-slides.push(slide(2, "Problem", `
-  <main class="content">
-    ${splitTitle({
-      eyebrow: "PROBLEM",
-      titleA: "Growth teams are optimizing media activity, not business outcomes.",
-      sub: "The problem is not a lack of dashboards. It is too many disconnected signals and too few revenue-safe decisions."
-    })}
-    <div class="problem-layout">
-      <article class="problem-hero">
-        <small>What breaks</small>
-        <h2>Paid growth gets judged inside platforms before the business knows what actually happened.</h2>
-        <p>Creative, media buying, and measurement often move as separate workflows. That makes every scale decision slower and easier to misread.</p>
-      </article>
-      <div class="problem-grid">
-        <section>
-          <b>Creative bottleneck</b>
-          <p>Teams test too few concepts before fatigue shows up, so the account runs out of learning surface.</p>
-        </section>
-        <section>
-          <b>Channel fragmentation</b>
-          <p>Meta, Google, TikTok, Snap, and ASA each create their own dashboard logic and budget bias.</p>
-        </section>
-        <section>
-          <b>Platform truth gap</b>
-          <p>Platform ROAS can look strong while banked revenue, CAC, payback, or activation tell a different story.</p>
-        </section>
-        <section>
-          <b>Slow decisions</b>
-          <p>Budget moves, creative replacement, and tracking fixes wait for meetings instead of following evidence.</p>
-        </section>
-      </div>
-    </div>
-  </main>
-`, "light", true, "02 / 12"));
-
-slides.push(slide(3, "Outcome", `
-  <main class="content">
-    ${splitTitle({
-      eyebrow: "OUTCOME",
-      titleA: "Paid media becomes a controlled revenue system.",
-      sub: "When Hellyeah runs growth, creative, media buying, and measurement connect into one operating system focused on real business outcomes."
-    })}
-    <div class="outcome-layout">
-      <section class="outcome-main">
-        <h2>What changes</h2>
-        <p>Instead of asking whether a platform dashboard looks good, the team asks whether spend is producing cleaner acquisition cost, payback, activation, or recognized revenue.</p>
-        <div class="outcome-system-line">
-          <span>creative velocity</span>
-          <span>omnichannel allocation</span>
-          <span>revenue-side measurement</span>
-          <span>operator control</span>
-        </div>
-      </section>
-      <aside class="outcome-cred">
-        ${stat("15 years", "PERFORMANCE MARKETING\nAND GROWTH EXPERIENCE*")}
-        ${stat("$3B+", "CUMULATIVE MANAGED\nAND OPERATED SPEND*")}
-        ${stat("100+", "PRODUCT LAUNCHES\nACROSS GLOBAL MARKETS*")}
-      </aside>
-    </div>
-  </main>
-`, "dark", true, "03 / 12"));
-
-slides.push(slide(4, "Proof", `
+slides.push(slide(2, "Proof", `
   <main class="content">
     <div class="outcome-proof-layout">
       <div class="eyebrow">SELECTED OUTCOMES</div>
@@ -4563,13 +4359,13 @@ slides.push(slide(4, "Proof", `
       <div class="outcome-proof-note">Published customer-case metrics. Case-specific outcomes, not a universal forecast.</div>
     </div>
   </main>
-`, "dark", true, "04 / 12"));
+`, "dark", true, "02 / 10"));
 
-slides.push(slide(5, "Who it is for", `
+slides.push(slide(3, "Customers", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "WHO IT IS FOR",
-      titleA: "Who it is for.",
+      eyebrow: "CUSTOMERS",
+      titleA: "Customer coverage.",
       sub: "Mobile Application and AI/SaaS are the core categories; Others support breadth without becoming the main ICP."
     })}
     <div class="logo-wall-layout">
@@ -4631,13 +4427,13 @@ slides.push(slide(5, "Who it is for", `
       </section>
     </div>
   </main>
-`, "light", true, "05 / 12"));
+`, "light", true, "03 / 10"));
 
-slides.push(slide(6, "How it works", `
+slides.push(slide(4, "Product", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "HOW IT WORKS",
-      titleA: "How it works.",
+      eyebrow: "PRODUCT",
+      titleA: "Product system.",
       sub: "A buyer-readable operating loop: signals enter one queue, AI recommends actions, operators approve material moves, campaigns update, and learnings feed back."
     })}
     <div class="product-system-layout">
@@ -4685,12 +4481,12 @@ slides.push(slide(6, "How it works", `
       </section>
     </div>
   </main>
-`, "light", true, "06 / 12"));
+`, "light", true, "04 / 10"));
 
-slides.push(slide(7, "Creative engine", `
+slides.push(slide(5, "Creative", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "CREATIVE ENGINE",
+      eyebrow: "CREATIVE",
       titleA: "Creative engine.",
       sub: "Manual review cycles test 5-10 concepts. This campaign queue shows 41 variants in review, with image and video mixed together."
     })}
@@ -4710,21 +4506,21 @@ slides.push(slide(7, "Creative engine", `
       </figure>
     </div>
   </main>
-`, "light", true, "07 / 12"));
+`, "light", true, "05 / 10"));
 
-slides.push(slide(12, "Commercial model", `
+slides.push(slide(6, "Access", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "COMMERCIAL MODEL",
-      titleA: "Commercial model.",
-      sub: "How engagement works: access, expectations, setup, and operating control."
+      eyebrow: "ACCOUNT ACCESS",
+      titleA: "Account access.",
+      sub: "Warmed up accounts get the execution faster."
     })}
     <div class="access-board">
       <section class="access-core">
-        <div class="console-label">Engagement path</div>
-        <h2>Start with access, diagnosis, and a clean decision path.</h2>
-        <p>Clients bring account access, creative history, event data, revenue source, and budget guardrails. Hellyeah runs the diagnostic, prepares the controlled test, and keeps approval boundaries clear.</p>
-        <div class="access-line">access / diagnostic / controlled test / scale decision</div>
+        <div class="console-label">White-label account access</div>
+        <h2>Start from working infrastructure, not setup delay.</h2>
+        <p>Clients do not need to open every account, permission path, billing path, and operating checklist before Hellyeah can diagnose and prepare the first controlled test.</p>
+        <div class="access-line">read first / launch controlled / hand off cleanly</div>
       </section>
       <section class="access-grid">
         <div class="access-item"><b>01</b><h3>Read-only audit</h3><p>Review existing accounts, event quality, creative history, budget, and revenue reporting before changes.</p></div>
@@ -4736,13 +4532,13 @@ slides.push(slide(12, "Commercial model", `
       </section>
     </div>
   </main>
-`, "light", true, "12 / 12"));
+`, "light", true, "06 / 10"));
 
-slides.push(slide(9, "Operating cadence", `
+slides.push(slide(7, "Optimization", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "OPERATING CADENCE",
-      titleA: "Operating cadence.",
+      eyebrow: "OPTIMIZATION",
+      titleA: "Optimization loop.",
       sub: "Always-on monitoring collects signals; AI queues actions; operators approve material moves; each result updates the next test."
     })}
     <div class="decision-loop-board">
@@ -4781,13 +4577,13 @@ slides.push(slide(9, "Operating cadence", `
       </section>
     </div>
   </main>
-`, "light", true, "09 / 12"));
+`, "light", true, "07 / 10"));
 
-slides.push(slide(8, "Measurement system", `
+slides.push(slide(8, "Measurement", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "MEASUREMENT SYSTEM",
-      titleA: "Measurement system.",
+      eyebrow: "MEASUREMENT",
+      titleA: "Measurement.",
       sub: "Before scale, the buyer needs to know whether the dashboard is measuring business outcomes or just platform credit."
     })}
     <div class="measurement-board">
@@ -4812,9 +4608,9 @@ slides.push(slide(8, "Measurement system", `
       </section>
     </div>
   </main>
-`, "dark", true, "08 / 12"));
+`, "dark", true, "08 / 10"));
 
-slides.push(slide(10, "Scale gate", `
+slides.push(slide(9, "Scale gate", `
   <main class="content">
     ${splitTitle({
       eyebrow: "SCALE GATE",
@@ -4849,13 +4645,13 @@ slides.push(slide(10, "Scale gate", `
       </figure>
     </div>
   </main>
-`, "light", true, "10 / 12"));
+`, "light", true, "09 / 10"));
 
-slides.push(slide(11, "30-day test plan", `
+slides.push(slide(10, "Test plan", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "30-DAY TEST PLAN",
-      titleA: "30-day test plan.",
+      eyebrow: "30-DAY TEST",
+      titleA: "30-day test.",
       sub: "Audit first, test second, scale third. The goal is not more meetings, it is a clean decision."
     })}
     <div class="test-plan-board">
@@ -4919,9 +4715,9 @@ slides.push(slide(11, "30-day test plan", `
       </aside>
     </div>
   </main>
-`, "orange", false, "11 / 12"));
+`, "orange", false, "10 / 10"));
 
-slides.push(slide(13, "Appendix", `
+slides.push(slide(11, "Appendix", `
   <main class="content">
     ${splitTitle({
       eyebrow: "MOBILE CASES",
@@ -4983,7 +4779,7 @@ slides.push(slide(13, "Appendix", `
   </main>
 `, "light", true, "A1 / A3"));
 
-slides.push(slide(14, "Appendix", `
+slides.push(slide(12, "Appendix", `
   <main class="content">
     ${splitTitle({
       eyebrow: "AI SOFTWARE CASES",
@@ -5042,7 +4838,7 @@ slides.push(slide(14, "Appendix", `
   </main>
 `, "light", true, "A2 / A3"));
 
-slides.push(slide(15, "Appendix", `
+slides.push(slide(13, "Appendix", `
   <main class="content">
     ${splitTitle({
       eyebrow: "OTHER CASES",
@@ -5157,12 +4953,6 @@ slides.push(slide(15, "Appendix", `
     </div>
   </main>
 `, "light", true, "A3 / A3"));
-
-slides.sort((a, b) => {
-  const aId = Number(a.match(/id="slide-(\d+)"/)?.[1] || 0);
-  const bId = Number(b.match(/id="slide-(\d+)"/)?.[1] || 0);
-  return aId - bId;
-});
 
 const html = `<!doctype html>
 <html lang="en">
