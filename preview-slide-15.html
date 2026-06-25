@@ -1,360 +1,10 @@
-import fs from "node:fs/promises";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-
-const PROJECT_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const ASSET_SRC = path.join(PROJECT_ROOT, "src/assets");
-const OUT_DIR = PROJECT_ROOT;
-const ASSET_OUT = path.join(OUT_DIR, "assets");
-const OUT = path.join(OUT_DIR, "index.html");
-const previewOut = (slideNumber) =>
-  path.join(OUT_DIR, `preview-slide-${String(slideNumber).padStart(2, "0")}.html`);
-
-const assetFiles = [
-  "logo-red.svg",
-  "logo-red-onlight.svg",
-  "glyph-orange.svg",
-  "web-logo-pokemon-official.png",
-  "web-logo-playco.svg",
-  "web-logo-second-dinner-official.png",
-  "web-logo-marvel-snap.png",
-  "web-logo-product-madness-pinzak.png",
-  "web-logo-igg-pinzak.png",
-  "web-logo-clubwpt-gold-pinzak.png",
-  "web-logo-spoon-pinzak.png",
-  "web-logo-dolphin-pinzak.png",
-  "web-logo-aonic-official.png",
-  "web-logo-aonic-prnewswire-transparent.png",
-  "web-logo-wpt.png",
-  "web-logo-truist.svg",
-  "web-logo-jt-express.svg",
-  "web-logo-eragon-transparent.png",
-  "web-logo-befreed-cropped.png",
-  "web-logo-viggle-googleplay.png",
-  "web-logo-fish-audio-official.svg",
-  "web-logo-fish-audio-mint.png",
-  "web-logo-fish-audio-white-transparent.png",
-  "web-logo-chai-official.svg",
-  "web-logo-finalround.svg",
-  "web-logo-finalround-black-white.svg",
-  "web-logo-hyperspell-linkedin.png",
-  "web-logo-hyperspell-webflow.png",
-  "web-logo-hyperspell-webflow-cropped.png",
-  "web-logo-mavia-google.png",
-  "web-logo-dena-google.png",
-  "web-logo-lords-mobile-google.png",
-  "web-logo-lords-mobile-user.png",
-  "web-logo-skrice-google.png",
-  "web-logo-mocksi-google.png",
-  "web-logo-the-dyrt-google.png",
-  "web-logo-the-dyrt-icon.png",
-  "web-logo-the-dyrt-user-wordmark.png",
-  "web-logo-insforge-google.png",
-  "web-logo-dopple-google.png",
-  "web-logo-tea-ai-google.png",
-  "web-logo-ace-studio-google.png",
-  "web-logo-visko-google.png",
-  "web-logo-cookiy-google.png",
-  "web-logo-runner-ai-icon.png",
-  "web-logo-polargrid-inverted.png",
-  "web-logo-polargrid-icon.png",
-  "web-logo-tavus-google.png",
-  "web-logo-dolphin-browser-google.png",
-  "web-logo-bear-ai-google.png",
-  "web-logo-middleware-google.png",
-  "web-logo-vipkid-google.png",
-  "web-logo-spectra-capital-google.png",
-  "web-logo-harmay-google.png",
-  "web-logo-betbull-pinzak.png",
-  "web-logo-betbull-pinzak-dark.png",
-  "web-logo-mex-pinzak.png",
-  "asset-programmatic-architecture-full.png",
-  "asset-creative-workflow-crop.png",
-  "asset-creative-workflow-full-resized.png",
-  "asset-creative-gallery-mid.png",
-  "asset-creative-gallery-video.png",
-  "asset-creative-gallery-mid-aligned.png",
-  "asset-creative-gallery-video-aligned.png",
-  "asset-campaign-analytics-crop.png",
-  "asset-campaign-analytics-full.png",
-  "asset-campaign-analytics-main-crop.png",
-  "asset-campaign-analytics-headline-crop.png",
-  "platform-meta.svg",
-  "platform-google-user.png",
-  "platform-tiktok.svg",
-  "platform-snapchat-user-cropped.png",
-  "platform-appstore-user.png",
-  "hellyeah-geist-latin.woff2",
-  "hellyeah-geist-mono-latin.woff2",
-  "hellyeah-eb-garamond-italic-latin.woff2",
-];
-
-const logo = (file, alt, extra = "") =>
-  `<img class="logo-img ${extra}" src="assets/${file}" alt="${alt}">`;
-
-const esc = (value) =>
-  String(value)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;");
-
-const splitTitle = (a, b) => `
-  <div class="eyebrow ${a.className || ""}">${esc(a.eyebrow)}</div>
-  <h1 class="${a.className || ""}"><span>${esc(a.titleA)}</span>${b ? ` <span class="accent">${esc(b)}</span>` : ""}</h1>
-  ${a.sub ? `<p class="lead">${esc(a.sub)}</p>` : ""}
-`;
-
-const card = ({ value, title, body, dark = false, className = "", logoFile = "", logoName = "", logoClass = "" }) => `
-  <div class="card ${dark ? "card-dark" : ""} ${className}">
-    ${logoFile ? `<div class="case-logo ${dark ? "case-logo-plate" : ""} ${logoClass}">${logo(logoFile, `${logoName || title} logo`)}</div>` : ""}
-    ${value ? `<div class="metric">${esc(value)}</div>` : ""}
-    <h3>${esc(title)}</h3>
-    <p>${esc(body)}</p>
-  </div>
-`;
-
-const caseProof = ({ logoFile, logoName, logoClass = "", metric, metricLabel, result, story, sales, dark = false }) => `
-  <article class="case-proof ${dark ? "case-proof-dark" : ""}">
-    <div class="case-proof-head">
-      <div>
-        <div class="case-proof-name">${esc(logoName)}</div>
-      </div>
-      ${logoFile ? `<div class="case-proof-logo ${logoClass}">${logo(logoFile, `${logoName} logo`)}</div>` : ""}
-    </div>
-    <div class="case-result">
-      <div class="case-metric">${esc(metric)}</div>
-      <div>
-        <div class="case-metric-label">${esc(metricLabel)}</div>
-        <div class="case-result-line">${esc(result)}</div>
-      </div>
-    </div>
-    <p class="case-story">${esc(story)}</p>
-    <div class="case-sales">${esc(sales)}</div>
-  </article>
-`;
-
-const customerCase = ({ logoFile, logoName, logoClass = "", category, summary, story, metrics, tags = [], dark = false }) => `
-  <article class="customer-case ${dark ? "customer-case-dark" : ""}">
-    <div class="customer-case-head">
-      <div>
-        <div class="customer-category">${esc(category)}</div>
-        <div class="customer-name">${esc(logoName)}</div>
-      </div>
-      ${logoFile ? `<div class="customer-logo ${logoClass}">${logo(logoFile, `${logoName} logo`)}</div>` : ""}
-    </div>
-    <p class="customer-summary">${esc(summary)}</p>
-    <div class="customer-classic-story">
-      <b>Classic story</b>
-      <span>${esc(story)}</span>
-    </div>
-    <div class="customer-metrics metrics-${metrics.length}">
-      ${metrics.map((item) => `
-        <div class="customer-metric">
-          <b>${esc(item.value)}</b>
-          <span>${esc(item.label)}</span>
-        </div>
-      `).join("")}
-    </div>
-    <div class="customer-tags">${tags.map((tag) => `<span>${esc(tag)}</span>`).join("")}</div>
-  </article>
-`;
-
-const appendixMetrics = (metrics, className = "") => `
-  <div class="appendix-metrics ${className} count-${metrics.length}">
-    ${metrics.map((item) => `
-      <div>
-        <b>${esc(item.value)}</b>
-        <span>${esc(item.label)}</span>
-      </div>
-    `).join("")}
-  </div>
-`;
-
-const appendixTags = (tags) => `
-  <div class="appendix-tags">${tags.map((tag) => `<span>${esc(tag)}</span>`).join("")}</div>
-`;
-
-const appendixMainCase = ({ logoFile, logoName, logoClass = "", category, title, metric, metricLabel, blocks, metrics = [] }) => `
-  <article class="appendix-main-case">
-    <div class="appendix-case-head">
-      <div>
-        <div class="appendix-case-category">${esc(category)}</div>
-        <h2>${esc(logoName)}</h2>
-      </div>
-      ${logoFile ? `<div class="appendix-case-logo ${logoClass}">${logo(logoFile, `${logoName} logo`)}</div>` : ""}
-    </div>
-    <div class="appendix-main-body">
-      <div class="appendix-main-metric">
-        <p>${esc(title)}</p>
-        <b>${esc(metric)}</b>
-        <span>${esc(metricLabel)}</span>
-      </div>
-      <div class="appendix-main-blocks">
-        ${blocks.map((block) => `
-          <section>
-            <small>${esc(block.label)}</small>
-            <h3>${esc(block.title)}</h3>
-            <p>${esc(block.body)}</p>
-          </section>
-        `).join("")}
-      </div>
-    </div>
-    ${metrics.length ? appendixMetrics(metrics, "main-extra") : ""}
-  </article>
-`;
-
-const appendixSideCase = ({ logoFile, logoName, logoClass = "", category, summary, metrics, tags }) => `
-  <article class="appendix-side-case">
-    <div class="appendix-side-head">
-      <div>
-        <div class="appendix-case-category">${esc(category)}</div>
-        <h3>${esc(logoName)}</h3>
-      </div>
-      ${logoFile ? `<div class="appendix-side-logo ${logoClass}">${logo(logoFile, `${logoName} logo`)}</div>` : ""}
-    </div>
-    <p>${esc(summary)}</p>
-    ${appendixMetrics(metrics, "side")}
-    ${appendixTags(tags)}
-  </article>
-`;
-
-const appendixOverviewCase = ({ logoFile, logoName, logoClass = "", category, title, metrics, blocks, tags, logoOnly = false }) => `
-  <article class="appendix-overview-case">
-    <div class="appendix-case-head ${logoOnly ? "appendix-logo-only-head" : ""}">
-      ${logoOnly ? `
-        <div class="appendix-case-category">${esc(category)}</div>
-      ` : `
-        <div>
-          <div class="appendix-case-category">${esc(category)}</div>
-          <h2>${esc(logoName)}</h2>
-        </div>
-      `}
-      ${logoFile ? `<div class="appendix-case-logo ${logoClass}">${logo(logoFile, `${logoName} logo`)}</div>` : ""}
-    </div>
-    <p class="appendix-overview-title">${esc(title)}</p>
-    ${appendixMetrics(metrics)}
-    <div class="appendix-overview-blocks">
-      ${blocks.map((block) => `
-        <section>
-          <small>${esc(block.label)}</small>
-          <h3>${esc(block.title)}</h3>
-          <p>${esc(block.body)}</p>
-        </section>
-      `).join("")}
-    </div>
-    ${appendixTags(tags)}
-  </article>
-`;
-
-const appendixCompactCase = ({ logoFile, logoName, logoClass = "", category, summary, metrics, tags, boundary }) => `
-  <article class="appendix-compact-case">
-    <div class="appendix-side-head">
-      <div>
-        <div class="appendix-case-category">${esc(category)}</div>
-        <h3>${esc(logoName)}</h3>
-      </div>
-      ${logoFile ? `<div class="appendix-side-logo ${logoClass}">${logo(logoFile, `${logoName} logo`)}</div>` : ""}
-    </div>
-    <p>${esc(summary)}</p>
-    ${appendixMetrics(metrics, "compact")}
-    ${appendixTags(tags)}
-    ${boundary ? `<div class="appendix-boundary">${esc(boundary)}</div>` : ""}
-  </article>
-`;
-
-const operatorCase = ({ brand, logoFile = "", logoClass = "", category, title, sub, beats, metrics, tags, proofNote }) => `
-  <div class="operator-case-layout">
-    <section class="operator-story">
-      <div class="operator-case-head">
-        <div>
-          <div class="operator-category">${esc(category)}</div>
-          <h2>${esc(title)}</h2>
-          <p>${esc(sub)}</p>
-        </div>
-        ${logoFile ? `<div class="operator-logo ${logoClass}">${logo(logoFile, `${brand} logo`)}</div>` : `<div class="operator-wordmark">${esc(brand)}</div>`}
-      </div>
-      <div class="operator-beats">
-        ${beats.map((beat, index) => `
-          <article class="operator-beat">
-            <div class="operator-node">${String(index + 1).padStart(2, "0")}</div>
-            <div>
-              <small>${esc(beat.label)}</small>
-              <h3>${esc(beat.title)}</h3>
-              <p>${esc(beat.body)}</p>
-            </div>
-          </article>
-        `).join("")}
-      </div>
-    </section>
-    <aside class="operator-proof">
-      <div class="operator-proof-label">Operator proof</div>
-      <div class="operator-proof-metrics">
-        ${metrics.map((item, index) => `
-          <div class="operator-proof-metric ${index === 0 ? "hero" : ""}">
-            <b>${esc(item.value)}</b>
-            <span>${esc(item.label)}</span>
-          </div>
-        `).join("")}
-      </div>
-      <div class="operator-tags">${tags.map((tag) => `<span>${esc(tag)}</span>`).join("")}</div>
-      ${proofNote ? `<p class="operator-proof-note">${esc(proofNote)}</p>` : ""}
-    </aside>
-  </div>
-`;
-
-const proposalRow = (decision, test, scale) => `
-  <tr>
-    <th>${esc(decision)}</th>
-    <td>${esc(test)}</td>
-    <td>${esc(scale)}</td>
-  </tr>
-`;
-
-const stat = (value, label) => `
-  <div class="stat">
-    <div class="stat-value">${esc(value)}</div>
-    <div class="stat-line"></div>
-    <div class="stat-label">${esc(label)}</div>
-  </div>
-`;
-
-const header = (num, section, dark = false, pageLabel = `${String(num).padStart(2, "0")} / 18`) => `
-  <header class="slide-header">
-    <img class="brand" src="assets/${dark ? "logo-red.svg" : "logo-red-onlight.svg"}" alt="Hellyeah">
-    <div class="page-label">${esc(section.toUpperCase())} / ${esc(pageLabel)}</div>
-  </header>
-`;
-
-const footer = (dark = false) => `<footer class="slide-footer ${dark ? "footer-dark" : ""}">Revenue-first user acquisition</footer>`;
-
-const slide = (num, section, body, theme = "light", includeFooter = true, pageLabel) => `
-  <section id="slide-${String(num).padStart(2, "0")}" class="slide ${theme}">
-    ${header(num, section, theme === "dark" || theme === "orange", pageLabel)}
-    ${body}
-    ${includeFooter ? footer(theme === "dark" || theme === "orange") : ""}
-  </section>
-`;
-
-const logoTile = ({ name, file, dark = false, wide = false, icon = false, tall = false, className = "" }) => `
-  <div class="client-slot">
-    <div class="client-logo ${dark ? "client-dark" : ""} ${wide ? "logo-wide" : ""} ${icon ? "logo-icon" : ""} ${tall ? "logo-tall" : ""} ${className}">
-      ${logo(file, `${name} logo`)}
-    </div>
-  </div>
-`;
-
-const wallLogo = ({ name, file = "", className = "", wordmark = false }) => `
-  <div class="logo-wall-cell ${className} ${wordmark ? "logo-with-name" : ""}">
-    ${file ? logo(file, `${name} logo`) : ""}
-    ${wordmark || !file ? `<span class="logo-wordmark">${esc(name)}</span>` : ""}
-  </div>
-`;
-
-const variantCells = (count, hotEvery = 0) =>
-  Array.from({ length: count }, (_, index) => `<span class="${hotEvery && index % hotEvery === 0 ? "hot" : ""}"></span>`).join("");
-
-const css = `
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hellyeah Pitch Deck</title>
+  <style>
 @font-face {
   font-family: "Hellyeah Geist";
   src: url("assets/hellyeah-geist-latin.woff2") format("woff2");
@@ -4505,11 +4155,23 @@ h1.one-line-title {
     page-break-after: auto;
   }
 }
-`;
+</style>
+<style>.deck{padding:28px 0 56px}.slide{display:none!important}.slide#slide-15{display:block!important}</style></head>
+<body>
+  <nav class="deck-actions" aria-label="Deck actions">
+    <button type="button" data-print-deck>Print / Save PDF</button>
+    <button type="button" data-download-deck>Download HTML</button>
+  </nav>
+  <main class="deck">
+    
+  <section id="slide-01" class="slide dark">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red.svg" alt="Hellyeah">
+    <div class="page-label">CONFIDENTIAL / 01 / 10</div>
+  </header>
 
-const slides = [];
-
-slides.push(slide(1, "Confidential", `
+    
   <main class="cover-content">
     <section class="cover-primary">
       <h1 class="cover-title"><span>Revenue First</span><span class="orange-word">User Acquisition.</span></h1>
@@ -4527,16 +4189,39 @@ slides.push(slide(1, "Confidential", `
       </div>
       <div>
         <div class="stat-row">
-          ${stat("15 years", "ADS SELLING\nAND GROWTH EXPERIENCE*")}
-          ${stat("$3B+", "CUMULATIVE MANAGED SPEND*")}
+          
+  <div class="stat">
+    <div class="stat-value">15 years</div>
+    <div class="stat-line"></div>
+    <div class="stat-label">ADS SELLING
+AND GROWTH EXPERIENCE*</div>
+  </div>
+
+          
+  <div class="stat">
+    <div class="stat-value">$3B+</div>
+    <div class="stat-line"></div>
+    <div class="stat-label">CUMULATIVE MANAGED SPEND*</div>
+  </div>
+
         </div>
         <div class="cover-note-left">*Includes prior agency and operator experience of the delivery team.</div>
       </div>
     </aside>
   </main>
-`, "dark", false, "01 / 10"));
 
-slides.push(slide(2, "Proof", `
+    
+  </section>
+
+
+  <section id="slide-02" class="slide dark">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red.svg" alt="Hellyeah">
+    <div class="page-label">PROOF / 02 / 10</div>
+  </header>
+
+    
   <main class="content">
     <div class="outcome-proof-layout">
       <div class="eyebrow">SELECTED OUTCOMES</div>
@@ -4546,7 +4231,7 @@ slides.push(slide(2, "Proof", `
         <article class="outcome-proof-card">
           <div class="outcome-card-head">
             <small>PLAYCO · GAMING</small>
-            <div class="outcome-case-logo logo-playco">${logo("web-logo-playco.svg", "Playco logo")}</div>
+            <div class="outcome-case-logo logo-playco"><img class="logo-img " src="assets/web-logo-playco.svg" alt="Playco logo"></div>
           </div>
           <div>
             <b>-31%</b>
@@ -4562,7 +4247,7 @@ slides.push(slide(2, "Proof", `
         <article class="outcome-proof-card featured">
           <div class="outcome-card-head">
             <small>FINAL ROUND AI · CONSUMER TECH</small>
-            <div class="outcome-case-logo logo-finalround">${logo("web-logo-finalround-black-white.svg", "Final Round AI logo")}</div>
+            <div class="outcome-case-logo logo-finalround"><img class="logo-img " src="assets/web-logo-finalround-black-white.svg" alt="Final Round AI logo"></div>
           </div>
           <div>
             <b>4.2x</b>
@@ -4598,83 +4283,308 @@ slides.push(slide(2, "Proof", `
       <div class="outcome-proof-note">Published customer-case metrics. Case-specific outcomes, not a universal forecast.</div>
     </div>
   </main>
-`, "dark", true, "02 / 10"));
 
-slides.push(slide(3, "Customers", `
+    <footer class="slide-footer footer-dark">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-03" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">CUSTOMERS / 03 / 10</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "CUSTOMERS",
-      titleA: "Customer coverage.",
-      sub: "Mobile Application and AI/SaaS are the core categories; Others support breadth without becoming the main ICP."
-    })}
+    
+  <div class="eyebrow ">CUSTOMERS</div>
+  <h1 class=""><span>Customer coverage.</span></h1>
+  <p class="lead">Mobile Application and AI/SaaS are the core categories; Others support breadth without becoming the main ICP.</p>
+
     <div class="logo-wall-layout">
       <section class="logo-wall-section logo-wall-mobile">
         <h2>Mobile Application <span>games, entertainment, apps</span></h2>
         <div class="logo-wall-grid">
-          ${wallLogo({ name: "Pokemon", file: "web-logo-pokemon-official.png", className: "logo-wall-pokemon" })}
-          ${wallLogo({ name: "Marvel Snap", file: "web-logo-marvel-snap.png", className: "logo-wall-marvel" })}
-          ${wallLogo({ name: "Product Madness", file: "web-logo-product-madness-pinzak.png", className: "logo-wall-product-madness" })}
-          ${wallLogo({ name: "IGG", file: "web-logo-igg-pinzak.png", className: "logo-wall-igg" })}
-          ${wallLogo({ name: "Lords Mobile", file: "web-logo-lords-mobile-user.png", wordmark: true })}
-          ${wallLogo({ name: "DeNA", file: "web-logo-dena-google.png", wordmark: true })}
-          ${wallLogo({ name: "WPT", file: "web-logo-wpt.png", className: "logo-wall-wpt" })}
-          ${wallLogo({ name: "Second Dinner", file: "web-logo-second-dinner-official.png", className: "logo-wall-second" })}
-          ${wallLogo({ name: "Playco", file: "web-logo-playco.svg", className: "logo-wall-playco" })}
-          ${wallLogo({ name: "Mavia", file: "web-logo-mavia-google.png", wordmark: true })}
-          ${wallLogo({ name: "The Dyrt", file: "web-logo-the-dyrt-icon.png" })}
-          ${wallLogo({ name: "Spoon", file: "web-logo-spoon-pinzak.png", className: "logo-wall-spoon" })}
-          ${wallLogo({ name: "Dolphin Browser", file: "web-logo-dolphin-pinzak.png", className: "logo-wall-dolphin" })}
-          ${wallLogo({ name: "Skrice Studios", file: "web-logo-skrice-google.png", wordmark: true })}
+          
+  <div class="logo-wall-cell logo-wall-pokemon ">
+    <img class="logo-img " src="assets/web-logo-pokemon-official.png" alt="Pokemon logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-marvel ">
+    <img class="logo-img " src="assets/web-logo-marvel-snap.png" alt="Marvel Snap logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-product-madness ">
+    <img class="logo-img " src="assets/web-logo-product-madness-pinzak.png" alt="Product Madness logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-igg ">
+    <img class="logo-img " src="assets/web-logo-igg-pinzak.png" alt="IGG logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-lords-mobile-user.png" alt="Lords Mobile logo">
+    <span class="logo-wordmark">Lords Mobile</span>
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-dena-google.png" alt="DeNA logo">
+    <span class="logo-wordmark">DeNA</span>
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-wpt ">
+    <img class="logo-img " src="assets/web-logo-wpt.png" alt="WPT logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-second ">
+    <img class="logo-img " src="assets/web-logo-second-dinner-official.png" alt="Second Dinner logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-playco ">
+    <img class="logo-img " src="assets/web-logo-playco.svg" alt="Playco logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-mavia-google.png" alt="Mavia logo">
+    <span class="logo-wordmark">Mavia</span>
+  </div>
+
+          
+  <div class="logo-wall-cell  ">
+    <img class="logo-img " src="assets/web-logo-the-dyrt-icon.png" alt="The Dyrt logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-spoon ">
+    <img class="logo-img " src="assets/web-logo-spoon-pinzak.png" alt="Spoon logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-dolphin ">
+    <img class="logo-img " src="assets/web-logo-dolphin-pinzak.png" alt="Dolphin Browser logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-skrice-google.png" alt="Skrice Studios logo">
+    <span class="logo-wordmark">Skrice Studios</span>
+  </div>
+
         </div>
       </section>
       <section class="logo-wall-section logo-wall-saas">
         <h2>AI/SaaS <span>consumer AI, SaaS, devtools</span></h2>
         <div class="logo-wall-grid">
-          ${wallLogo({ name: "VIPKID", file: "web-logo-vipkid-google.png", wordmark: true })}
-          ${wallLogo({ name: "Tavus", file: "web-logo-tavus-google.png", wordmark: true })}
-          ${wallLogo({ name: "Bear AI", file: "web-logo-bear-ai-google.png", wordmark: true })}
-          ${wallLogo({ name: "Hyperspell", file: "web-logo-hyperspell-webflow-cropped.png", className: "logo-wall-hyperspell" })}
-          ${wallLogo({ name: "Final Round AI", file: "web-logo-finalround.svg", className: "logo-wall-finalround" })}
-          ${wallLogo({ name: "Fish Audio", file: "web-logo-fish-audio-mint.png", className: "logo-wall-fish" })}
-          ${wallLogo({ name: "BeFreed", file: "web-logo-befreed-cropped.png" })}
-          ${wallLogo({ name: "CHAI", file: "web-logo-chai-official.svg", className: "logo-wall-chai" })}
-          ${wallLogo({ name: "Viggle", file: "web-logo-viggle-googleplay.png", className: "logo-wall-viggle" })}
-          ${wallLogo({ name: "middleware", file: "web-logo-middleware-google.png", wordmark: true })}
-          ${wallLogo({ name: "Eragon", file: "web-logo-eragon-transparent.png", className: "logo-wall-eragon" })}
-          ${wallLogo({ name: "InsForge", file: "web-logo-insforge-google.png", wordmark: true })}
-          ${wallLogo({ name: "DOPPLE AI", file: "web-logo-dopple-google.png", wordmark: true })}
-          ${wallLogo({ name: "Ace Studio", file: "web-logo-ace-studio-google.png", wordmark: true })}
-          ${wallLogo({ name: "TEA AI", file: "web-logo-tea-ai-google.png", wordmark: true })}
-          ${wallLogo({ name: "Visko AI", file: "web-logo-visko-google.png", wordmark: true })}
-          ${wallLogo({ name: "Runner AI", file: "web-logo-runner-ai-icon.png", wordmark: true, className: "logo-wall-runner" })}
-          ${wallLogo({ name: "Cookiy AI", file: "web-logo-cookiy-google.png", wordmark: true })}
-          ${wallLogo({ name: "Mocksi", file: "web-logo-mocksi-google.png", wordmark: true })}
-          ${wallLogo({ name: "Polargrid", file: "web-logo-polargrid-icon.png", wordmark: true, className: "logo-wall-polargrid" })}
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-vipkid-google.png" alt="VIPKID logo">
+    <span class="logo-wordmark">VIPKID</span>
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-tavus-google.png" alt="Tavus logo">
+    <span class="logo-wordmark">Tavus</span>
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-bear-ai-google.png" alt="Bear AI logo">
+    <span class="logo-wordmark">Bear AI</span>
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-hyperspell ">
+    <img class="logo-img " src="assets/web-logo-hyperspell-webflow-cropped.png" alt="Hyperspell logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-finalround ">
+    <img class="logo-img " src="assets/web-logo-finalround.svg" alt="Final Round AI logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-fish ">
+    <img class="logo-img " src="assets/web-logo-fish-audio-mint.png" alt="Fish Audio logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell  ">
+    <img class="logo-img " src="assets/web-logo-befreed-cropped.png" alt="BeFreed logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-chai ">
+    <img class="logo-img " src="assets/web-logo-chai-official.svg" alt="CHAI logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-viggle ">
+    <img class="logo-img " src="assets/web-logo-viggle-googleplay.png" alt="Viggle logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-middleware-google.png" alt="middleware logo">
+    <span class="logo-wordmark">middleware</span>
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-eragon ">
+    <img class="logo-img " src="assets/web-logo-eragon-transparent.png" alt="Eragon logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-insforge-google.png" alt="InsForge logo">
+    <span class="logo-wordmark">InsForge</span>
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-dopple-google.png" alt="DOPPLE AI logo">
+    <span class="logo-wordmark">DOPPLE AI</span>
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-ace-studio-google.png" alt="Ace Studio logo">
+    <span class="logo-wordmark">Ace Studio</span>
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-tea-ai-google.png" alt="TEA AI logo">
+    <span class="logo-wordmark">TEA AI</span>
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-visko-google.png" alt="Visko AI logo">
+    <span class="logo-wordmark">Visko AI</span>
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-runner logo-with-name">
+    <img class="logo-img " src="assets/web-logo-runner-ai-icon.png" alt="Runner AI logo">
+    <span class="logo-wordmark">Runner AI</span>
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-cookiy-google.png" alt="Cookiy AI logo">
+    <span class="logo-wordmark">Cookiy AI</span>
+  </div>
+
+          
+  <div class="logo-wall-cell  logo-with-name">
+    <img class="logo-img " src="assets/web-logo-mocksi-google.png" alt="Mocksi logo">
+    <span class="logo-wordmark">Mocksi</span>
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-polargrid logo-with-name">
+    <img class="logo-img " src="assets/web-logo-polargrid-icon.png" alt="Polargrid logo">
+    <span class="logo-wordmark">Polargrid</span>
+  </div>
+
         </div>
       </section>
       <section class="logo-wall-section logo-wall-other">
         <h2>Others <span>finance, logistics, retail</span></h2>
         <div class="logo-wall-grid">
-          ${wallLogo({ name: "Truist", file: "web-logo-truist.svg", className: "logo-wall-truist" })}
-          ${wallLogo({ name: "Aonic", file: "web-logo-aonic-prnewswire-transparent.png", className: "logo-wall-aonic" })}
-          ${wallLogo({ name: "J&T Express", file: "web-logo-jt-express.svg", className: "logo-wall-jt" })}
-          ${wallLogo({ name: "harmay", file: "web-logo-harmay-google.png", className: "logo-wall-harmay" })}
-          ${wallLogo({ name: "Spectra Capital", file: "web-logo-spectra-capital-google.png", wordmark: true, className: "logo-wall-spectra" })}
-          ${wallLogo({ name: "Betbull", file: "web-logo-betbull-pinzak-dark.png", className: "logo-wall-betbull" })}
-          ${wallLogo({ name: "MEX", file: "web-logo-mex-pinzak.png", className: "logo-wall-mex" })}
+          
+  <div class="logo-wall-cell logo-wall-truist ">
+    <img class="logo-img " src="assets/web-logo-truist.svg" alt="Truist logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-aonic ">
+    <img class="logo-img " src="assets/web-logo-aonic-prnewswire-transparent.png" alt="Aonic logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-jt ">
+    <img class="logo-img " src="assets/web-logo-jt-express.svg" alt="J&T Express logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-harmay ">
+    <img class="logo-img " src="assets/web-logo-harmay-google.png" alt="harmay logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-spectra logo-with-name">
+    <img class="logo-img " src="assets/web-logo-spectra-capital-google.png" alt="Spectra Capital logo">
+    <span class="logo-wordmark">Spectra Capital</span>
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-betbull ">
+    <img class="logo-img " src="assets/web-logo-betbull-pinzak-dark.png" alt="Betbull logo">
+    
+  </div>
+
+          
+  <div class="logo-wall-cell logo-wall-mex ">
+    <img class="logo-img " src="assets/web-logo-mex-pinzak.png" alt="MEX logo">
+    
+  </div>
+
         </div>
       </section>
     </div>
   </main>
-`, "light", true, "03 / 10"));
 
-slides.push(slide(4, "Product", `
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-04" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">PRODUCT / 04 / 10</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "PRODUCT",
-      titleA: "Product system.",
-      sub: "A buyer-readable operating loop: signals enter one queue, AI recommends actions, operators approve material moves, campaigns update, and learnings feed back."
-    })}
+    
+  <div class="eyebrow ">PRODUCT</div>
+  <h1 class=""><span>Product system.</span></h1>
+  <p class="lead">A buyer-readable operating loop: signals enter one queue, AI recommends actions, operators approve material moves, campaigns update, and learnings feed back.</p>
+
     <div class="product-system-layout">
       <section class="product-input-strip">
         <article><b>Ad channels</b><span>Meta, Google, TikTok, Snap, ASA, account health, delivery, spend</span></article>
@@ -4720,15 +4630,25 @@ slides.push(slide(4, "Product", `
       </section>
     </div>
   </main>
-`, "light", true, "04 / 10"));
 
-slides.push(slide(5, "Creative", `
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-05" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">CREATIVE / 05 / 10</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "CREATIVE",
-      titleA: "Creative engine.",
-      sub: "Manual review cycles test 5-10 concepts. This campaign queue shows 41 variants in review, with image and video mixed together."
-    })}
+    
+  <div class="eyebrow ">CREATIVE</div>
+  <h1 class=""><span>Creative engine.</span></h1>
+  <p class="lead">Manual review cycles test 5-10 concepts. This campaign queue shows 41 variants in review, with image and video mixed together.</p>
+
     <div class="creative-proof-board">
       <aside class="creative-stats-panel">
         <div class="creative-volume-contrast">
@@ -4745,15 +4665,25 @@ slides.push(slide(5, "Creative", `
       </figure>
     </div>
   </main>
-`, "light", true, "05 / 10"));
 
-slides.push(slide(6, "Access", `
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-06" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">ACCESS / 06 / 10</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "ACCOUNT ACCESS",
-      titleA: "Account access.",
-      sub: "Warmed up accounts get the execution faster."
-    })}
+    
+  <div class="eyebrow ">ACCOUNT ACCESS</div>
+  <h1 class=""><span>Account access.</span></h1>
+  <p class="lead">Warmed up accounts get the execution faster.</p>
+
     <div class="access-board">
       <section class="access-core">
         <div class="console-label">White-label account access</div>
@@ -4771,15 +4701,25 @@ slides.push(slide(6, "Access", `
       </section>
     </div>
   </main>
-`, "light", true, "06 / 10"));
 
-slides.push(slide(7, "Optimization", `
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-07" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">OPTIMIZATION / 07 / 10</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "OPTIMIZATION",
-      titleA: "Optimization loop.",
-      sub: "Always-on monitoring collects signals; AI queues actions; operators approve material moves; each result updates the next test."
-    })}
+    
+  <div class="eyebrow ">OPTIMIZATION</div>
+  <h1 class=""><span>Optimization loop.</span></h1>
+  <p class="lead">Always-on monitoring collects signals; AI queues actions; operators approve material moves; each result updates the next test.</p>
+
     <div class="decision-loop-board">
       <section class="decision-loop-context">
         <small>operating cadence</small>
@@ -4816,15 +4756,25 @@ slides.push(slide(7, "Optimization", `
       </section>
     </div>
   </main>
-`, "light", true, "07 / 10"));
 
-slides.push(slide(8, "Measurement", `
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-08" class="slide dark">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red.svg" alt="Hellyeah">
+    <div class="page-label">MEASUREMENT / 08 / 10</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "MEASUREMENT",
-      titleA: "Measurement.",
-      sub: "Before scale, the buyer needs to know whether the dashboard is measuring business outcomes or just platform credit."
-    })}
+    
+  <div class="eyebrow ">MEASUREMENT</div>
+  <h1 class=""><span>Measurement.</span></h1>
+  <p class="lead">Before scale, the buyer needs to know whether the dashboard is measuring business outcomes or just platform credit.</p>
+
     <div class="measurement-board">
       <section class="risk-board">
         <div class="risk-row"><b>CREDIT</b><div><h3>Platform windows over-credit success.</h3><p>View-through attribution, duplicated credit, and platform-defined windows can make campaign results look extraordinary.</p></div></div>
@@ -4847,15 +4797,25 @@ slides.push(slide(8, "Measurement", `
       </section>
     </div>
   </main>
-`, "dark", true, "08 / 10"));
 
-slides.push(slide(9, "Scale gate", `
+    <footer class="slide-footer footer-dark">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-09" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">SCALE GATE / 09 / 10</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "SCALE GATE",
-      titleA: "Scale gate.",
-      sub: "The gate turns measurement into action: fix tracking, replace creative, hold spend, or scale in controlled steps."
-    })}
+    
+  <div class="eyebrow ">SCALE GATE</div>
+  <h1 class=""><span>Scale gate.</span></h1>
+  <p class="lead">The gate turns measurement into action: fix tracking, replace creative, hold spend, or scale in controlled steps.</p>
+
     <div class="scale-gate-layout">
       <div class="scale-gate-board">
         <article class="scale-gate-row">
@@ -4884,15 +4844,25 @@ slides.push(slide(9, "Scale gate", `
       </figure>
     </div>
   </main>
-`, "light", true, "09 / 10"));
 
-slides.push(slide(10, "Test plan", `
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-10" class="slide orange">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red.svg" alt="Hellyeah">
+    <div class="page-label">TEST PLAN / 10 / 10</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "30-DAY TEST",
-      titleA: "30-day test.",
-      sub: "Audit first, test second, scale third. The goal is not more meetings, it is a clean decision."
-    })}
+    
+  <div class="eyebrow ">30-DAY TEST</div>
+  <h1 class=""><span>30-day test.</span></h1>
+  <p class="lead">Audit first, test second, scale third. The goal is not more meetings, it is a clean decision.</p>
+
     <div class="test-plan-board">
       <section class="test-cadence">
         <section class="cadence-card">
@@ -4954,344 +4924,660 @@ slides.push(slide(10, "Test plan", `
       </aside>
     </div>
   </main>
-`, "orange", false, "10 / 10"));
 
-slides.push(slide(11, "Appendix", `
+    
+  </section>
+
+
+  <section id="slide-11" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">APPENDIX / A1 / A5</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "MOBILE CASES",
-      titleA: "Mobile cases.",
-      sub: "Increase the learning rate. Then let CPI follow. Playco carries the main mobile proof; BeFreed and The Dyrt stay as supporting mobile app results.",
-      className: "one-line-title"
-    })}
+    
+  <div class="eyebrow one-line-title">MOBILE CASES</div>
+  <h1 class="one-line-title"><span>Mobile cases.</span></h1>
+  <p class="lead">Increase the learning rate. Then let CPI follow. Playco carries the main mobile proof; BeFreed and The Dyrt stay as supporting mobile app results.</p>
+
     <div class="appendix-a1-layout">
-      ${appendixMainCase({
-        logoFile: "web-logo-playco.svg",
-        logoName: "Playco",
-        category: "Gaming & Entertainment",
-        title: "Creative iteration at instant-game scale.",
-        metric: "5.7x",
-        metricLabel: "Creative throughput",
-        metrics: [
-          { value: "-31%", label: "CPI" },
-          { value: "20M", label: "Monthly active users" }
-        ],
-        blocks: [
-          {
-            label: "Constraint",
-            title: "Creative demand grows with portfolio scale",
-            body: "More titles, audiences, placements, and lifecycle moments create a testing burden that manual production cannot sustain."
-          },
-          {
-            label: "System",
-            title: "UGC engine plus paid social",
-            body: "Creative generation, iteration, and campaign feedback were connected so production responded to real performance signals."
-          }
-        ]
-      })}
+      
+  <article class="appendix-main-case">
+    <div class="appendix-case-head">
+      <div>
+        <div class="appendix-case-category">Gaming &amp; Entertainment</div>
+        <h2>Playco</h2>
+      </div>
+      <div class="appendix-case-logo "><img class="logo-img " src="assets/web-logo-playco.svg" alt="Playco logo"></div>
+    </div>
+    <div class="appendix-main-body">
+      <div class="appendix-main-metric">
+        <p>Creative iteration at instant-game scale.</p>
+        <b>5.7x</b>
+        <span>Creative throughput</span>
+      </div>
+      <div class="appendix-main-blocks">
+        
+          <section>
+            <small>Constraint</small>
+            <h3>Creative demand grows with portfolio scale</h3>
+            <p>More titles, audiences, placements, and lifecycle moments create a testing burden that manual production cannot sustain.</p>
+          </section>
+        
+          <section>
+            <small>System</small>
+            <h3>UGC engine plus paid social</h3>
+            <p>Creative generation, iteration, and campaign feedback were connected so production responded to real performance signals.</p>
+          </section>
+        
+      </div>
+    </div>
+    
+  <div class="appendix-metrics main-extra count-2">
+    
+      <div>
+        <b>-31%</b>
+        <span>CPI</span>
+      </div>
+    
+      <div>
+        <b>20M</b>
+        <span>Monthly active users</span>
+      </div>
+    
+  </div>
+
+  </article>
+
       <div class="appendix-side-stack">
-        ${appendixSideCase({
-          logoFile: "web-logo-befreed-cropped.png",
-          logoName: "BeFreed",
-          logoClass: "case-logo-befreed",
-          category: "Mobile Apps",
-          summary: "AI learning app scaled UGC creative engine to 240 ads per week.",
-          metrics: [
-            { value: "240", label: "Ads / week" },
-            { value: "-38%", label: "CPI" }
-          ],
-          tags: ["UGC", "Mobile UA", "Creative"]
-        })}
-        ${appendixSideCase({
-          logoFile: "web-logo-the-dyrt-icon.png",
-          logoName: "The Dyrt",
-          category: "Mobile Apps",
-          summary: "Camping app drove 4.0x organic acquisition with growth intelligence.",
-          metrics: [
-            { value: "4.0x", label: "Organic acquisition" },
-            { value: "+62%", label: "Subscriptions" }
-          ],
-          tags: ["Lifecycle", "Performance", "Organic"]
-        })}
+        
+  <article class="appendix-side-case">
+    <div class="appendix-side-head">
+      <div>
+        <div class="appendix-case-category">Mobile Apps</div>
+        <h3>BeFreed</h3>
+      </div>
+      <div class="appendix-side-logo case-logo-befreed"><img class="logo-img " src="assets/web-logo-befreed-cropped.png" alt="BeFreed logo"></div>
+    </div>
+    <p>AI learning app scaled UGC creative engine to 240 ads per week.</p>
+    
+  <div class="appendix-metrics side count-2">
+    
+      <div>
+        <b>240</b>
+        <span>Ads / week</span>
+      </div>
+    
+      <div>
+        <b>-38%</b>
+        <span>CPI</span>
+      </div>
+    
+  </div>
+
+    
+  <div class="appendix-tags"><span>UGC</span><span>Mobile UA</span><span>Creative</span></div>
+
+  </article>
+
+        
+  <article class="appendix-side-case">
+    <div class="appendix-side-head">
+      <div>
+        <div class="appendix-case-category">Mobile Apps</div>
+        <h3>The Dyrt</h3>
+      </div>
+      <div class="appendix-side-logo "><img class="logo-img " src="assets/web-logo-the-dyrt-icon.png" alt="The Dyrt logo"></div>
+    </div>
+    <p>Camping app drove 4.0x organic acquisition with growth intelligence.</p>
+    
+  <div class="appendix-metrics side count-2">
+    
+      <div>
+        <b>4.0x</b>
+        <span>Organic acquisition</span>
+      </div>
+    
+      <div>
+        <b>+62%</b>
+        <span>Subscriptions</span>
+      </div>
+    
+  </div>
+
+    
+  <div class="appendix-tags"><span>Lifecycle</span><span>Performance</span><span>Organic</span></div>
+
+  </article>
+
       </div>
     </div>
   </main>
-`, "light", true, "A1 / A5"));
 
-slides.push(slide(12, "Appendix", `
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-12" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">APPENDIX / A2 / A5</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "AI SOFTWARE CASES",
-      titleA: "AI/SaaS cases.",
-      sub: "Final Round and Fish Audio use the Overview case-study structure: result first, then operating problem and system."
-    })}
+    
+  <div class="eyebrow ">AI SOFTWARE CASES</div>
+  <h1 class=""><span>AI/SaaS cases.</span></h1>
+  <p class="lead">Final Round and Fish Audio use the Overview case-study structure: result first, then operating problem and system.</p>
+
     <div class="appendix-a2-layout">
-      ${appendixOverviewCase({
-        logoFile: "web-logo-finalround.svg",
-        logoName: "Final Round AI",
-        category: "Consumer Tech",
-        title: "Paid acquisition was only one part of the growth system.",
-        metrics: [
-          { value: "$12M", label: "ARR in 14 months" },
-          { value: "4.2x", label: "ROAS" }
-        ],
-        blocks: [
-          {
-            label: "Problem",
-            title: "Each channel had its own definition of success",
-            body: "Paid measured registrations, SEO measured traffic, and influencer measured reach. Commercial truth required a common outcome."
-          },
-          {
-            label: "Approach",
-            title: "Connect acquisition to paying-customer behavior",
-            body: "Campaigns and content were evaluated against revenue outcomes rather than isolated channel metrics."
-          }
-        ],
-        tags: ["Paid Search", "Content", "Revenue tracking"]
-      })}
-      ${appendixOverviewCase({
-        logoFile: "web-logo-fish-audio-official.svg",
-        logoName: "Fish Audio",
-        logoClass: "case-logo-fish",
-        category: "Consumer AI",
-        title: "Organic and paid should compound, not compete for credit.",
-        metrics: [
-          { value: "+340%", label: "Month-over-month signups" },
-          { value: "-54%", label: "CAC" }
-        ],
-        blocks: [
-          {
-            label: "Arena",
-            title: "Generative voice acquisition",
-            body: "The public case covers a consumer AI company combining organic demand, paid search, and affiliates rather than relying on a single channel."
-          },
-          {
-            label: "System",
-            title: "One operating view across demand sources",
-            body: "Organic and paid programs were coordinated around signup growth and acquisition economics."
-          }
-        ],
-        tags: ["Paid Search", "Organic", "Affiliates"]
-      })}
+      
+  <article class="appendix-overview-case">
+    <div class="appendix-case-head ">
+      
+        <div>
+          <div class="appendix-case-category">Consumer Tech</div>
+          <h2>Final Round AI</h2>
+        </div>
+      
+      <div class="appendix-case-logo "><img class="logo-img " src="assets/web-logo-finalround.svg" alt="Final Round AI logo"></div>
+    </div>
+    <p class="appendix-overview-title">Paid acquisition was only one part of the growth system.</p>
+    
+  <div class="appendix-metrics  count-2">
+    
+      <div>
+        <b>$12M</b>
+        <span>ARR in 14 months</span>
+      </div>
+    
+      <div>
+        <b>4.2x</b>
+        <span>ROAS</span>
+      </div>
+    
+  </div>
+
+    <div class="appendix-overview-blocks">
+      
+        <section>
+          <small>Problem</small>
+          <h3>Each channel had its own definition of success</h3>
+          <p>Paid measured registrations, SEO measured traffic, and influencer measured reach. Commercial truth required a common outcome.</p>
+        </section>
+      
+        <section>
+          <small>Approach</small>
+          <h3>Connect acquisition to paying-customer behavior</h3>
+          <p>Campaigns and content were evaluated against revenue outcomes rather than isolated channel metrics.</p>
+        </section>
+      
+    </div>
+    
+  <div class="appendix-tags"><span>Paid Search</span><span>Content</span><span>Revenue tracking</span></div>
+
+  </article>
+
+      
+  <article class="appendix-overview-case">
+    <div class="appendix-case-head ">
+      
+        <div>
+          <div class="appendix-case-category">Consumer AI</div>
+          <h2>Fish Audio</h2>
+        </div>
+      
+      <div class="appendix-case-logo case-logo-fish"><img class="logo-img " src="assets/web-logo-fish-audio-official.svg" alt="Fish Audio logo"></div>
+    </div>
+    <p class="appendix-overview-title">Organic and paid should compound, not compete for credit.</p>
+    
+  <div class="appendix-metrics  count-2">
+    
+      <div>
+        <b>+340%</b>
+        <span>Month-over-month signups</span>
+      </div>
+    
+      <div>
+        <b>-54%</b>
+        <span>CAC</span>
+      </div>
+    
+  </div>
+
+    <div class="appendix-overview-blocks">
+      
+        <section>
+          <small>Arena</small>
+          <h3>Generative voice acquisition</h3>
+          <p>The public case covers a consumer AI company combining organic demand, paid search, and affiliates rather than relying on a single channel.</p>
+        </section>
+      
+        <section>
+          <small>System</small>
+          <h3>One operating view across demand sources</h3>
+          <p>Organic and paid programs were coordinated around signup growth and acquisition economics.</p>
+        </section>
+      
+    </div>
+    
+  <div class="appendix-tags"><span>Paid Search</span><span>Organic</span><span>Affiliates</span></div>
+
+  </article>
+
     </div>
   </main>
-`, "light", true, "A2 / A5"));
 
-slides.push(slide(13, "Appendix", `
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-13" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">APPENDIX / A3 / A5</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "OTHER CASES",
-      titleA: "Other cases.",
-      sub: "Different categories. The same paid-growth discipline. These support breadth without becoming a third core ICP."
-    })}
+    
+  <div class="eyebrow ">OTHER CASES</div>
+  <h1 class=""><span>Other cases.</span></h1>
+  <p class="lead">Different categories. The same paid-growth discipline. These support breadth without becoming a third core ICP.</p>
+
     <div class="appendix-a3-layout">
-      ${appendixOverviewCase({
-        logoFile: "web-logo-harmay-google.png",
-        logoName: "HARMAY",
-        logoClass: "case-logo-harmay",
-        logoOnly: true,
-        category: "Retail / International Expansion",
-        title: "International travelers, limited budgets, cross-market messaging, and lead generation had to work together.",
-        metrics: [
-          { value: "$1.11", label: "CPM vs projection" },
-          { value: "$3.26", label: "CPL after testing" },
-          { value: "8M", label: "Users reached" }
-        ],
-        blocks: [
-          {
-            label: "Challenge",
-            title: "Global expansion without waste",
-            body: "HARMAY needed awareness and leads across markets while keeping spend tight."
-          },
-          {
-            label: "Move",
-            title: "Localized testing system",
-            body: "Messaging and paid tests were adapted by market, then judged by reach and lead cost."
-          }
-        ],
-        tags: ["Lead Gen", "Performance", "Brand"]
-      })}
-      ${appendixOverviewCase({
-        logoFile: "web-logo-jt-express.svg",
-        logoName: "J&T Express",
-        logoClass: "case-logo-jt",
-        logoOnly: true,
-        category: "Logistics / Global Brand",
-        title: "World Cup attention created a narrow window for global visibility and efficient media delivery.",
-        metrics: [
-          { value: "120M", label: "Influencer reach" },
-          { value: "-55%", label: "CPM vs forecast" },
-          { value: "1.4B", label: "Impressions" }
-        ],
-        blocks: [
-          {
-            label: "Challenge",
-            title: "Turn attention into reach",
-            body: "The campaign had to convert a Messi-led moment into measurable global exposure."
-          },
-          {
-            label: "Move",
-            title: "Multi-channel orchestration",
-            body: "Influencer, paid, and brand channels were coordinated around reach and CPM control."
-          }
-        ],
-        tags: ["Influencer", "Performance", "Brand"]
-      })}
-      ${appendixOverviewCase({
-        logoFile: "web-logo-truist.svg",
-        logoName: "Truist",
-        logoClass: "case-logo-truist",
-        logoOnly: true,
-        category: "Finance / App Growth",
-        title: "Mobile banking acquisition needed lower CAC, stronger retention, and trust-safe creative testing.",
-        metrics: [
-          { value: "<$200", label: "CAC from ~$450" },
-          { value: "47%", label: "Retention rate" },
-          { value: "500K", label: "App installs" }
-        ],
-        blocks: [
-          {
-            label: "Challenge",
-            title: "Quality installs, not cheap clicks",
-            body: "Growth had to respect a regulated brand context while improving acquisition economics."
-          },
-          {
-            label: "Move",
-            title: "Lifecycle-led app growth",
-            body: "Creative testing, education messaging, and install quality were optimized together."
-          }
-        ],
-        tags: ["Mobile UA", "Performance", "Lifecycle"]
-      })}
-      ${appendixOverviewCase({
-        logoFile: "web-logo-the-dyrt-user-wordmark.png",
-        logoName: "The Dyrt",
-        logoClass: "case-logo-dyrt",
-        logoOnly: true,
-        category: "Mobile App / Subscription",
-        title: "Subscription app growth required efficient installs, faster creative learning, and conversion lift.",
-        metrics: [
-          { value: "-30%", label: "CPI" },
-          { value: "#1", label: "US camping app" },
-          { value: "200%", label: "Premium conversions" }
-        ],
-        blocks: [
-          {
-            label: "Challenge",
-            title: "Install volume had to convert",
-            body: "The goal was not just app rank; it was efficient growth into paid subscriptions."
-          },
-          {
-            label: "Move",
-            title: "Weekly creative, daily cuts",
-            body: "A/B tests, weekly refreshes, and fast budget shifts cut weak ads and scaled winners."
-          }
-        ],
-        tags: ["Mobile UA", "Creative", "Performance"]
-      })}
+      
+  <article class="appendix-overview-case">
+    <div class="appendix-case-head appendix-logo-only-head">
+      
+        <div class="appendix-case-category">Retail / International Expansion</div>
+      
+      <div class="appendix-case-logo case-logo-harmay"><img class="logo-img " src="assets/web-logo-harmay-google.png" alt="HARMAY logo"></div>
+    </div>
+    <p class="appendix-overview-title">International travelers, limited budgets, cross-market messaging, and lead generation had to work together.</p>
+    
+  <div class="appendix-metrics  count-3">
+    
+      <div>
+        <b>$1.11</b>
+        <span>CPM vs projection</span>
+      </div>
+    
+      <div>
+        <b>$3.26</b>
+        <span>CPL after testing</span>
+      </div>
+    
+      <div>
+        <b>8M</b>
+        <span>Users reached</span>
+      </div>
+    
+  </div>
+
+    <div class="appendix-overview-blocks">
+      
+        <section>
+          <small>Challenge</small>
+          <h3>Global expansion without waste</h3>
+          <p>HARMAY needed awareness and leads across markets while keeping spend tight.</p>
+        </section>
+      
+        <section>
+          <small>Move</small>
+          <h3>Localized testing system</h3>
+          <p>Messaging and paid tests were adapted by market, then judged by reach and lead cost.</p>
+        </section>
+      
+    </div>
+    
+  <div class="appendix-tags"><span>Lead Gen</span><span>Performance</span><span>Brand</span></div>
+
+  </article>
+
+      
+  <article class="appendix-overview-case">
+    <div class="appendix-case-head appendix-logo-only-head">
+      
+        <div class="appendix-case-category">Logistics / Global Brand</div>
+      
+      <div class="appendix-case-logo case-logo-jt"><img class="logo-img " src="assets/web-logo-jt-express.svg" alt="J&T Express logo"></div>
+    </div>
+    <p class="appendix-overview-title">World Cup attention created a narrow window for global visibility and efficient media delivery.</p>
+    
+  <div class="appendix-metrics  count-3">
+    
+      <div>
+        <b>120M</b>
+        <span>Influencer reach</span>
+      </div>
+    
+      <div>
+        <b>-55%</b>
+        <span>CPM vs forecast</span>
+      </div>
+    
+      <div>
+        <b>1.4B</b>
+        <span>Impressions</span>
+      </div>
+    
+  </div>
+
+    <div class="appendix-overview-blocks">
+      
+        <section>
+          <small>Challenge</small>
+          <h3>Turn attention into reach</h3>
+          <p>The campaign had to convert a Messi-led moment into measurable global exposure.</p>
+        </section>
+      
+        <section>
+          <small>Move</small>
+          <h3>Multi-channel orchestration</h3>
+          <p>Influencer, paid, and brand channels were coordinated around reach and CPM control.</p>
+        </section>
+      
+    </div>
+    
+  <div class="appendix-tags"><span>Influencer</span><span>Performance</span><span>Brand</span></div>
+
+  </article>
+
+      
+  <article class="appendix-overview-case">
+    <div class="appendix-case-head appendix-logo-only-head">
+      
+        <div class="appendix-case-category">Finance / App Growth</div>
+      
+      <div class="appendix-case-logo case-logo-truist"><img class="logo-img " src="assets/web-logo-truist.svg" alt="Truist logo"></div>
+    </div>
+    <p class="appendix-overview-title">Mobile banking acquisition needed lower CAC, stronger retention, and trust-safe creative testing.</p>
+    
+  <div class="appendix-metrics  count-3">
+    
+      <div>
+        <b>&lt;$200</b>
+        <span>CAC from ~$450</span>
+      </div>
+    
+      <div>
+        <b>47%</b>
+        <span>Retention rate</span>
+      </div>
+    
+      <div>
+        <b>500K</b>
+        <span>App installs</span>
+      </div>
+    
+  </div>
+
+    <div class="appendix-overview-blocks">
+      
+        <section>
+          <small>Challenge</small>
+          <h3>Quality installs, not cheap clicks</h3>
+          <p>Growth had to respect a regulated brand context while improving acquisition economics.</p>
+        </section>
+      
+        <section>
+          <small>Move</small>
+          <h3>Lifecycle-led app growth</h3>
+          <p>Creative testing, education messaging, and install quality were optimized together.</p>
+        </section>
+      
+    </div>
+    
+  <div class="appendix-tags"><span>Mobile UA</span><span>Performance</span><span>Lifecycle</span></div>
+
+  </article>
+
+      
+  <article class="appendix-overview-case">
+    <div class="appendix-case-head appendix-logo-only-head">
+      
+        <div class="appendix-case-category">Mobile App / Subscription</div>
+      
+      <div class="appendix-case-logo case-logo-dyrt"><img class="logo-img " src="assets/web-logo-the-dyrt-user-wordmark.png" alt="The Dyrt logo"></div>
+    </div>
+    <p class="appendix-overview-title">Subscription app growth required efficient installs, faster creative learning, and conversion lift.</p>
+    
+  <div class="appendix-metrics  count-3">
+    
+      <div>
+        <b>-30%</b>
+        <span>CPI</span>
+      </div>
+    
+      <div>
+        <b>#1</b>
+        <span>US camping app</span>
+      </div>
+    
+      <div>
+        <b>200%</b>
+        <span>Premium conversions</span>
+      </div>
+    
+  </div>
+
+    <div class="appendix-overview-blocks">
+      
+        <section>
+          <small>Challenge</small>
+          <h3>Install volume had to convert</h3>
+          <p>The goal was not just app rank; it was efficient growth into paid subscriptions.</p>
+        </section>
+      
+        <section>
+          <small>Move</small>
+          <h3>Weekly creative, daily cuts</h3>
+          <p>A/B tests, weekly refreshes, and fast budget shifts cut weak ads and scaled winners.</p>
+        </section>
+      
+    </div>
+    
+  <div class="appendix-tags"><span>Mobile UA</span><span>Creative</span><span>Performance</span></div>
+
+  </article>
+
     </div>
   </main>
-`, "light", true, "A3 / A5"));
 
-slides.push(slide(14, "Appendix", `
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-14" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">APPENDIX / A4 / A5</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "OPERATOR CASE",
-      titleA: "Marvel Snap.",
-      sub: "Mobile gaming launch proof: monetization reset, phased launch, and sustained revenue scale."
-    })}
-    ${operatorCase({
-      brand: "Marvel Snap",
-      logoFile: "web-logo-marvel-snap.png",
-      logoClass: "operator-logo-marvel",
-      category: "Mobile gaming & entertainment",
-      title: "Built to last for years, not spike for a week.",
-      sub: "The case supports Hellyeah's mobile gaming credibility: launch strategy, monetization judgment, creative testing, and gated scale.",
-      beats: [
-        {
-          label: "Challenge",
-          title: "A make-or-break launch with monetization risk",
-          body: "ByteDance backed the bid to win the go-to-market partnership with Second Dinner, the Marvel licensee. The launch monetization was too aggressive and risked backlash before the franchise could compound."
-        },
-        {
-          label: "Move",
-          title: "Rebuilt around trust, then scaled on proof",
-          body: "The model was rolled back to hybrid subscription plus bundles, then launched through pre-launch testing, soft launch, and global scale."
-        },
-        {
-          label: "Result",
-          title: "The launch kept compounding",
-          body: "The title cleared its two-year revenue goal and continued earning years after launch, long after most mobile titles fade."
-        }
-      ],
-      metrics: [
-        { value: "$2B+", label: "two-year revenue goal exceeded" },
-        { value: "~$50M/mo", label: "peak monthly launch scale" },
-        { value: "Top 1%", label: "titles by sustained revenue" },
-        { value: "Still live", label: "earning years later" }
-      ],
-      tags: ["Mobile gaming", "Launch", "Monetization", "Gated scale"],
-      proofNote: "Awards cited in the operator case: Best Game of the Year, Best Launch, Best Marketing."
-    })}
-  </main>
-`, "light", true, "A4 / A5"));
+    
+  <div class="eyebrow ">OPERATOR CASE</div>
+  <h1 class=""><span>Marvel Snap.</span></h1>
+  <p class="lead">Mobile gaming launch proof: monetization reset, phased launch, and sustained revenue scale.</p>
 
-slides.push(slide(15, "Appendix", `
+    
+  <div class="operator-case-layout">
+    <section class="operator-story">
+      <div class="operator-case-head">
+        <div>
+          <div class="operator-category">Mobile gaming &amp; entertainment</div>
+          <h2>Built to last for years, not spike for a week.</h2>
+          <p>The case supports Hellyeah's mobile gaming credibility: launch strategy, monetization judgment, creative testing, and gated scale.</p>
+        </div>
+        <div class="operator-logo operator-logo-marvel"><img class="logo-img " src="assets/web-logo-marvel-snap.png" alt="Marvel Snap logo"></div>
+      </div>
+      <div class="operator-beats">
+        
+          <article class="operator-beat">
+            <div class="operator-node">01</div>
+            <div>
+              <small>Challenge</small>
+              <h3>A make-or-break launch with monetization risk</h3>
+              <p>ByteDance backed the bid to win the go-to-market partnership with Second Dinner, the Marvel licensee. The launch monetization was too aggressive and risked backlash before the franchise could compound.</p>
+            </div>
+          </article>
+        
+          <article class="operator-beat">
+            <div class="operator-node">02</div>
+            <div>
+              <small>Move</small>
+              <h3>Rebuilt around trust, then scaled on proof</h3>
+              <p>The model was rolled back to hybrid subscription plus bundles, then launched through pre-launch testing, soft launch, and global scale.</p>
+            </div>
+          </article>
+        
+          <article class="operator-beat">
+            <div class="operator-node">03</div>
+            <div>
+              <small>Result</small>
+              <h3>The launch kept compounding</h3>
+              <p>The title cleared its two-year revenue goal and continued earning years after launch, long after most mobile titles fade.</p>
+            </div>
+          </article>
+        
+      </div>
+    </section>
+    <aside class="operator-proof">
+      <div class="operator-proof-label">Operator proof</div>
+      <div class="operator-proof-metrics">
+        
+          <div class="operator-proof-metric hero">
+            <b>$2B+</b>
+            <span>two-year revenue goal exceeded</span>
+          </div>
+        
+          <div class="operator-proof-metric ">
+            <b>~$50M/mo</b>
+            <span>peak monthly launch scale</span>
+          </div>
+        
+          <div class="operator-proof-metric ">
+            <b>Top 1%</b>
+            <span>titles by sustained revenue</span>
+          </div>
+        
+          <div class="operator-proof-metric ">
+            <b>Still live</b>
+            <span>earning years later</span>
+          </div>
+        
+      </div>
+      <div class="operator-tags"><span>Mobile gaming</span><span>Launch</span><span>Monetization</span><span>Gated scale</span></div>
+      <p class="operator-proof-note">Awards cited in the operator case: Best Game of the Year, Best Launch, Best Marketing.</p>
+    </aside>
+  </div>
+
+  </main>
+
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-15" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">APPENDIX / A5 / A5</div>
+  </header>
+
+    
   <main class="content">
-    ${splitTitle({
-      eyebrow: "OPERATOR CASE",
-      titleA: "Expedia.",
-      sub: "Performance marketing proof: dynamic feed access, offer truth, creative variants, and lower CPA."
-    })}
-    ${operatorCase({
-      brand: "Expedia",
-      category: "Travel & performance marketing",
-      title: "Ads told the truth, and CPA came down with it.",
-      sub: "The case supports Hellyeah's measurement and feed-automation story: business data has to match what the ad promises.",
-      beats: [
-        {
-          label: "Challenge",
-          title: "The price was wrong before the click",
-          body: "Travel prices moved by the minute, so the price in the ad was stale before a user tapped and did not match checkout. Users bounced and CPA climbed."
-        },
-        {
-          label: "Move",
-          title: "Unlocked a custom Meta feed that updated itself",
-          body: "A direct Meta API was negotiated for top-tier spend access, then a feed was built to show the real offer, deep-link to the property, and swap creative plus price automatically."
-        },
-        {
-          label: "Result",
-          title: "Lower cost and restored trust",
-          body: "When every ad matched the real offer, acquisition cost came down and the operating pattern expanded into more projects."
-        }
-      ],
-      metrics: [
-        { value: "CPA down", label: "approx $200 to ~$120 target, illustrative" },
-        { value: "20", label: "creative variants per property" },
-        { value: "6+ mo", label: "sustained engagement" },
-        { value: "Ongoing", label: "expanded into more projects" }
-      ],
-      tags: ["Dynamic feed", "Meta API", "Measurement", "Creative variants"],
-      proofNote: "Access point cited in the operator case: custom Meta API reserved for $10M+/mo spenders."
-    })}
-  </main>
-`, "light", true, "A5 / A5"));
+    
+  <div class="eyebrow ">OPERATOR CASE</div>
+  <h1 class=""><span>Expedia.</span></h1>
+  <p class="lead">Performance marketing proof: dynamic feed access, offer truth, creative variants, and lower CPA.</p>
 
-const html = `<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hellyeah Pitch Deck</title>
-  <style>${css}</style>
-</head>
-<body>
-  <nav class="deck-actions" aria-label="Deck actions">
-    <button type="button" data-print-deck>Print / Save PDF</button>
-    <button type="button" data-download-deck>Download HTML</button>
-  </nav>
-  <main class="deck">
-    ${slides.join("\n")}
+    
+  <div class="operator-case-layout">
+    <section class="operator-story">
+      <div class="operator-case-head">
+        <div>
+          <div class="operator-category">Travel &amp; performance marketing</div>
+          <h2>Ads told the truth, and CPA came down with it.</h2>
+          <p>The case supports Hellyeah's measurement and feed-automation story: business data has to match what the ad promises.</p>
+        </div>
+        <div class="operator-wordmark">Expedia</div>
+      </div>
+      <div class="operator-beats">
+        
+          <article class="operator-beat">
+            <div class="operator-node">01</div>
+            <div>
+              <small>Challenge</small>
+              <h3>The price was wrong before the click</h3>
+              <p>Travel prices moved by the minute, so the price in the ad was stale before a user tapped and did not match checkout. Users bounced and CPA climbed.</p>
+            </div>
+          </article>
+        
+          <article class="operator-beat">
+            <div class="operator-node">02</div>
+            <div>
+              <small>Move</small>
+              <h3>Unlocked a custom Meta feed that updated itself</h3>
+              <p>A direct Meta API was negotiated for top-tier spend access, then a feed was built to show the real offer, deep-link to the property, and swap creative plus price automatically.</p>
+            </div>
+          </article>
+        
+          <article class="operator-beat">
+            <div class="operator-node">03</div>
+            <div>
+              <small>Result</small>
+              <h3>Lower cost and restored trust</h3>
+              <p>When every ad matched the real offer, acquisition cost came down and the operating pattern expanded into more projects.</p>
+            </div>
+          </article>
+        
+      </div>
+    </section>
+    <aside class="operator-proof">
+      <div class="operator-proof-label">Operator proof</div>
+      <div class="operator-proof-metrics">
+        
+          <div class="operator-proof-metric hero">
+            <b>CPA down</b>
+            <span>approx $200 to ~$120 target, illustrative</span>
+          </div>
+        
+          <div class="operator-proof-metric ">
+            <b>20</b>
+            <span>creative variants per property</span>
+          </div>
+        
+          <div class="operator-proof-metric ">
+            <b>6+ mo</b>
+            <span>sustained engagement</span>
+          </div>
+        
+          <div class="operator-proof-metric ">
+            <b>Ongoing</b>
+            <span>expanded into more projects</span>
+          </div>
+        
+      </div>
+      <div class="operator-tags"><span>Dynamic feed</span><span>Meta API</span><span>Measurement</span><span>Creative variants</span></div>
+      <p class="operator-proof-note">Access point cited in the operator case: custom Meta API reserved for $10M+/mo spenders.</p>
+    </aside>
+  </div>
+
+  </main>
+
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
   </main>
   <script>
     (() => {
@@ -5310,7 +5596,7 @@ const html = `<!doctype html>
           if (current) img.setAttribute("src", new URL(current, window.location.href).href);
         });
 
-        const blob = new Blob(["<!doctype html>\\n" + doc.outerHTML], { type: "text/html;charset=utf-8" });
+        const blob = new Blob(["<!doctype html>\n" + doc.outerHTML], { type: "text/html;charset=utf-8" });
         const url = URL.createObjectURL(blob);
         const anchor = document.createElement("a");
         anchor.href = url;
@@ -5324,14 +5610,3 @@ const html = `<!doctype html>
   </script>
 </body>
 </html>
-`;
-
-await fs.mkdir(ASSET_OUT, { recursive: true });
-await Promise.all(assetFiles.map((file) => fs.copyFile(path.join(ASSET_SRC, file), path.join(ASSET_OUT, file))));
-await fs.writeFile(OUT, html, "utf8");
-await Promise.all(Array.from({ length: slides.length }, (_, index) => index + 1).map((slideNumber) => fs.writeFile(
-  previewOut(slideNumber),
-  html.replace("</head>", `<style>.deck{padding:28px 0 56px}.slide{display:none!important}.slide#slide-${String(slideNumber).padStart(2, "0")}{display:block!important}</style></head>`),
-  "utf8"
-)));
-console.log(OUT);

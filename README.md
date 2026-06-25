@@ -46,7 +46,7 @@ This rewrites:
 
 ```text
 index.html
-preview-slide-01.html ... preview-slide-13.html
+preview-slide-01.html ... preview-slide-15.html
 assets/
 ```
 

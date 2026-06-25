@@ -1167,6 +1167,205 @@ h1.one-line-title {
   text-transform: uppercase;
   font-weight: 850;
 }
+.operator-case-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 18px;
+  margin-top: 24px;
+  align-items: stretch;
+}
+.operator-story {
+  min-height: 438px;
+  padding: 24px 26px 22px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.82);
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 18px;
+}
+.operator-case-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  gap: 24px;
+  align-items: start;
+}
+.operator-category {
+  margin-bottom: 8px;
+  color: var(--orange);
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.operator-case-head h2 {
+  margin: 0;
+  max-width: 610px;
+  color: var(--black);
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 880;
+}
+.operator-case-head p {
+  margin: 10px 0 0;
+  max-width: 660px;
+  color: var(--text);
+  font-size: 12.7px;
+  line-height: 1.22;
+  font-weight: 700;
+}
+.operator-logo {
+  width: 150px;
+  height: 52px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.operator-logo .logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.operator-logo.operator-logo-marvel {
+  width: 150px;
+  height: 54px;
+}
+.operator-wordmark {
+  color: var(--black);
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 900;
+  text-align: right;
+}
+.operator-beats {
+  display: grid;
+  gap: 12px;
+}
+.operator-beat {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 14px;
+  padding: 14px 0 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+.operator-node {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--black);
+  color: var(--orange);
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  font-weight: 900;
+}
+.operator-beat small {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--orange);
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.operator-beat h3 {
+  margin: 0;
+  color: var(--black);
+  font-size: 17px;
+  line-height: 1.04;
+  font-weight: 850;
+}
+.operator-beat p {
+  margin: 7px 0 0;
+  color: var(--text);
+  font-size: 11.4px;
+  line-height: 1.23;
+  font-weight: 650;
+}
+.operator-proof {
+  min-height: 438px;
+  padding: 24px 24px 22px;
+  border-radius: 4px;
+  background:
+    radial-gradient(circle at 82% 12%, rgba(255, 67, 1, 0.22), transparent 32%),
+    var(--black);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+.operator-proof-label {
+  color: var(--orange);
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.operator-proof-metrics {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+.operator-proof-metric {
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+.operator-proof-metric:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.operator-proof-metric b {
+  display: block;
+  color: var(--white);
+  font-size: 29px;
+  line-height: 0.95;
+  font-weight: 900;
+}
+.operator-proof-metric.hero b {
+  color: var(--orange);
+  font-size: 58px;
+}
+.operator-proof-metric span {
+  display: block;
+  margin-top: 6px;
+  color: #d4d4d4;
+  font-size: 9.4px;
+  line-height: 1.18;
+  letter-spacing: 0.08em;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+.operator-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 18px;
+}
+.operator-tags span {
+  padding: 7px 10px 6px;
+  border: 1px solid rgba(255, 67, 1, 0.38);
+  border-radius: 999px;
+  background: rgba(255, 67, 1, 0.1);
+  color: var(--white);
+  font-size: 8.5px;
+  line-height: 1;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.operator-proof-note {
+  margin: 16px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  color: #d4d4d4;
+  font-size: 11px;
+  line-height: 1.24;
+  font-weight: 700;
+}
 .source-note {
   margin-top: 12px;
   color: var(--muted);
@@ -4734,7 +4933,7 @@ AND GROWTH EXPERIENCE*</div>
     
   <header class="slide-header">
     <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
-    <div class="page-label">APPENDIX / A1 / A3</div>
+    <div class="page-label">APPENDIX / A1 / A5</div>
   </header>
 
     
@@ -4866,7 +5065,7 @@ AND GROWTH EXPERIENCE*</div>
     
   <header class="slide-header">
     <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
-    <div class="page-label">APPENDIX / A2 / A3</div>
+    <div class="page-label">APPENDIX / A2 / A5</div>
   </header>
 
     
@@ -4982,7 +5181,7 @@ AND GROWTH EXPERIENCE*</div>
     
   <header class="slide-header">
     <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
-    <div class="page-label">APPENDIX / A3 / A3</div>
+    <div class="page-label">APPENDIX / A3 / A5</div>
   </header>
 
     
@@ -5190,6 +5389,190 @@ AND GROWTH EXPERIENCE*</div>
   </article>
 
     </div>
+  </main>
+
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-14" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">APPENDIX / A4 / A5</div>
+  </header>
+
+    
+  <main class="content">
+    
+  <div class="eyebrow ">OPERATOR CASE</div>
+  <h1 class=""><span>Marvel Snap.</span></h1>
+  <p class="lead">Mobile gaming launch proof: monetization reset, phased launch, and sustained revenue scale.</p>
+
+    
+  <div class="operator-case-layout">
+    <section class="operator-story">
+      <div class="operator-case-head">
+        <div>
+          <div class="operator-category">Mobile gaming &amp; entertainment</div>
+          <h2>Built to last for years, not spike for a week.</h2>
+          <p>The case supports Hellyeah's mobile gaming credibility: launch strategy, monetization judgment, creative testing, and gated scale.</p>
+        </div>
+        <div class="operator-logo operator-logo-marvel"><img class="logo-img " src="assets/web-logo-marvel-snap.png" alt="Marvel Snap logo"></div>
+      </div>
+      <div class="operator-beats">
+        
+          <article class="operator-beat">
+            <div class="operator-node">01</div>
+            <div>
+              <small>Challenge</small>
+              <h3>A make-or-break launch with monetization risk</h3>
+              <p>ByteDance backed the bid to win the go-to-market partnership with Second Dinner, the Marvel licensee. The launch monetization was too aggressive and risked backlash before the franchise could compound.</p>
+            </div>
+          </article>
+        
+          <article class="operator-beat">
+            <div class="operator-node">02</div>
+            <div>
+              <small>Move</small>
+              <h3>Rebuilt around trust, then scaled on proof</h3>
+              <p>The model was rolled back to hybrid subscription plus bundles, then launched through pre-launch testing, soft launch, and global scale.</p>
+            </div>
+          </article>
+        
+          <article class="operator-beat">
+            <div class="operator-node">03</div>
+            <div>
+              <small>Result</small>
+              <h3>The launch kept compounding</h3>
+              <p>The title cleared its two-year revenue goal and continued earning years after launch, long after most mobile titles fade.</p>
+            </div>
+          </article>
+        
+      </div>
+    </section>
+    <aside class="operator-proof">
+      <div class="operator-proof-label">Operator proof</div>
+      <div class="operator-proof-metrics">
+        
+          <div class="operator-proof-metric hero">
+            <b>$2B+</b>
+            <span>two-year revenue goal exceeded</span>
+          </div>
+        
+          <div class="operator-proof-metric ">
+            <b>~$50M/mo</b>
+            <span>peak monthly launch scale</span>
+          </div>
+        
+          <div class="operator-proof-metric ">
+            <b>Top 1%</b>
+            <span>titles by sustained revenue</span>
+          </div>
+        
+          <div class="operator-proof-metric ">
+            <b>Still live</b>
+            <span>earning years later</span>
+          </div>
+        
+      </div>
+      <div class="operator-tags"><span>Mobile gaming</span><span>Launch</span><span>Monetization</span><span>Gated scale</span></div>
+      <p class="operator-proof-note">Awards cited in the operator case: Best Game of the Year, Best Launch, Best Marketing.</p>
+    </aside>
+  </div>
+
+  </main>
+
+    <footer class="slide-footer ">Revenue-first user acquisition</footer>
+  </section>
+
+
+  <section id="slide-15" class="slide light">
+    
+  <header class="slide-header">
+    <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
+    <div class="page-label">APPENDIX / A5 / A5</div>
+  </header>
+
+    
+  <main class="content">
+    
+  <div class="eyebrow ">OPERATOR CASE</div>
+  <h1 class=""><span>Expedia.</span></h1>
+  <p class="lead">Performance marketing proof: dynamic feed access, offer truth, creative variants, and lower CPA.</p>
+
+    
+  <div class="operator-case-layout">
+    <section class="operator-story">
+      <div class="operator-case-head">
+        <div>
+          <div class="operator-category">Travel &amp; performance marketing</div>
+          <h2>Ads told the truth, and CPA came down with it.</h2>
+          <p>The case supports Hellyeah's measurement and feed-automation story: business data has to match what the ad promises.</p>
+        </div>
+        <div class="operator-wordmark">Expedia</div>
+      </div>
+      <div class="operator-beats">
+        
+          <article class="operator-beat">
+            <div class="operator-node">01</div>
+            <div>
+              <small>Challenge</small>
+              <h3>The price was wrong before the click</h3>
+              <p>Travel prices moved by the minute, so the price in the ad was stale before a user tapped and did not match checkout. Users bounced and CPA climbed.</p>
+            </div>
+          </article>
+        
+          <article class="operator-beat">
+            <div class="operator-node">02</div>
+            <div>
+              <small>Move</small>
+              <h3>Unlocked a custom Meta feed that updated itself</h3>
+              <p>A direct Meta API was negotiated for top-tier spend access, then a feed was built to show the real offer, deep-link to the property, and swap creative plus price automatically.</p>
+            </div>
+          </article>
+        
+          <article class="operator-beat">
+            <div class="operator-node">03</div>
+            <div>
+              <small>Result</small>
+              <h3>Lower cost and restored trust</h3>
+              <p>When every ad matched the real offer, acquisition cost came down and the operating pattern expanded into more projects.</p>
+            </div>
+          </article>
+        
+      </div>
+    </section>
+    <aside class="operator-proof">
+      <div class="operator-proof-label">Operator proof</div>
+      <div class="operator-proof-metrics">
+        
+          <div class="operator-proof-metric hero">
+            <b>CPA down</b>
+            <span>approx $200 to ~$120 target, illustrative</span>
+          </div>
+        
+          <div class="operator-proof-metric ">
+            <b>20</b>
+            <span>creative variants per property</span>
+          </div>
+        
+          <div class="operator-proof-metric ">
+            <b>6+ mo</b>
+            <span>sustained engagement</span>
+          </div>
+        
+          <div class="operator-proof-metric ">
+            <b>Ongoing</b>
+            <span>expanded into more projects</span>
+          </div>
+        
+      </div>
+      <div class="operator-tags"><span>Dynamic feed</span><span>Meta API</span><span>Measurement</span><span>Creative variants</span></div>
+      <p class="operator-proof-note">Access point cited in the operator case: custom Meta API reserved for $10M+/mo spenders.</p>
+    </aside>
+  </div>
+
   </main>
 
     <footer class="slide-footer ">Revenue-first user acquisition</footer>
