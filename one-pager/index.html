@@ -3,693 +3,1274 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hellyeah Pitch Deck One-Pager</title>
+  <title>Hellyeah One Pager</title>
+  <meta name="description" content="Hellyeah turns paid media into predictable revenue for mobile apps, AI/SaaS, and scale-stage companies.">
   <style>
-    @font-face {
-      font-family: "Hellyeah Geist";
-      src: url("assets/hellyeah-geist-latin.woff2") format("woff2");
-      font-weight: 100 900;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    @font-face {
-      font-family: "Hellyeah Mono";
-      src: url("assets/hellyeah-geist-mono-latin.woff2") format("woff2");
-      font-weight: 100 900;
-      font-style: normal;
-      font-display: swap;
-    }
-
-    :root {
-      --ink: #080617;
-      --muted: #676271;
-      --line: #ddd7cd;
-      --paper: #f7f2ea;
-      --cream: #fffaf1;
-      --orange: #ff4301;
-      --green: #b8f35c;
-      --dark: #111021;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: #1b120d;
-      color: var(--ink);
-      font-family: "Hellyeah Geist", Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .actions {
-      position: fixed;
-      right: 22px;
-      top: 18px;
-      z-index: 10;
-      display: flex;
-      gap: 8px;
-    }
-
-    .actions button {
-      border: 1px solid rgba(255,255,255,.22);
-      background: rgba(17,16,33,.92);
-      color: white;
-      border-radius: 999px;
-      padding: 10px 14px;
-      font: 700 12px/1 "Hellyeah Geist", Arial, sans-serif;
-      cursor: pointer;
-      letter-spacing: .02em;
-    }
-
-    .page {
-      width: min(100vw, 8.5in);
-      min-height: 11in;
-      margin: 0 auto;
-      background:
-        radial-gradient(circle at 78% 8%, rgba(255, 67, 1, .14), transparent 28%),
-        linear-gradient(180deg, #fffaf2 0%, #f3eee5 100%);
-      padding: .44in .48in .38in;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .topline {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 18px;
-      margin-bottom: 26px;
-    }
-
-    .brand {
-      width: 158px;
-      height: auto;
-      display: block;
-    }
-
-    .doc-type {
-      font-family: "Hellyeah Mono", monospace;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .28em;
-      color: #9a9087;
-      text-transform: uppercase;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.32fr .68fr;
-      gap: 30px;
-      align-items: start;
-      margin-bottom: 24px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 55px;
-      line-height: .94;
-      letter-spacing: 0;
-      font-weight: 900;
-      max-width: 590px;
-    }
-
-    h1 span {
-      color: var(--orange);
-      display: inline-block;
-      white-space: nowrap;
-    }
-
-    .lede {
-      margin: 16px 0 0;
-      max-width: 620px;
-      color: #3f3949;
-      font-size: 16px;
-      line-height: 1.45;
-      font-weight: 560;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
-    }
-
-    .tag {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.68);
-      color: #261f2d;
-      border-radius: 999px;
-      padding: 8px 11px;
-      font-family: "Hellyeah Mono", monospace;
-      font-size: 10px;
-      font-weight: 850;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .cred {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .cred-card {
-      min-height: 118px;
-      background: var(--dark);
-      color: white;
-      border-radius: 3px;
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
-    }
-
-    .cred-card:nth-child(2) {
-      background: var(--orange);
-      color: var(--ink);
-    }
-
-    .cred-card strong {
-      font-size: 29px;
-      line-height: .95;
-      font-weight: 900;
-      letter-spacing: -.01em;
-      white-space: nowrap;
-    }
-
-    .cred-card span {
-      margin-top: 12px;
-      display: block;
-      font-size: 11px;
-      line-height: 1.2;
-      font-weight: 780;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-
-    .section-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin: 0 0 10px;
-      font-family: "Hellyeah Mono", monospace;
-      font-size: 12px;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--orange);
-      font-weight: 900;
-    }
-
-    .section-title::before {
-      content: "";
-      width: 7px;
-      height: 22px;
-      background: var(--orange);
-      border-radius: 999px;
-      display: block;
-    }
-
-    .proof-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.5);
-      margin-bottom: 22px;
-    }
-
-    .proof-card {
-      min-height: 168px;
-      padding: 16px;
-      border-right: 1px solid var(--line);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 14px;
-    }
-
-    .proof-card:last-child { border-right: 0; }
-
-    .client-row {
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 8px;
-    }
-
-    .client-row img {
-      max-height: 26px;
-      max-width: 126px;
-      object-fit: contain;
-      object-position: left center;
-    }
-
-    .client-name {
-      margin-left: 0;
-      color: var(--ink);
-      font-family: "Hellyeah Mono", monospace;
-      font-size: 10px;
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-    }
-
-    .client-name-hidden { display: none; }
-
-    .fish-logo { filter: brightness(0); }
-
-    .metric {
-      display: flex;
-      align-items: baseline;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .metric strong {
-      color: var(--orange);
-      font-size: 40px;
-      line-height: .9;
-      font-weight: 950;
-      letter-spacing: -.02em;
-    }
-
-    .metric span {
-      color: var(--ink);
-      font-size: 13px;
-      line-height: 1.1;
-      font-weight: 850;
-      text-transform: uppercase;
-      letter-spacing: .03em;
-    }
-
-    .proof-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.33;
-      font-weight: 620;
-    }
-
-    .proof-card b { color: var(--ink); }
-
-    .middle {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      margin-bottom: 22px;
-      align-items: stretch;
-    }
-
-    .system {
-      border: 1px solid var(--line);
-      background: var(--cream);
-      padding: 16px;
-      min-height: 0;
-    }
-
-    .flow {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 7px;
-      margin-top: 12px;
-    }
-
-    .flow-step {
-      min-height: 96px;
-      border: 1px solid var(--line);
-      background: #fffdf7;
-      padding: 10px;
-      position: relative;
-    }
-
-    .flow-step:not(:last-child)::after {
-      content: "";
-      position: absolute;
-      right: -7px;
-      top: 50%;
-      width: 7px;
-      height: 1px;
-      background: var(--orange);
-    }
-
-    .flow-step b {
-      display: block;
-      color: var(--orange);
-      font-family: "Hellyeah Mono", monospace;
-      font-size: 10px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .flow-step h3 {
-      margin: 0 0 7px;
-      font-size: 13px;
-      line-height: 1.1;
-      font-weight: 890;
-    }
-
-    .flow-step p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 10.5px;
-      line-height: 1.25;
-      font-weight: 600;
-    }
-
-    .visual {
-      border: 1px solid #25223c;
-      background: var(--dark);
-      overflow: hidden;
-      min-height: 154px;
-      display: grid;
-      grid-template-columns: .43fr .57fr;
-    }
-
-    .visual-copy {
-      padding: 18px 18px 16px;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      gap: 14px;
-    }
-
-    .visual-copy h2 {
-      margin: 0;
-      font-size: 25px;
-      line-height: .94;
-      letter-spacing: -.01em;
-    }
-
-    .visual-copy h2 span { color: var(--orange); }
-
-    .visual-copy p {
-      margin: 0;
-      color: #d5d0dd;
-      font-size: 12px;
-      line-height: 1.3;
-      font-weight: 620;
-    }
-
-    .visual-assets {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      padding: 10px 10px 10px 0;
-      min-height: 154px;
-      border-left: 1px solid rgba(255,255,255,.12);
-    }
-
-    .visual-assets img {
-      width: 100%;
-      height: 100%;
-      min-height: 134px;
-      object-fit: contain;
-      object-position: center;
-      display: block;
-      opacity: .98;
-      background: #090824;
-    }
-
-    .bottom {
-      display: grid;
-      grid-template-columns: .95fr 1.05fr;
-      gap: 20px;
-      align-items: start;
-    }
-
-    .timeline,
-    .gates {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.55);
-      padding: 16px;
-      min-height: 190px;
-    }
-
-    .timeline-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .phase {
-      border-top: 5px solid var(--orange);
-      background: #fffdf7;
-      padding: 12px 10px;
-      min-height: 116px;
-    }
-
-    .phase:nth-child(2) {
-      background: var(--orange);
-      color: var(--ink);
-    }
-
-    .phase b {
-      display: block;
-      font-family: "Hellyeah Mono", monospace;
-      font-size: 10px;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .phase h3 {
-      margin: 0 0 7px;
-      font-size: 17px;
-      line-height: 1;
-    }
-
-    .phase p {
-      margin: 0;
-      color: #5f5864;
-      font-size: 11px;
-      line-height: 1.28;
-      font-weight: 620;
-    }
-
-    .phase:nth-child(2) p { color: #221a19; }
-
-    .gate-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 12px;
-    }
-
-    .gate {
-      background: #fffdf7;
-      border: 1px solid var(--line);
-      padding: 10px;
-      min-height: 74px;
-    }
-
-    .gate b {
-      display: block;
-      color: var(--orange);
-      font-size: 13px;
-      margin-bottom: 5px;
-    }
-
-    .gate p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 10.5px;
-      line-height: 1.25;
-      font-weight: 620;
-    }
-
-    .footer {
-      margin-top: 18px;
-      border-top: 1px solid var(--line);
-      padding-top: 10px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      color: #8b8178;
-      font-family: "Hellyeah Mono", monospace;
-      font-size: 10px;
-      line-height: 1.2;
-      letter-spacing: .07em;
-      text-transform: uppercase;
-      font-weight: 780;
-    }
-
-    @media print {
-      @page { size: letter; margin: 0; }
-      body { background: white; }
-      .actions { display: none; }
-      .page {
-        width: 8.5in;
-        min-height: 11in;
-        margin: 0;
-        box-shadow: none;
-      }
-    }
-
-    @media (max-width: 900px) {
-      body { background: var(--paper); }
-      .actions { position: static; padding: 12px; background: #1b120d; }
-      .page { width: 100%; min-height: 0; padding: 24px; }
-      .hero, .middle, .bottom { grid-template-columns: 1fr; }
-      h1 { font-size: 42px; }
-      .cred, .proof-grid, .flow, .timeline-grid, .gate-list { grid-template-columns: 1fr; }
-      .proof-card { border-right: 0; border-bottom: 1px solid var(--line); }
-      .proof-card:last-child { border-bottom: 0; }
-      .visual { grid-template-columns: 1fr; }
-      .visual-assets { border-left: 0; border-top: 1px solid rgba(255,255,255,.12); padding: 10px; }
-      .visual-assets img { min-height: 220px; }
-    }
+@font-face {
+  font-family: "Hellyeah Geist";
+  src: url("../assets/hellyeah-geist-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Hellyeah Mono";
+  src: url("../assets/hellyeah-geist-mono-latin.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #090908;
+  --panel: #11110f;
+  --panel-2: #181713;
+  --paper: #f7f4ed;
+  --paper-2: #e8e0d3;
+  --ink: #0d0d0c;
+  --muted: #b4ada2;
+  --soft: #766f66;
+  --line: rgba(247, 244, 237, 0.16);
+  --line-strong: rgba(247, 244, 237, 0.28);
+  --orange: #ff4301;
+  --acid: #e8ff4f;
+  --radius: 6px;
+  --font: "Hellyeah Geist", Geist, "Helvetica Neue", Arial, ui-sans-serif, system-ui, sans-serif;
+  --mono: "Hellyeah Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+* { box-sizing: border-box; }
+html {
+  background: var(--bg);
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 82% 8%, rgba(255, 67, 1, 0.18), transparent 24rem),
+    linear-gradient(180deg, #11100d 0%, var(--bg) 28rem, #0d0c0b 100%);
+  color: var(--paper);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font: inherit; }
+
+.page-shell {
+  width: min(1180px, calc(100vw - 48px));
+  margin: 0 auto;
+}
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  border-bottom: 1px solid var(--line);
+  background: rgba(9, 9, 8, 0.86);
+  backdrop-filter: blur(18px);
+}
+.topbar-inner {
+  width: min(1180px, calc(100vw - 48px));
+  height: 72px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.brand {
+  width: 184px;
+  height: auto;
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line-strong);
+  color: var(--paper);
+  background: rgba(247, 244, 237, 0.04);
+  font-size: 13px;
+  font-weight: 760;
+  letter-spacing: 0;
+  white-space: nowrap;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+.button.primary {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #130b07;
+}
+.button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 67, 1, 0.75);
+}
+.button:active { transform: translateY(0); }
+
+.hero {
+  min-height: calc(100dvh - 72px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 450px;
+  align-items: center;
+  gap: 56px;
+  padding: 82px 0 64px;
+}
+.hero-copy {
+  display: grid;
+  gap: 26px;
+}
+.kicker {
+  width: fit-content;
+  color: var(--acid);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 820;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 0;
+  max-width: 760px;
+  font-size: clamp(56px, 8vw, 106px);
+  line-height: 0.88;
+  letter-spacing: -0.01em;
+  font-weight: 880;
+}
+h1 .accent {
+  color: var(--orange);
+}
+.hero-lead {
+  max-width: 680px;
+  margin: 0;
+  color: var(--paper-2);
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.22;
+  font-weight: 540;
+}
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  border: 1px solid rgba(247, 244, 237, 0.18);
+  border-radius: 999px;
+  padding: 9px 13px;
+  color: var(--paper);
+  background: rgba(247, 244, 237, 0.045);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+.hero-stat {
+  padding: 18px 18px 18px 0;
+  border-right: 1px solid var(--line);
+}
+.hero-stat:last-child { border-right: 0; padding-right: 0; padding-left: 18px; }
+.hero-stat:nth-child(2) { padding-left: 18px; }
+.hero-stat b {
+  display: block;
+  color: var(--orange);
+  font-size: 38px;
+  line-height: 0.95;
+  font-weight: 880;
+}
+.hero-stat span {
+  display: block;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.25;
+}
+.hero-panel {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(180deg, rgba(255, 67, 1, 0.16), rgba(247, 244, 237, 0.02)),
+    var(--panel);
+}
+.hero-panel-main {
+  min-height: 310px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  border-radius: var(--radius);
+  background: var(--orange);
+  color: #130b07;
+}
+.model-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 820;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.model-line {
+  display: grid;
+  gap: 12px;
+}
+.model-line strong {
+  font-size: 46px;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  font-weight: 880;
+}
+.model-line span {
+  color: rgba(19, 11, 7, 0.78);
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+.panel-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.panel-metric {
+  padding: 16px;
+  border-radius: var(--radius);
+  background: rgba(247, 244, 237, 0.07);
+  border: 1px solid var(--line);
+}
+.panel-metric b {
+  display: block;
+  color: var(--paper);
+  font-size: 26px;
+  line-height: 1;
+}
+.panel-metric span {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.section {
+  padding: 78px 0;
+  border-top: 1px solid var(--line);
+}
+.section.compact { padding: 56px 0; }
+.section-head {
+  display: grid;
+  gap: 12px;
+  max-width: 780px;
+  margin-bottom: 32px;
+}
+.section-title {
+  margin: 0;
+  font-size: clamp(34px, 5vw, 62px);
+  line-height: 0.96;
+  letter-spacing: -0.01em;
+  font-weight: 860;
+}
+.section-copy {
+  margin: 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.proof-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 14px;
+}
+.proof-card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  min-height: 430px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+.proof-card.featured {
+  background: #110f17;
+}
+.proof-art {
+  height: 202px;
+  overflow: hidden;
+  background: #1b2448;
+}
+.proof-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 39%;
+}
+.proof-body {
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+}
+.proof-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+.proof-category {
+  color: var(--acid);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 820;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.case-logo {
+  max-height: 42px;
+  max-width: 160px;
+  object-fit: contain;
+}
+.case-logo.expedia { max-height: 48px; max-width: 188px; }
+.case-logo.fish { max-height: 42px; max-width: 198px; }
+.case-logo.snap { max-height: 56px; max-width: 172px; }
+.proof-number {
+  display: block;
+  color: var(--orange);
+  font-size: clamp(52px, 6.2vw, 78px);
+  line-height: 0.9;
+  font-weight: 890;
+  letter-spacing: -0.025em;
+}
+.proof-card h3 {
+  margin: 0;
+  color: var(--paper);
+  font-size: 26px;
+  line-height: 1.03;
+}
+.proof-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.35;
+}
+.mini-metrics {
+  display: grid;
+  gap: 9px;
+  margin-top: 4px;
+}
+.mini-metric {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 10px;
+  align-items: baseline;
+  padding-top: 9px;
+  border-top: 1px solid var(--line);
+}
+.mini-metric strong {
+  color: var(--orange);
+  font-size: 20px;
+  line-height: 1;
+}
+.mini-metric span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.customers-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.customer-column {
+  min-height: 330px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(247, 244, 237, 0.04);
+}
+.customer-column h3 {
+  margin: 0 0 6px;
+  font-size: 28px;
+  line-height: 1;
+}
+.customer-column p {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.logo-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px 20px;
+  align-items: center;
+}
+.logo-row img {
+  width: 100%;
+  max-height: 46px;
+  object-fit: contain;
+  justify-self: start;
+  filter: none;
+}
+.logo-row .wide { max-height: 54px; }
+.logo-row .small { max-height: 36px; }
+
+.system-panel {
+  display: grid;
+  grid-template-columns: 1fr 410px;
+  gap: 22px;
+  align-items: stretch;
+}
+.flow {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+}
+.flow-step {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  min-height: 148px;
+  padding: 18px 14px;
+  border: 1px solid rgba(13, 13, 12, 0.15);
+  border-radius: var(--radius);
+  background: #ffffff;
+}
+.flow-step:not(:last-child)::after {
+  content: "→";
+  position: absolute;
+  top: 50%;
+  right: -13px;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--orange);
+  color: #120905;
+  font-size: 13px;
+  font-weight: 900;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.flow-step small {
+  color: var(--orange);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 860;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.flow-step b {
+  font-size: 21px;
+  line-height: 1;
+}
+.flow-step span {
+  color: #67605a;
+  font-size: 13px;
+  line-height: 1.25;
+}
+.system-proof {
+  display: grid;
+  gap: 12px;
+}
+.system-proof-card {
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+.system-proof-card b {
+  color: var(--orange);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.system-proof-card p {
+  margin: 12px 0 0;
+  color: var(--paper);
+  font-size: 18px;
+  line-height: 1.24;
+  font-weight: 720;
+}
+
+.product-evidence {
+  display: grid;
+  grid-template-columns: 1.04fr 0.96fr;
+  gap: 18px;
+}
+.evidence-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+.evidence-image {
+  height: 360px;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  background: #050510;
+}
+.evidence-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.evidence-image.creative img {
+  object-position: 50% 5%;
+}
+.evidence-image.analytics img {
+  object-position: 50% 8%;
+}
+.evidence-body {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 18px;
+  padding: 20px;
+}
+.evidence-metric {
+  color: var(--orange);
+  font-size: 52px;
+  line-height: 0.9;
+  font-weight: 880;
+}
+.evidence-body h3 {
+  margin: 0 0 8px;
+  font-size: 24px;
+  line-height: 1;
+}
+.evidence-body p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.measurement-band {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+}
+.measurement-card {
+  min-height: 210px;
+  padding: 24px;
+  border: 1px solid rgba(13, 13, 12, 0.13);
+  border-radius: var(--radius);
+  background: #ffffff;
+}
+.measurement-card.truth {
+  background: #120f2b;
+  color: var(--paper);
+}
+.measurement-card small {
+  color: #77716a;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.measurement-card.truth small {
+  color: var(--acid);
+}
+.measurement-card b {
+  display: block;
+  margin-top: 32px;
+  color: var(--ink);
+  font-size: clamp(64px, 8vw, 112px);
+  line-height: 0.78;
+  letter-spacing: -0.03em;
+}
+.measurement-card.truth b { color: var(--orange); }
+.measurement-card p {
+  max-width: 360px;
+  margin: 22px 0 0;
+  color: #625b55;
+  font-size: 15px;
+  line-height: 1.3;
+}
+.measurement-card.truth p { color: #c7c1d8; }
+.vs {
+  color: var(--orange);
+  font-family: var(--mono);
+  font-size: 17px;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.cadence-gate {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 18px;
+}
+.cadence-table,
+.gate-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+.cadence-row {
+  display: grid;
+  grid-template-columns: 142px 1fr 142px;
+  gap: 18px;
+  align-items: center;
+  min-height: 82px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--line);
+}
+.cadence-row:last-child { border-bottom: 0; }
+.cadence-row b {
+  color: var(--acid);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.cadence-row p {
+  margin: 0;
+  color: var(--paper-2);
+  font-size: 17px;
+  line-height: 1.24;
+}
+.cadence-row span {
+  justify-self: end;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 850;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.gate-card {
+  padding: 24px;
+}
+.gate-number {
+  color: var(--orange);
+  font-size: 96px;
+  line-height: 0.82;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+}
+.gate-card h3 {
+  margin: 18px 0 10px;
+  font-size: 30px;
+  line-height: 1;
+}
+.gate-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.32;
+}
+.gate-list {
+  display: grid;
+  gap: 9px;
+  margin-top: 22px;
+}
+.gate-list div {
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--paper-2);
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.test-commercial {
+  display: grid;
+  grid-template-columns: 1.16fr 0.84fr;
+  gap: 18px;
+}
+.test-timeline {
+  display: grid;
+  gap: 10px;
+}
+.test-row {
+  display: grid;
+  grid-template-columns: 120px 1fr 150px;
+  gap: 18px;
+  align-items: center;
+  min-height: 82px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+}
+.test-row strong {
+  color: var(--orange);
+  font-family: var(--mono);
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.test-row h3 {
+  margin: 0 0 6px;
+  font-size: 21px;
+  line-height: 1;
+}
+.test-row p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.25;
+}
+.test-decision {
+  color: var(--paper-2);
+  font-weight: 760;
+  line-height: 1.2;
+}
+.commercial-card {
+  display: grid;
+  gap: 12px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+}
+.commercial-card h3 {
+  margin: 0 0 4px;
+  font-size: 30px;
+  line-height: 1;
+}
+.tier-grid {
+  display: grid;
+  gap: 9px;
+}
+.tier {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 13px 0;
+  border-top: 1px solid rgba(13, 13, 12, 0.15);
+}
+.tier b {
+  color: var(--orange);
+  font-size: 24px;
+  line-height: 1;
+}
+.tier span {
+  color: #5d564f;
+  font-size: 14px;
+  text-align: right;
+}
+.cta-card {
+  display: grid;
+  gap: 16px;
+  margin-top: 8px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(13, 13, 12, 0.15);
+}
+.cta-link {
+  display: block;
+  padding: 18px;
+  border-radius: var(--radius);
+  background: var(--orange);
+  color: #120905;
+}
+.cta-link small {
+  display: block;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.cta-link b {
+  display: block;
+  margin-top: 6px;
+  font-size: 25px;
+  line-height: 1;
+}
+.qr-row {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.qr {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 10px;
+  align-items: center;
+  color: #5d564f;
+  font-size: 13px;
+  font-weight: 760;
+}
+.qr img {
+  width: 62px;
+  height: 62px;
+  border-radius: var(--radius);
+  background: white;
+}
+
+.footer {
+  padding: 54px 0 70px;
+  border-top: 1px solid var(--line);
+}
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 28px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.footer-brand {
+  width: 150px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .section, .proof-card, .evidence-card, .customer-column, .system-panel {
+    animation: fadeUp 700ms ease both;
+    animation-timeline: view();
+    animation-range: entry 0% cover 20%;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0.72; transform: translateY(18px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@media (max-width: 1000px) {
+  .hero,
+  .system-panel,
+  .product-evidence,
+  .cadence-gate,
+  .test-commercial {
+    grid-template-columns: 1fr;
+  }
+  .proof-grid,
+  .customers-grid {
+    grid-template-columns: 1fr;
+  }
+  .flow {
+    grid-template-columns: 1fr;
+  }
+  .flow-step:not(:last-child)::after {
+    top: auto;
+    right: 50%;
+    bottom: -13px;
+    transform: translateX(50%) rotate(90deg);
+  }
+  .measurement-band {
+    grid-template-columns: 1fr;
+  }
+  .vs { text-align: left; }
+}
+@media (max-width: 720px) {
+  .page-shell,
+  .topbar-inner {
+    width: min(100% - 28px, 1180px);
+  }
+  .topbar-inner {
+    height: auto;
+    padding: 16px 0;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .nav-actions {
+    width: 100%;
+    overflow-x: auto;
+    padding-bottom: 2px;
+  }
+  .brand { width: 160px; }
+  .hero {
+    min-height: auto;
+    padding: 54px 0 48px;
+    gap: 32px;
+  }
+  h1 {
+    font-size: clamp(46px, 15vw, 66px);
+  }
+  .hero-lead {
+    font-size: 18px;
+  }
+  .hero-stats {
+    grid-template-columns: 1fr;
+  }
+  .hero-stat,
+  .hero-stat:nth-child(2),
+  .hero-stat:last-child {
+    padding: 16px 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-stat:last-child { border-bottom: 0; }
+  .section { padding: 54px 0; }
+  .proof-card { min-height: auto; }
+  .proof-art { height: 230px; }
+  .evidence-body {
+    grid-template-columns: 1fr;
+  }
+  .evidence-image { height: 280px; }
+  .cadence-row,
+  .test-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    align-items: start;
+  }
+  .cadence-row span {
+    justify-self: start;
+  }
+  .footer-inner {
+    flex-direction: column;
+  }
+}
+@media print {
+  html, body { background: #fff; }
+  body::before, .topbar, .nav-actions { display: none; }
+  .page-shell { width: 100%; }
+  .section, .hero, .footer {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
   </style>
 </head>
 <body>
-  <div class="actions">
-    <button type="button" onclick="window.print()">Print / Save PDF</button>
-  </div>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a href="../" aria-label="Hellyeah deck home">
+        <img class="brand" src="../assets/logo-red.svg" alt="Hellyeah">
+      </a>
+      <nav class="nav-actions" aria-label="Page actions">
+        <a class="button" href="../">View deck</a>
+        <button class="button" type="button" onclick="window.print()">Print</button>
+        <a class="button primary" href="https://cal.com/team/hellyeah" target="_blank" rel="noreferrer">Book a call</a>
+      </nav>
+    </div>
+  </header>
 
-  <article class="page">
-    <header class="topline">
-      <img class="brand" src="assets/logo-red-onlight.svg" alt="Hellyeah">
-      <div class="doc-type">One-Pager</div>
-    </header>
-
-    <section class="hero">
-      <div>
-        <h1>Revenue-First <span>User Acquisition</span></h1>
-        <p class="lede">We run strategy, creative, media, and measurement as one operating team. Every decision is judged against banked revenue, not the ad platform's version of success.</p>
-        <div class="tags" aria-label="Core fit">
-          <span class="tag">Mobile Application</span>
+  <main>
+    <section class="page-shell hero">
+      <div class="hero-copy">
+        <div class="kicker">Hellyeah one-pager</div>
+        <h1>Revenue First <span class="accent">User Acquisition.</span></h1>
+        <p class="hero-lead">We run strategy, creative, media, and measurement as one operating team. Every decision is judged against banked revenue.</p>
+        <div class="tag-row" aria-label="Hellyeah focus areas">
+          <span class="tag">Mobile apps</span>
           <span class="tag">AI/SaaS</span>
-          <span class="tag">Performance Ads</span>
-          <span class="tag">Managed Service</span>
+          <span class="tag">Scale-stage</span>
+          <span class="tag">Performance ads</span>
+          <span class="tag">Managed service</span>
+        </div>
+        <div class="hero-stats" aria-label="Hellyeah credibility">
+          <div class="hero-stat"><b>18 years</b><span>Performance marketing and growth operating experience</span></div>
+          <div class="hero-stat"><b>$3B+</b><span>Cumulative managed and operated advertising spend</span></div>
+          <div class="hero-stat"><b>20%+</b><span>Commitment gate before we take the deal</span></div>
         </div>
       </div>
+      <aside class="hero-panel" aria-label="Revenue model example">
+        <div class="hero-panel-main">
+          <span class="model-label">Predictability model</span>
+          <div class="model-line">
+            <strong>Spend $100K today → break even on Day 60</strong>
+            <span>Illustrative, modeled from your cohorts. The point is not optimism. The point is knowing what spend should do before it scales.</span>
+          </div>
+        </div>
+        <div class="panel-metrics">
+          <div class="panel-metric"><b>2,757%</b><span>Platform-reported ROAS can look extraordinary</span></div>
+          <div class="panel-metric"><b>48%</b><span>Revenue-side ROAS decides whether to scale</span></div>
+        </div>
+      </aside>
+    </section>
 
-      <div class="cred" aria-label="Credibility">
-        <div class="cred-card">
-          <strong>15 years</strong>
-          <span>Ads selling, mobile UA, creative testing, and performance growth experience.</span>
-        </div>
-        <div class="cred-card">
-          <strong>$3B+</strong>
-          <span>Ad spend lineage across mobile gaming, mobile apps, AI software, and non-standard proof.</span>
-        </div>
+    <section class="page-shell section compact" id="shift">
+      <div class="section-head">
+        <h2 class="section-title">Most growth still runs on guesswork. We run on banked revenue.</h2>
+        <p class="section-copy">The model changes when creative, media buying, and measurement sit in the same operating loop.</p>
+      </div>
+      <div class="system-proof">
+        <article class="system-proof-card"><b>Predictable</b><p>Payback is modeled before the first budget move.</p></article>
+        <article class="system-proof-card"><b>Signal-led</b><p>Creative format and media plan follow live performance signals.</p></article>
+        <article class="system-proof-card"><b>Revenue-backed</b><p>Decisions use real LTV, ARPU, CAC, and payback data.</p></article>
       </div>
     </section>
 
-    <section aria-label="Selected proof">
-      <h2 class="section-title">Selected Outcomes</h2>
+    <section class="page-shell section" id="proof">
+      <div class="section-head">
+        <h2 class="section-title">Results first.</h2>
+        <p class="section-copy">Three outcomes show the operating pattern before we explain the model.</p>
+      </div>
       <div class="proof-grid">
-        <article class="proof-card">
-          <div class="client-row"><img src="assets/web-logo-playco.svg" alt="Playco"><span class="client-name">Playco</span></div>
-          <div class="metric"><strong>-31%</strong><span>CPI</span></div>
-          <p><b>Intervention:</b> creative iteration plus UA testing. Supporting signals: 5.7x creative throughput and 20M MAU.</p>
+        <article class="proof-card featured">
+          <figure class="proof-art">
+            <img src="../assets/asset-marvel-snap-crop-user.png" alt="Marvel Snap game artwork">
+          </figure>
+          <div class="proof-body">
+            <div class="proof-top">
+              <span class="proof-category">Mobile gaming</span>
+              <img class="case-logo snap" src="../assets/web-logo-marvel-snap.png" alt="Marvel Snap">
+            </div>
+            <strong class="proof-number">$2B+</strong>
+            <h3>Revenue goal exceeded</h3>
+            <p>A make-or-break Marvel launch rebuilt around trust, then scaled on proof to last for years.</p>
+            <div class="mini-metrics">
+              <div class="mini-metric"><strong>~$50M/mo</strong><span>peak launch spend</span></div>
+              <div class="mini-metric"><strong>41%</strong><span>lower CPI below benchmark</span></div>
+              <div class="mini-metric"><strong>3.6x</strong><span>ROAS first quarter</span></div>
+            </div>
+          </div>
         </article>
-
         <article class="proof-card">
-          <div class="client-row"><img src="assets/web-logo-finalround.svg" alt="Final Round AI"><span class="client-name client-name-hidden">Final Round AI</span></div>
-          <div class="metric"><strong>4.2x</strong><span>ROAS</span></div>
-          <p><b>Intervention:</b> revenue-side measurement. Supporting signal: $12M ARR in 14 months.</p>
+          <figure class="proof-art">
+            <img src="../assets/asset-expedia-plane-proof.png" alt="Expedia airplane">
+          </figure>
+          <div class="proof-body">
+            <div class="proof-top">
+              <span class="proof-category">Travel</span>
+              <img class="case-logo expedia" src="../assets/web-logo-expedia.svg" alt="Expedia">
+            </div>
+            <strong class="proof-number">CPA ↓</strong>
+            <h3>~$200 → ~$120 target</h3>
+            <p>Dynamic ads matched the real live price, so acquisition cost fell and trust returned.</p>
+            <div class="mini-metrics">
+              <div class="mini-metric"><strong>20</strong><span>creative variants per property</span></div>
+              <div class="mini-metric"><strong>6+ mo</strong><span>sustained engagement</span></div>
+            </div>
+          </div>
         </article>
-
         <article class="proof-card">
-          <div class="client-row"><img class="fish-logo" src="assets/web-logo-fish-audio-official.svg" alt="Fish Audio"><span class="client-name">Fish Audio</span></div>
-          <div class="metric"><strong>-54%</strong><span>CAC</span></div>
-          <p><b>Intervention:</b> signup economics plus paid and demand-source coordination. Supporting signal: +340% MoM signups.</p>
+          <figure class="proof-art">
+            <img src="../assets/asset-creative-gallery-mid-aligned.png" alt="Creative variants gallery">
+          </figure>
+          <div class="proof-body">
+            <div class="proof-top">
+              <span class="proof-category">Consumer AI</span>
+              <img class="case-logo fish" src="../assets/web-logo-fish-audio-mint.png" alt="Fish Audio">
+            </div>
+            <strong class="proof-number">-54%</strong>
+            <h3>CAC</h3>
+            <p>Organic and paid acquisition moved together around signup growth and acquisition economics.</p>
+            <div class="mini-metrics">
+              <div class="mini-metric"><strong>+340%</strong><span>signup growth</span></div>
+              <div class="mini-metric"><strong>MoM</strong><span>measurement window</span></div>
+            </div>
+          </div>
         </article>
       </div>
     </section>
 
-    <section class="middle">
-      <div class="system">
-        <h2 class="section-title">Operating System</h2>
-        <div class="flow" aria-label="Buyer-readable operating loop">
-          <div class="flow-step">
-            <b>Input</b>
-            <h3>Signals in</h3>
-            <p>Ad platforms, client data, sales context, creative assets, and market signals.</p>
-          </div>
-          <div class="flow-step">
-            <b>Queue</b>
-            <h3>AI recommends</h3>
-            <p>Creative variants, anomalies, channel shifts, and optimization candidates.</p>
-          </div>
-          <div class="flow-step">
-            <b>Approve</b>
-            <h3>Operator control</h3>
-            <p>Humans approve material spend changes and scale moves before execution.</p>
-          </div>
-          <div class="flow-step">
-            <b>Act</b>
-            <h3>Campaign action</h3>
-            <p>Launch, pause, allocate, refresh creative, and fix tracking.</p>
-          </div>
-          <div class="flow-step">
-            <b>Learn</b>
-            <h3>Revenue loop</h3>
-            <p>CAC, payback, revenue ROAS, fatigue, and winner quality feed the next cycle.</p>
-          </div>
-        </div>
+    <section class="page-shell section" id="customers">
+      <div class="section-head">
+        <h2 class="section-title">Built for mobile apps, AI/SaaS, and scale-stage companies.</h2>
+        <p class="section-copy">The buyer should recognize the category fit in one scan.</p>
       </div>
+      <div class="customers-grid">
+        <article class="customer-column">
+          <h3>Mobile apps</h3>
+          <p>Gaming, live service, consumer</p>
+          <div class="logo-row">
+            <img class="wide" src="../assets/web-logo-pokemon-official.png" alt="Pokemon">
+            <img class="wide" src="../assets/web-logo-marvel-snap.png" alt="Marvel Snap">
+            <img src="../assets/web-logo-dena-google.png" alt="DeNA">
+            <img src="../assets/web-logo-second-dinner-official.png" alt="Second Dinner">
+            <img src="../assets/web-logo-hard-rock-casino.png" alt="Hard Rock Casino">
+            <img src="../assets/web-logo-wpt.png" alt="World Poker Tour">
+            <img src="../assets/web-logo-the-dyrt-user-wordmark.png" alt="The Dyrt">
+            <img src="../assets/web-logo-befreed-cropped.png" alt="BeFreed">
+          </div>
+        </article>
+        <article class="customer-column">
+          <h3>AI/SaaS</h3>
+          <p>Consumer AI, devtools, software</p>
+          <div class="logo-row">
+            <img class="wide" src="../assets/web-logo-finalround.svg" alt="Final Round AI">
+            <img class="wide" src="../assets/web-logo-fish-audio-mint.png" alt="Fish Audio">
+            <img src="../assets/web-logo-chai.svg" alt="CHAI">
+            <img src="../assets/web-logo-viggle-user.png" alt="Viggle">
+            <img src="../assets/web-logo-tavus-google.png" alt="Tavus">
+            <img src="../assets/web-logo-hyperspell-webflow-cropped.png" alt="Hyperspell">
+            <img src="../assets/web-logo-eragon-transparent.png" alt="Eragon">
+            <img src="../assets/web-logo-insforge-google.png" alt="InsForge">
+          </div>
+        </article>
+        <article class="customer-column">
+          <h3>Scale-stage companies</h3>
+          <p>Travel, finance, logistics, retail</p>
+          <div class="logo-row">
+            <img class="wide" src="../assets/web-logo-expedia.svg" alt="Expedia">
+            <img src="../assets/web-logo-hotels.svg" alt="Hotels.com">
+            <img src="../assets/web-logo-vrbo.svg" alt="Vrbo">
+            <img src="../assets/web-logo-truist.svg" alt="Truist">
+            <img src="../assets/web-logo-jt-express.svg" alt="J&T Express">
+            <img src="../assets/web-logo-huobi-user.png" alt="Huobi">
+            <img src="../assets/web-logo-harmay-google.png" alt="Harmay">
+            <img src="../assets/web-logo-aonic-prnewswire-transparent.png" alt="Aonic">
+          </div>
+        </article>
+      </div>
+    </section>
 
-      <div class="visual">
-        <div class="visual-copy">
-          <h2>More shots on goal. <span>Cleaner scale gates.</span></h2>
-          <p>Traditional teams may test 5-10 manual concepts. Hellyeah runs a denser creative review surface, then ties creative winners to CPI, CAC, ROAS, activation, and payback.</p>
+    <section class="page-shell section" id="system">
+      <div class="section-head">
+        <h2 class="section-title">One system runs every channel. Then learns.</h2>
+        <p class="section-copy">Signals enter one queue. AI proposes actions, operators approve material changes, and the system learns back into the next test.</p>
+      </div>
+      <div class="system-panel">
+        <div class="flow" aria-label="Hellyeah operating system flow">
+          <div class="flow-step"><small>01</small><b>Signals</b><span>channels, creative, revenue, market</span></div>
+          <div class="flow-step"><small>02</small><b>AI queue</b><span>anomalies, actions, variants</span></div>
+          <div class="flow-step"><small>03</small><b>Operator approval</b><span>budget, bids, exceptions</span></div>
+          <div class="flow-step"><small>04</small><b>Action</b><span>launch, pause, reallocate</span></div>
+          <div class="flow-step"><small>05</small><b>Learn</b><span>client KB and agency KB update</span></div>
         </div>
-        <div class="visual-assets" aria-label="Creative review surface examples">
-          <img src="assets/asset-creative-gallery-mid-aligned.png" alt="Creative review surface, first set">
-          <img src="assets/asset-creative-gallery-video-aligned.png" alt="Creative review surface, second set">
+        <div class="system-proof">
+          <article class="system-proof-card"><b>Omnichannel</b><p>Budget moves to wherever the evidence is: Meta, Google, TikTok, Snap, and ASA.</p></article>
+          <article class="system-proof-card"><b>White-label accounts</b><p>Working account infrastructure gets the first controlled test live in days, not weeks.</p></article>
+          <article class="system-proof-card"><b>Agentic creative</b><p>AI creates more variants, flags fatigue, and turns live signals into the next batch.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="bottom">
-      <div class="timeline">
-        <h2 class="section-title">30-Day Engagement</h2>
-        <div class="timeline-grid">
-          <div class="phase">
-            <b>Days 1-5</b>
-            <h3>Audit</h3>
-            <p>Diagnose tracking health, creative fatigue, account setup, KPI truth, and first-test scope.</p>
-          </div>
-          <div class="phase">
-            <b>Days 5-15</b>
-            <h3>Deploy</h3>
-            <p>Launch controlled tests, refresh creative, monitor quality, and collect clean evidence.</p>
-          </div>
-          <div class="phase">
-            <b>Days 15-30</b>
-            <h3>Scale</h3>
-            <p>Increase spend only when tracking is clean, winners repeat, and revenue-side economics hold.</p>
-          </div>
-        </div>
+    <section class="page-shell section" id="evidence">
+      <div class="section-head">
+        <h2 class="section-title">Creative volume and revenue truth are the two proof points.</h2>
+        <p class="section-copy">One side proves throughput. The other side proves whether spend deserves to scale.</p>
       </div>
-
-      <div class="gates">
-        <h2 class="section-title">Scale Rules</h2>
-        <div class="gate-list">
-          <div class="gate"><b>Scale budget</b><p>KPI inside agreed band, tracking clean, winner creative repeats.</p></div>
-          <div class="gate"><b>Kill ad</b><p>Learning spend reached, weak event quality, or CAC/CPI far from target.</p></div>
-          <div class="gate"><b>Replace creative</b><p>CTR/CVR drops, frequency rises, hook fatigue appears, or concept stalls.</p></div>
-          <div class="gate"><b>Fix tracking</b><p>Platform ROAS conflicts with revenue-side result, event loss, or MMP mismatch.</p></div>
-        </div>
+      <div class="product-evidence">
+        <article class="evidence-card">
+          <figure class="evidence-image creative">
+            <img src="../assets/asset-creative-workflow-crop.png" alt="AI creative review surface with many variants">
+          </figure>
+          <div class="evidence-body">
+            <strong class="evidence-metric">41</strong>
+            <div>
+              <h3>Variants in review</h3>
+              <p>Traditional teams bring 5-10 concepts. Hellyeah turns a campaign into a much larger testing surface.</p>
+            </div>
+          </div>
+        </article>
+        <article class="evidence-card">
+          <figure class="evidence-image analytics">
+            <img src="../assets/asset-campaign-analytics-full.png" alt="Campaign analytics dashboard">
+          </figure>
+          <div class="evidence-body">
+            <strong class="evidence-metric">146</strong>
+            <div>
+              <h3>Re-collected posts</h3>
+              <p>Campaign reads, creator accounts, and engagement evidence live in one dashboard for operator review.</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <footer class="footer">
-      <span>Hellyeah Pitch Deck One-Pager</span>
-      <span>Proof before scale. Revenue before platform optics.</span>
-    </footer>
-  </article>
+    <section class="page-shell section compact" id="truth">
+      <div class="section-head">
+        <h2 class="section-title">Platforms see credit. Revenue tells the truth.</h2>
+        <p class="section-copy">Channel signals only count after they reconcile to real revenue.</p>
+      </div>
+      <div class="measurement-band" aria-label="Platform ROAS versus revenue ROAS">
+        <article class="measurement-card">
+          <small>Platform-reported ROAS</small>
+          <b>2,757%</b>
+          <p>Platform-defined windows can make performance look extraordinary.</p>
+        </article>
+        <div class="vs">vs</div>
+        <article class="measurement-card truth">
+          <small>Stripe-net revenue ROAS</small>
+          <b>48%</b>
+          <p>Collected revenue, net of refunds, joined back to acquisition source.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="page-shell section" id="cadence">
+      <div class="section-head">
+        <h2 class="section-title">Always on, operator-led.</h2>
+        <p class="section-copy">The system handles signal collection and routine repetition. Senior operators control strategy, material budget changes, and exceptions.</p>
+      </div>
+      <div class="cadence-gate">
+        <section class="cadence-table" aria-label="Operating cadence">
+          <article class="cadence-row"><b>Every minute</b><p>Spend, delivery, tracking, and account-health monitoring</p><span>Automated</span></article>
+          <article class="cadence-row"><b>Hourly</b><p>Creative fatigue flags, anomaly detection, and review queue</p><span>AI + rules</span></article>
+          <article class="cadence-row"><b>Daily</b><p>Budget reallocation, bid adjustments, and cross-channel review</p><span>Approved</span></article>
+          <article class="cadence-row"><b>Weekly</b><p>Creative reset, cohort read, scaling decision, and next-week brief</p><span>Senior operator</span></article>
+        </section>
+        <aside class="gate-card">
+          <div class="gate-number">20%+</div>
+          <h3>We only take deals we can move.</h3>
+          <p>Before we sign, we pressure-test whether we can lift current results by at least 20%. If not, we walk.</p>
+          <div class="gate-list">
+            <div>Mutual limits are understood upfront.</div>
+            <div>20% is the floor, not the ceiling.</div>
+            <div>Scale only happens after evidence earns it.</div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="page-shell section" id="test">
+      <div class="section-head">
+        <h2 class="section-title">Audit first, test second, scale third.</h2>
+        <p class="section-copy">The first 30 days are built to reach a clean scale, hold, or rebuild decision.</p>
+      </div>
+      <div class="test-commercial">
+        <section class="test-timeline" aria-label="30-day test plan">
+          <article class="test-row"><strong>Day 1-5</strong><div><h3>Audit + instrument</h3><p>Account access, MMP/events, revenue, target KPI.</p></div><span class="test-decision">Data layer clean.</span></article>
+          <article class="test-row"><strong>Day 6-15</strong><div><h3>Deploy + learn</h3><p>Launch controlled campaigns against the agreed metric.</p></div><span class="test-decision">First read valid.</span></article>
+          <article class="test-row"><strong>Day 16-23</strong><div><h3>Replace + reallocate</h3><p>Kill weak ads, ship variants, move budget.</p></div><span class="test-decision">Winners repeat.</span></article>
+          <article class="test-row"><strong>Day 24-30</strong><div><h3>Prove + scale gate</h3><p>Scale, hold, or rebuild on evidence.</p></div><span class="test-decision">Decision made.</span></article>
+        </section>
+        <aside class="commercial-card">
+          <h3>Commercial model</h3>
+          <div class="tier-grid">
+            <div class="tier"><b>$1M+ / mo</b><span>Dedicated pod + engineers</span></div>
+            <div class="tier"><b>$500K+ / mo</b><span>Senior operator + account manager</span></div>
+            <div class="tier"><b>$100K+ / month</b><span>Account manager + weekly reporting</span></div>
+          </div>
+          <div class="cta-card">
+            <a class="cta-link" href="https://cal.com/team/hellyeah" target="_blank" rel="noreferrer">
+              <small>Book a call</small>
+              <b>cal.com/team/hellyeah</b>
+            </a>
+            <div class="qr-row" aria-label="Hellyeah social QR codes">
+              <div class="qr"><img src="../assets/brand-qr-linkedin.svg" alt="Hellyeah LinkedIn QR code"><span>LinkedIn</span></div>
+              <div class="qr"><img src="../assets/brand-qr-twitter.svg" alt="Hellyeah X QR code"><span>X / Twitter</span></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-shell footer">
+    <div class="footer-inner">
+      <img class="footer-brand" src="../assets/logo-red.svg" alt="Hellyeah">
+      <span>Revenue-first user acquisition for mobile apps, AI/SaaS, and scale-stage companies.</span>
+      <a href="https://cal.com/team/hellyeah" target="_blank" rel="noreferrer">cal.com/team/hellyeah</a>
+    </div>
+  </footer>
 </body>
 </html>

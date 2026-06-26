@@ -14,6 +14,8 @@ const assetFiles = [
   "logo-red.svg",
   "logo-red-onlight.svg",
   "glyph-orange.svg",
+  "brand-qr-linkedin.svg",
+  "brand-qr-twitter.svg",
   "web-logo-pokemon-official.png",
   "web-logo-playco.svg",
   "web-logo-second-dinner-official.png",
@@ -21,6 +23,7 @@ const assetFiles = [
   "web-logo-product-madness-pinzak.png",
   "web-logo-igg-pinzak.png",
   "web-logo-clubwpt-gold-pinzak.png",
+  "web-logo-clubwpt-gold-user.png",
   "web-logo-spoon-pinzak.png",
   "web-logo-dolphin-pinzak.png",
   "web-logo-aonic-official.png",
@@ -31,6 +34,7 @@ const assetFiles = [
   "web-logo-eragon-transparent.png",
   "web-logo-befreed-cropped.png",
   "web-logo-viggle-googleplay.png",
+  "web-logo-viggle-user.png",
   "web-logo-fish-audio-official.svg",
   "web-logo-fish-audio-mint.png",
   "web-logo-fish-audio-white-transparent.png",
@@ -68,6 +72,18 @@ const assetFiles = [
   "web-logo-betbull-pinzak.png",
   "web-logo-betbull-pinzak-dark.png",
   "web-logo-mex-pinzak.png",
+  "web-logo-product-madness-user.png",
+  "web-logo-goodgame-studios.svg",
+  "web-logo-expedia.svg",
+  "web-logo-hotels.svg",
+  "web-logo-vrbo.svg",
+  "web-logo-hard-rock-casino.png",
+  "web-logo-htx.png",
+  "web-logo-huobi-user.png",
+  "web-logo-lightfox-user.png",
+  "web-logo-lightfox-user-black.png",
+  "web-logo-tron-user.png",
+  "web-logo-achain-user.png",
   "asset-programmatic-architecture-full.png",
   "asset-creative-workflow-crop.png",
   "asset-creative-workflow-full-resized.png",
@@ -79,6 +95,9 @@ const assetFiles = [
   "asset-campaign-analytics-full.png",
   "asset-campaign-analytics-main-crop.png",
   "asset-campaign-analytics-headline-crop.png",
+  "asset-overview-transparency-08.png",
+  "asset-transparency-dashboard-live.png",
+  "asset-marvel-snap-awards.png",
   "platform-meta.svg",
   "platform-google-user.png",
   "platform-tiktok.svg",
@@ -322,7 +341,7 @@ const stat = (value, label) => `
 const header = (num, section, dark = false, pageLabel = `${String(num).padStart(2, "0")} / 18`) => `
   <header class="slide-header">
     <img class="brand" src="assets/${dark ? "logo-red.svg" : "logo-red-onlight.svg"}" alt="Hellyeah">
-    <div class="page-label">${esc(section.toUpperCase())} / ${esc(pageLabel)}</div>
+    <div class="page-label">${esc(pageLabel)}</div>
   </header>
 `;
 
@@ -403,8 +422,8 @@ body {
 
 .deck {
   display: grid;
-  gap: 42px;
-  padding: 38px 0 76px;
+  gap: 34px;
+  padding: 34px 0 72px;
 }
 
 .slide {
@@ -414,10 +433,10 @@ body {
   margin: 0 auto;
   overflow: hidden;
   background:
-    radial-gradient(circle at 88% 14%, rgba(255, 67, 1, 0.08), transparent 28%),
+    radial-gradient(circle at 86% 12%, rgba(255, 67, 1, 0.06), transparent 30%),
     linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
   border: 1px solid rgba(255, 255, 255, 0.16);
-  box-shadow: 0 34px 120px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 26px 82px rgba(0, 0, 0, 0.42);
 }
 
 .slide::before {
@@ -445,12 +464,12 @@ body {
 
 .slide-header {
   position: absolute;
-  inset: 38px 66px auto 66px;
-  height: 48px;
+  inset: 34px 70px auto 70px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 16px;
+  padding-bottom: 14px;
   border-bottom: 1px solid var(--line);
   z-index: 2;
 }
@@ -478,7 +497,7 @@ body {
 
 .content {
   position: absolute;
-  inset: 116px 72px 54px 72px;
+  inset: 108px 72px 56px 72px;
   z-index: 1;
 }
 
@@ -495,7 +514,7 @@ body {
 h1 {
   margin: 0;
   max-width: 1040px;
-  font-size: 42px;
+  font-size: 41px;
   line-height: 1;
   letter-spacing: 0;
   font-weight: 820;
@@ -510,9 +529,9 @@ h1.one-line-title {
 }
 .lead {
   max-width: 980px;
-  margin: 9px 0 0;
+  margin: 8px 0 0;
   color: var(--text);
-  font-size: 13.4px;
+  font-size: 13.2px;
   line-height: 1.25;
   white-space: normal;
 }
@@ -581,8 +600,8 @@ h1.one-line-title {
   min-height: 124px;
   position: relative;
   padding: 22px 22px 20px;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(0, 0, 0, 0.11);
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 4px;
   box-shadow: none;
   overflow: hidden;
@@ -790,8 +809,8 @@ h1.one-line-title {
 .customer-case-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 28px;
+  gap: 18px;
+  margin-top: 26px;
 }
 .customer-case-grid.two-by-two {
   grid-template-columns: repeat(2, 1fr);
@@ -803,8 +822,8 @@ h1.one-line-title {
 }
 .customer-case-grid.four-up {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 13px;
-  margin-top: 26px;
+  gap: 16px;
+  margin-top: 24px;
 }
 .customer-case {
   min-height: 292px;
@@ -822,8 +841,8 @@ h1.one-line-title {
   padding: 13px 16px 12px;
 }
 .customer-case-grid.four-up .customer-case {
-  min-height: 332px;
-  padding: 15px 13px 14px;
+  min-height: 350px;
+  padding: 18px 15px 16px;
 }
 .customer-case-dark {
   background: rgba(255, 255, 255, 0.045);
@@ -876,9 +895,9 @@ h1.one-line-title {
 .customer-logo.case-logo-jt { width: 82px; height: 32px; }
 .customer-logo.case-logo-fish { width: 120px; height: 28px; }
 .customer-case-grid.four-up .customer-case-head {
-  min-height: 57px;
+  min-height: 58px;
   gap: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 .customer-case-grid.four-up .customer-category {
   font-size: 7.6px;
@@ -908,10 +927,10 @@ h1.one-line-title {
   line-height: 1.12;
 }
 .customer-case-grid.four-up .customer-summary {
-  min-height: 46px;
-  margin-bottom: 9px;
-  font-size: 10.5px;
-  line-height: 1.16;
+  min-height: 52px;
+  margin-bottom: 11px;
+  font-size: 10.8px;
+  line-height: 1.2;
 }
 .customer-case-dark .customer-summary { color: #d4d4d4; }
 .customer-classic-story {
@@ -951,17 +970,17 @@ h1.one-line-title {
 }
 .customer-case-grid.four-up .customer-classic-story {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 .customer-case-grid.four-up .customer-classic-story b {
   display: block;
-  margin-bottom: 5px;
-  font-size: 7.2px;
+  margin-bottom: 6px;
+  font-size: 7.6px;
 }
 .customer-case-grid.four-up .customer-classic-story span {
   display: block;
-  font-size: 9px;
-  line-height: 1.1;
+  font-size: 9.4px;
+  line-height: 1.16;
 }
 .customer-metrics {
   display: grid;
@@ -996,9 +1015,9 @@ h1.one-line-title {
   font-size: 8.4px;
 }
 .customer-case-grid.four-up .customer-metrics {
-  gap: 6px;
-  margin-top: 10px;
-  padding-top: 10px;
+  gap: 7px;
+  margin-top: 12px;
+  padding-top: 12px;
 }
 .customer-case-grid.four-up .customer-metrics.metrics-2 {
   grid-template-columns: repeat(2, 1fr);
@@ -1006,10 +1025,10 @@ h1.one-line-title {
 }
 .customer-case-grid.four-up .customer-metric b,
 .customer-case-grid.four-up .customer-metrics.metrics-2 .customer-metric b {
-  font-size: 23px;
+  font-size: 24px;
 }
 .customer-case-grid.four-up .customer-metric span {
-  font-size: 7.6px;
+  font-size: 8px;
 }
 .customer-metric span {
   display: block;
@@ -1029,7 +1048,7 @@ h1.one-line-title {
 .customer-tags span {
   padding: 5px 7px 4px;
   border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 999px;
+  border-radius: 4px;
   color: var(--text);
   background: rgba(255, 255, 255, 0.48);
   font-size: 8.6px;
@@ -1049,12 +1068,12 @@ h1.one-line-title {
   font-size: 7.6px;
 }
 .customer-case-grid.four-up .customer-tags {
-  margin-top: 9px;
-  gap: 4px;
+  margin-top: 11px;
+  gap: 5px;
 }
 .customer-case-grid.four-up .customer-tags span {
-  padding: 4px 5px 3px;
-  font-size: 7.1px;
+  padding: 5px 6px 4px;
+  font-size: 7.6px;
 }
 .appendix-a1-layout,
 .appendix-a2-layout,
@@ -1081,8 +1100,8 @@ h1.one-line-title {
 .appendix-a3-layout {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  height: 446px;
+  gap: 18px;
+  height: 456px;
   align-items: stretch;
 }
 .appendix-main-case,
@@ -1103,7 +1122,7 @@ h1.one-line-title {
 }
 .appendix-overview-case {
   min-height: 350px;
-  padding: 18px 18px 16px;
+  padding: 20px 20px 18px;
 }
 .appendix-compact-case {
   min-height: 0;
@@ -1399,7 +1418,7 @@ h1.one-line-title {
 }
 .appendix-a3-layout .appendix-overview-case {
   min-height: 0;
-  padding: 17px 16px 15px;
+  padding: 19px 17px 17px;
   display: flex;
   flex-direction: column;
 }
@@ -1443,9 +1462,9 @@ h1.one-line-title {
   height: 34px;
 }
 .appendix-a3-layout .appendix-overview-title {
-  min-height: 72px;
-  font-size: 10.8px;
-  line-height: 1.25;
+  min-height: 76px;
+  font-size: 11.2px;
+  line-height: 1.3;
   font-weight: 760;
 }
 .appendix-a3-layout .appendix-metrics {
@@ -1467,12 +1486,12 @@ h1.one-line-title {
 }
 .appendix-a3-layout .appendix-overview-blocks {
   grid-template-columns: 1fr;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 11px;
+  margin-top: 13px;
 }
 .appendix-a3-layout .appendix-overview-blocks section {
-  min-height: 70px;
-  padding: 10px 11px;
+  min-height: 74px;
+  padding: 11px 12px;
 }
 .appendix-a3-layout .appendix-overview-blocks small {
   margin-bottom: 7px;
@@ -1481,12 +1500,12 @@ h1.one-line-title {
 }
 .appendix-a3-layout .appendix-overview-blocks h3 {
   margin-bottom: 6px;
-  font-size: 11.6px;
-  line-height: 1.05;
+  font-size: 12.1px;
+  line-height: 1.08;
 }
 .appendix-a3-layout .appendix-overview-blocks p {
-  font-size: 9.1px;
-  line-height: 1.24;
+  font-size: 9.5px;
+  line-height: 1.28;
 }
 .appendix-a3-layout .appendix-tags span {
   padding: 5px 8px 4px;
@@ -1516,6 +1535,65 @@ h1.one-line-title {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 850;
+}
+.transparency-proof-grid {
+  display: grid;
+  grid-template-columns: 0.94fr 1.06fr;
+  gap: 20px;
+  height: auto;
+  margin-top: 24px;
+}
+.transparency-shot {
+  min-height: 0;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.78);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 9px;
+}
+.transparency-shot header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+}
+.transparency-shot h2 {
+  margin: 0;
+  color: var(--black);
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 880;
+}
+.transparency-shot span {
+  color: var(--orange);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 850;
+}
+.transparency-shot-frame {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #07070b;
+  aspect-ratio: 16 / 9;
+}
+.transparency-shot-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.transparency-shot-frame.client-hub img {
+  object-position: center top;
+}
+.transparency-shot-frame.analytics-dashboard img {
+  object-position: center top;
 }
 .operator-case-layout {
   display: grid;
@@ -1957,174 +2035,155 @@ h1.one-line-title {
 
 .test-plan-board {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  gap: 20px;
-  margin-top: 30px;
-  align-items: stretch;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-top: 18px;
 }
-.test-cadence {
+.test-execution-matrix {
   display: grid;
-  gap: 10px;
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    radial-gradient(circle at 95% 0%, rgba(255, 67, 1, 0.16), transparent 35%),
+    rgba(255, 255, 255, 0.045);
 }
-.cadence-card {
+.test-matrix-head,
+.test-matrix-row {
   display: grid;
-  grid-template-columns: 88px 1fr;
-  gap: 16px;
-  min-height: 78px;
-  padding: 15px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  background: rgba(255, 255, 255, 0.048);
+  grid-template-columns: 108px 1.08fr 1.08fr 0.92fr;
 }
-.cadence-card strong {
+.test-matrix-head > *,
+.test-matrix-row > * {
+  min-width: 0;
+  padding: 12px 14px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.test-matrix-head > *:last-child,
+.test-matrix-row > *:last-child {
+  border-right: 0;
+}
+.test-execution-matrix .test-matrix-row:last-child > * {
+  border-bottom: 0;
+}
+.test-matrix-head > * {
   color: var(--orange);
   font-family: var(--font-sans);
-  font-size: 11px;
+  font-size: 8.5px;
   line-height: 1;
-  letter-spacing: 0.1em;
-  font-weight: 900;
+  letter-spacing: 0.18em;
+  font-weight: 920;
   text-transform: uppercase;
 }
-.cadence-card h3 {
-  margin: 0 0 7px;
-  color: var(--white);
-  font-size: 17px;
-  line-height: 1;
-}
-.cadence-card p {
-  margin: 0;
-  color: #d4d4d4;
-  font-size: 11.4px;
-  line-height: 1.18;
-  font-weight: 650;
-}
-.calibration-strip {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  padding-top: 2px;
-}
-.calibration-strip div {
-  padding: 10px 10px 9px;
-  border: 1px solid rgba(255,255,255,0.13);
-  background: rgba(255,255,255,0.05);
-}
-.calibration-strip b {
-  display: block;
+.test-day {
   color: var(--orange);
-  font-size: 17px;
+  font-family: var(--font-sans);
+  font-size: 12px;
   line-height: 1;
+  letter-spacing: 0.1em;
+  font-weight: 930;
+  text-transform: uppercase;
 }
-.calibration-strip span {
-  display: block;
-  margin-top: 5px;
-  color: #d4d4d4;
-  font-size: 8.6px;
-  line-height: 1.08;
-  font-weight: 780;
+.test-work h3 {
+  margin: 0 0 5px;
+  color: var(--white);
+  font-size: 19px;
+  line-height: 0.96;
 }
-.decision-panel {
-  padding: 20px 20px 18px;
-  background: var(--orange);
-  color: var(--black);
-  display: flex;
-  flex-direction: column;
-}
-.decision-panel h2 {
-  margin: 0 0 15px;
-  color: var(--black);
-  font-size: 25px;
-  line-height: 0.95;
-}
-.decision-list {
-  display: grid;
-  gap: 10px;
-}
-.decision-card {
-  display: grid;
-  grid-template-columns: 116px minmax(0, 1fr);
-  gap: 14px;
-  min-height: 78px;
-  padding: 12px 13px;
-  border: 1px solid rgba(0, 0, 0, 0.14);
-  background: rgba(255, 255, 255, 0.68);
-}
-.decision-card h3 {
+.test-work p,
+.test-gate,
+.test-action {
   margin: 0;
-  color: var(--black);
-  font-size: 14px;
-  line-height: 1.04;
-  font-weight: 920;
+  color: #d4d4d4;
+  font-size: 12px;
+  line-height: 1.16;
+  font-weight: 690;
 }
-.decision-card-copy {
+.test-gate,
+.test-action {
+  align-content: center;
+}
+.test-action {
+  color: var(--white);
+  font-weight: 850;
+}
+.expectation-band {
+  display: grid;
+  grid-template-columns: 190px repeat(3, minmax(0, 1fr));
+  gap: 0;
+  padding: 0;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.055);
+}
+.expectation-band header,
+.expectation-step {
+  padding: 16px 18px;
+}
+.expectation-band header small {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--orange);
+  font-family: var(--font-sans);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  font-weight: 920;
+  text-transform: uppercase;
+}
+.expectation-band header h2 {
+  margin: 0;
+  color: var(--white);
+  font-size: 20px;
+  line-height: 0.98;
+}
+.expectation-step {
   display: grid;
   gap: 8px;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
 }
-.decision-card-copy p {
-  margin: 0;
-  color: rgba(0, 0, 0, 0.8);
-  font-size: 10.8px;
-  line-height: 1.18;
-  font-weight: 740;
-}
-.decision-card-copy b {
-  display: block;
-  margin-bottom: 3px;
-  color: var(--black);
+.expectation-step b {
+  color: var(--orange);
   font-family: var(--font-sans);
-  font-size: 8px;
+  font-size: 10px;
   line-height: 1;
   letter-spacing: 0.13em;
   font-weight: 920;
   text-transform: uppercase;
 }
-.decision-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
+.expectation-step h3 {
+  margin: 0;
+  color: var(--white);
+  font-size: 28px;
+  line-height: 1;
 }
-.decision-table th,
-.decision-table td {
-  padding: 10px 10px;
-  border-top: 1px solid rgba(0, 0, 0, 0.18);
-  vertical-align: top;
-  text-align: left;
+.expectation-step p {
+  margin: 0;
+  color: #d7d7d7;
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 700;
 }
-.decision-table th {
-  width: 116px;
-  color: var(--black);
-  font-size: 13px;
-  line-height: 1.05;
-  font-weight: 900;
-}
-.decision-table td {
-  color: rgba(0, 0, 0, 0.82);
-  font-size: 11.1px;
-  line-height: 1.16;
-  font-weight: 750;
-}
-.decision-table td:last-child {
-  color: var(--black);
-}
-.test-plan-cta {
-  margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px solid rgba(0, 0, 0, 0.2);
-  color: rgba(0, 0, 0, 0.82);
+.expectation-footnote {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 10px 18px 12px;
+  border-top: 1px solid rgba(255,255,255,0.14);
+  color: #a1a1a1;
   font-family: var(--font-sans);
-  font-size: 10px;
-  line-height: 1.3;
-  letter-spacing: 0.08em;
-  font-weight: 900;
+  font-size: 8.3px;
+  line-height: 1.1;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
+  font-weight: 850;
 }
 
 .cover-content {
   position: absolute;
-  inset: 128px 66px 54px 66px;
+  inset: 118px 72px 58px 72px;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 440px;
-  gap: 54px;
+  grid-template-columns: minmax(0, 1fr) 400px;
+  gap: 44px;
   align-items: stretch;
 }
 .cover-eyebrow {
@@ -2138,8 +2197,8 @@ h1.one-line-title {
 .cover-title {
   max-width: 790px;
   margin: 0;
-  font-size: 80px;
-  line-height: 0.92;
+  font-size: 84px;
+  line-height: 0.91;
   font-weight: 820;
   letter-spacing: 0;
 }
@@ -2149,31 +2208,31 @@ h1.one-line-title {
   text-shadow: 0 26px 90px rgba(255, 67, 1, 0.22);
 }
 .cover-lead {
-  max-width: 760px;
-  margin: 30px 0 0;
+  max-width: 700px;
+  margin: 24px 0 0;
   color: #d4d4d4;
-  font-size: 19px;
-  line-height: 1.32;
+  font-size: 18px;
+  line-height: 1.3;
   font-weight: 620;
 }
 .cover-tags {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(5, max-content);
   gap: 10px;
-  width: max-content;
-  max-width: 100%;
-  margin-top: 38px;
+  width: min(100%, 720px);
+  margin-top: 34px;
 }
 .cover-tags span {
-  min-height: 42px;
+  min-height: 38px;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 0 17px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 999px;
+  justify-content: flex-start;
+  padding: 0 13px 0 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 4px solid rgba(255, 67, 1, 0.88);
+  border-radius: 4px;
   color: var(--white);
-  background: rgba(255, 255, 255, 0.035);
+  background: rgba(255, 255, 255, 0.045);
   font-family: var(--font-sans);
   font-size: 10px;
   line-height: 1;
@@ -2183,9 +2242,14 @@ h1.one-line-title {
   white-space: nowrap;
 }
 .cover-tags span:nth-child(-n + 2) {
-  border-color: rgba(255, 67, 1, 0.42);
-  background: rgba(255, 67, 1, 0.14);
-  box-shadow: inset 0 0 0 1px rgba(255, 67, 1, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  border-left-color: var(--orange);
+  background: rgba(255, 67, 1, 0.12);
+}
+.cover-tags span:nth-child(3) {
+  border-color: rgba(255, 255, 255, 0.12);
+  border-left-color: var(--orange);
+  background: rgba(255, 67, 1, 0.12);
 }
 .cover-tags span:nth-child(n + 3) {
   color: #dad7d0;
@@ -2227,7 +2291,7 @@ h1.one-line-title {
   flex-direction: column;
   justify-content: center;
   border-left: 1px solid var(--dark-line);
-  padding: 0 0 24px 34px;
+  padding: 0 0 18px 34px;
 }
 .cover-cred-top {
   display: flex;
@@ -2245,36 +2309,36 @@ h1.one-line-title {
   text-transform: uppercase;
 }
 .cover-logo-mark {
-  width: 330px;
-  height: 330px;
-  border-radius: 74px;
+  width: 296px;
+  height: 296px;
+  border-radius: 68px;
   background: var(--orange);
   display: grid;
   place-items: center;
   box-shadow: 0 34px 120px rgba(255, 67, 1, 0.36);
 }
 .cover-glyph {
-  width: 206px;
-  height: 206px;
+  width: 184px;
+  height: 184px;
   object-fit: contain;
   filter: brightness(0) invert(1);
 }
 .stat-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-  margin-top: 34px;
+  gap: 20px;
+  margin-top: 30px;
   border-top: 1px solid var(--dark-line);
 }
 .stat {
-  padding: 22px 0 0;
+  padding: 20px 0 0;
   border-right: 0;
   border-bottom: 0;
 }
 .stat:last-child { border-bottom: 0; }
 .stat:nth-child(2) { padding-left: 0; }
 .stat-value {
-  font-size: 48px;
+  font-size: 44px;
   line-height: 1;
   font-weight: 800;
   color: var(--white);
@@ -2285,7 +2349,7 @@ h1.one-line-title {
 }
 .stat-label {
   white-space: pre-line;
-  margin-top: 13px;
+  margin-top: 11px;
   color: #a1a1a1;
   font-family: var(--font-sans);
   font-size: 10.5px;
@@ -2294,7 +2358,7 @@ h1.one-line-title {
   text-transform: uppercase;
 }
 .cover-note-left {
-  margin-top: 28px;
+  margin-top: 24px;
   color: #a1a1a1;
   font-family: var(--font-sans);
   font-size: 10.5px;
@@ -2415,73 +2479,132 @@ h1.one-line-title {
 }
 
 .logo-wall-layout {
-  margin-top: 16px;
+  margin-top: 14px;
   display: grid;
-  grid-template-columns: 0.78fr 2.02fr 0.56fr;
-  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
   align-items: stretch;
 }
 .logo-wall-section {
   border-top: 1px solid rgba(0, 0, 0, 0.16);
-  padding-top: 12px;
+  padding-top: 14px;
   min-width: 0;
+  position: relative;
   display: flex;
   flex-direction: column;
-  position: relative;
 }
 .logo-wall-section:not(:first-child)::before {
   content: "";
   position: absolute;
-  left: -9px;
+  left: -12px;
   top: 0;
   bottom: 0;
   width: 1px;
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.11);
 }
 .logo-wall-section h2 {
   margin: 0;
   color: var(--black);
-  font-size: 22px;
+  font-size: 23px;
   line-height: 1;
   letter-spacing: 0;
   text-align: center;
 }
 .logo-wall-section h2 span {
   display: block;
-  margin-top: 6px;
+  margin: 6px 0 0;
   color: var(--orange);
   font-family: var(--font-sans);
-  font-size: 9px;
+  font-size: 8px;
   line-height: 1.1;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .logo-wall-grid {
-  --logo-wall-row: 40px;
-  --logo-wall-mark: 36px;
+  --logo-wall-row: 34px;
+  --logo-wall-mark: 29px;
   display: grid;
   align-items: center;
-  align-content: space-between;
+  align-content: start;
   margin-top: 12px;
-  min-height: 382px;
-  gap: 8px 10px;
+  gap: 8px 12px;
 }
-.logo-wall-mobile .logo-wall-grid {
+.logo-wall-mobile-icp .logo-wall-grid {
+  --logo-wall-row: 33px;
+  --logo-wall-mark: 28px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-rows: var(--logo-wall-row);
+  gap: 7px 11px;
 }
 .logo-wall-saas .logo-wall-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-auto-rows: var(--logo-wall-row);
+  margin-top: 24px;
+  gap: 8px 14px;
 }
-.logo-wall-other {
-  grid-column: auto;
+.logo-subgroup {
+  min-width: 0;
+  margin-top: 13px;
 }
-.logo-wall-other .logo-wall-grid {
+.logo-subgroup + .logo-subgroup {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.logo-subgroup h3 {
+  margin: 0 0 9px;
+  color: var(--orange);
+  font-family: var(--font-sans);
+  font-size: 7.8px;
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+}
+.logo-subgroup .logo-wall-grid {
+  margin-top: 0;
+}
+.scale-stage-groups {
+  display: grid;
+  gap: 17px;
+  margin-top: 14px;
+}
+.scale-stage-group {
+  min-width: 0;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+.scale-stage-group:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.scale-stage-group-fintech {
+  margin-top: 9px;
+  padding-top: 16px;
+}
+.scale-stage-group h3 {
+  margin: 0 0 9px;
+  color: var(--orange);
+  font-family: var(--font-sans);
+  font-size: 7.8px;
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+}
+.scale-stage-grid {
+  --logo-wall-row: 32px;
+  --logo-wall-mark: 28px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: var(--logo-wall-row);
+  gap: 8px 13px;
+}
+.scale-stage-group-ops .scale-stage-grid {
   grid-template-columns: 1fr;
-  grid-auto-rows: var(--logo-wall-row);
-  gap: 8px;
 }
 .logo-wall-cell {
   min-width: 0;
@@ -2501,16 +2624,16 @@ h1.one-line-title {
   object-fit: contain;
 }
 .logo-wall-saas .logo-wall-cell img {
-  max-width: 160px;
+  max-width: 150px;
 }
-.logo-wall-other .logo-wall-cell img {
-  max-width: 142px;
+.scale-stage-groups .logo-wall-cell img {
+  max-width: 118px;
 }
 .logo-wall-cell.logo-with-name img {
-  width: 30px;
-  height: 30px;
-  max-width: 30px;
-  max-height: 30px;
+  width: 25px;
+  height: 25px;
+  max-width: 25px;
+  max-height: 25px;
   flex: 0 0 auto;
 }
 .logo-wordmark {
@@ -2519,41 +2642,59 @@ h1.one-line-title {
   text-overflow: ellipsis;
   white-space: nowrap;
   color: var(--black);
-  font-size: 12.5px;
+  font-size: 11px;
   line-height: 1;
   font-weight: 800;
   letter-spacing: 0;
 }
-.logo-wall-mobile .logo-wall-cell.logo-with-name {
+.logo-wall-mobile-icp .logo-wall-cell.logo-with-name {
   gap: 6px;
 }
-.logo-wall-mobile .logo-wordmark {
-  font-size: 11.2px;
+.logo-wall-mobile-icp .logo-wordmark,
+.scale-stage-groups .logo-wordmark {
+  font-size: 9.4px;
 }
 .logo-wall-pokemon img { max-width: 126px; }
-.logo-wall-marvel img { max-width: 124px; }
-.logo-wall-second img { max-width: 116px; }
+.logo-wall-marvel img { max-width: 112px; }
+.logo-wall-second img { max-width: 106px; }
 .logo-wall-playco img { max-width: 120px; }
-.logo-wall-product-madness img { max-width: 124px; }
+.logo-wall-product-madness img { max-width: 116px; }
 .logo-wall-igg img { max-width: 92px; }
-.logo-wall-clubwpt img { max-width: 54px; }
+.logo-wall-clubwpt img { max-width: 104px; }
 .logo-wall-spoon img { max-width: 82px; }
 .logo-wall-dolphin img { max-width: 96px; }
+.logo-wall-befreed img { max-width: 104px; max-height: 24px; }
 .logo-wall-aonic img { max-width: 138px; }
 .logo-wall-wpt img { max-width: 112px; }
-.logo-wall-finalround img { max-width: 160px; }
-.logo-wall-fish img { max-width: 160px; filter: brightness(0); }
+.logo-wall-goodgame img { max-width: 114px; }
+.logo-wall-hard-rock img { max-width: 86px; }
+.logo-wall-expedia img { max-width: 96px; }
+.logo-wall-hotels img { max-width: 104px; }
+.logo-wall-vrbo img { max-width: 98px; }
+.logo-wall-finalround img { max-width: 130px; }
+.logo-wall-fish img { max-width: 128px; filter: brightness(0); }
 .logo-wall-saas .logo-wall-chai img { max-width: 92px; }
-.logo-wall-hyperspell img { max-width: 148px; border-radius: 0; }
-.logo-wall-polargrid img { max-width: 138px; }
-.logo-wall-viggle img { width: var(--logo-wall-mark); height: var(--logo-wall-mark); max-width: var(--logo-wall-mark); max-height: var(--logo-wall-mark); border-radius: 8px; }
-.logo-wall-eragon img { max-width: 112px; }
-.logo-wall-truist img { max-width: 142px; }
-.logo-wall-jt img { max-width: 126px; }
-.logo-wall-harmay img { max-width: 140px; }
+.logo-wall-hyperspell img { max-width: 122px; border-radius: 0; }
+.logo-wall-polargrid img { max-width: 102px; }
+.logo-wall-viggle img { max-width: 96px; max-height: 21px; border-radius: 0; }
+.logo-wall-eragon img { max-width: 96px; }
+.logo-wall-truist img { max-width: 108px; }
+.logo-wall-jt img { max-width: 104px; }
+.logo-wall-harmay img { max-width: 108px; }
 .logo-wall-spectra img { width: var(--logo-wall-mark); height: var(--logo-wall-mark); max-width: var(--logo-wall-mark); max-height: var(--logo-wall-mark); }
-.logo-wall-betbull img { max-width: 108px; }
-.logo-wall-mex img { max-width: 120px; filter: contrast(1.25) saturate(1.1); }
+.logo-wall-betbull img { max-width: 96px; }
+.logo-wall-mex img { max-width: 96px; filter: contrast(1.25) saturate(1.1); }
+.logo-wall-htx img { max-width: 92px; }
+.logo-wall-huobi img { max-width: 96px; }
+.logo-wall-lightfox img { max-width: 116px; }
+.logo-wall-tron img { max-width: 118px; }
+.logo-wall-achain img { max-width: 100px; }
+.logo-wall-achain.logo-with-name img {
+  width: 23px;
+  height: 23px;
+  max-width: 23px;
+  max-height: 23px;
+}
 
 .copy-wide {
   max-width: 1040px;
@@ -2645,13 +2786,13 @@ h1.one-line-title {
 .difference-card.primary p { color: #d4d4d4; }
 
 .outcome-proof-layout {
-  margin-top: 40px;
+  margin-top: 30px;
 }
 .outcome-proof-title {
   margin: 0;
   max-width: 900px;
   color: var(--white);
-  font-size: 58px;
+  font-size: 52px;
   line-height: 0.98;
   letter-spacing: 0;
   font-weight: 900;
@@ -2661,38 +2802,54 @@ h1.one-line-title {
   color: var(--orange);
 }
 .outcome-proof-sub {
-  margin: 18px 0 0;
-  max-width: 680px;
+  margin: 14px 0 0;
+  max-width: 980px;
   color: #a1a1a1;
   font-size: 15.5px;
   line-height: 1.22;
   font-weight: 650;
+  white-space: nowrap;
 }
 .outcome-proof-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(0, 1.42fr) minmax(0, 0.88fr);
+  grid-template-rows: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  margin-top: 34px;
+  height: 414px;
+  margin-top: 28px;
 }
 .outcome-proof-card {
-  min-height: 264px;
+  min-height: 0;
   padding: 22px 24px 20px;
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(255, 255, 255, 0.035);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
 }
 .outcome-proof-card.featured {
   background: var(--orange);
   border-color: var(--orange);
   color: var(--black);
 }
+.outcome-proof-card.has-proof-art {
+  grid-row: 1 / span 2;
+  min-height: 0;
+  padding: 18px 24px 20px;
+}
+.outcome-proof-card:not(.has-proof-art) {
+  padding: 18px 22px 16px;
+}
 .outcome-card-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  min-height: 42px;
+}
+.outcome-proof-card:not(.has-proof-art) .outcome-card-head {
+  min-height: 34px;
 }
 .outcome-proof-card small {
   color: #a1a1a1;
@@ -2707,8 +2864,8 @@ h1.one-line-title {
   color: rgba(0, 0, 0, 0.72);
 }
 .outcome-case-logo {
-  width: 108px;
-  height: 36px;
+  width: 150px;
+  height: 44px;
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -2723,6 +2880,18 @@ h1.one-line-title {
   width: 40px;
   height: 36px;
 }
+.outcome-case-logo.logo-marvel-snap {
+  width: 150px;
+  height: 44px;
+}
+.outcome-case-logo.logo-marvel-snap .logo-img {
+  transform: translate(16px, -14px) scale(1.25);
+  transform-origin: right center;
+}
+.outcome-case-logo.logo-expedia-proof {
+  width: 150px;
+  height: 44px;
+}
 .outcome-case-logo.logo-finalround {
   width: 136px;
   height: 36px;
@@ -2733,32 +2902,41 @@ h1.one-line-title {
   filter: none;
 }
 .outcome-case-logo.logo-fish {
-  width: 148px;
-  height: 36px;
+  width: 174px;
+  height: 46px;
   padding: 0;
   background: transparent;
   color: var(--white);
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 8px;
-  font-size: 15.5px;
-  line-height: 1;
-  font-weight: 850;
-  letter-spacing: 0;
 }
-.fish-proof-mark {
-  width: 44px;
-  height: 24px;
-  display: block;
-  object-fit: contain;
-}
-.outcome-case-logo.logo-fish .fish-proof-mark {
+.outcome-case-logo.logo-fish .logo-img {
   filter: brightness(0) invert(1);
+  transform: scale(1.08);
+  transform-origin: right center;
 }
-.fish-proof-word {
-  color: var(--white);
-  white-space: nowrap;
+.outcome-awards-strip {
+  height: 142px;
+  margin: 12px 0 13px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  overflow: hidden;
+  background: #10112c;
+}
+.outcome-awards-strip img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 48%;
+}
+.outcome-proof-card.has-proof-art b {
+  font-size: 68px;
+}
+.outcome-proof-card.has-proof-art h3 {
+  margin-top: 8px;
+}
+.outcome-proof-card.has-proof-art p {
+  max-width: 430px;
+  font-size: 11.4px;
+  line-height: 1.1;
 }
 .outcome-proof-card b {
   display: block;
@@ -2770,6 +2948,10 @@ h1.one-line-title {
 }
 .outcome-proof-card.featured b {
   color: var(--black);
+}
+.outcome-proof-card:not(.has-proof-art) b {
+  font-size: 42px;
+  line-height: 0.9;
 }
 .outcome-proof-card h3 {
   margin: 18px 0 0;
@@ -2783,7 +2965,12 @@ h1.one-line-title {
 .outcome-proof-card.featured h3 {
   color: var(--black);
 }
+.outcome-proof-card:not(.has-proof-art) h3 {
+  margin-top: 9px;
+  font-size: 13px;
+}
 .outcome-proof-card p {
+  display: none;
   margin: 10px 0 0;
   color: #a1a1a1;
   font-size: 12.5px;
@@ -2792,6 +2979,11 @@ h1.one-line-title {
 }
 .outcome-proof-card.featured p {
   color: rgba(0, 0, 0, 0.82);
+}
+.outcome-proof-card:not(.has-proof-art) p {
+  margin-top: 7px;
+  font-size: 10.8px;
+  line-height: 1.1;
 }
 .outcome-intervention {
   margin-top: 10px;
@@ -2806,6 +2998,11 @@ h1.one-line-title {
   border-left-color: var(--black);
   color: rgba(0, 0, 0, 0.78);
 }
+.outcome-proof-card:not(.has-proof-art) .outcome-intervention {
+  margin-top: 8px;
+  font-size: 9.2px;
+  line-height: 1.04;
+}
 .outcome-supporting {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -2817,10 +3014,15 @@ h1.one-line-title {
 .outcome-proof-card.featured .outcome-supporting {
   border-top-color: rgba(0, 0, 0, 0.16);
 }
+.outcome-proof-card:not(.has-proof-art) .outcome-supporting {
+  gap: 6px;
+  margin-top: 10px;
+  padding-top: 10px;
+}
 .outcome-supporting strong {
   display: block;
   color: var(--orange);
-  font-size: 23px;
+  font-size: 21px;
   line-height: 0.95;
   letter-spacing: 0;
   font-weight: 900;
@@ -2833,7 +3035,7 @@ h1.one-line-title {
   display: block;
   margin-top: 4px;
   color: #a1a1a1;
-  font-size: 7.8px;
+  font-size: 7.2px;
   line-height: 1.08;
   font-weight: 850;
   text-transform: uppercase;
@@ -2842,6 +3044,7 @@ h1.one-line-title {
   color: rgba(0, 0, 0, 0.68);
 }
 .outcome-proof-note {
+  display: none;
   margin-top: 16px;
   padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
@@ -3256,125 +3459,206 @@ h1.one-line-title {
 
 .product-system-layout {
   display: grid;
-  grid-template-rows: 82px 194px 82px;
-  gap: 14px;
-  margin-top: 18px;
-  height: 386px;
-}
-.product-input-strip,
-.product-control-strip {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-}
-.product-input-strip article,
-.product-control-strip div {
-  min-width: 0;
-  padding: 14px 16px 13px;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  background: rgba(255, 255, 255, 0.68);
-}
-.product-input-strip b,
-.product-control-strip b {
-  display: block;
-  color: var(--black);
-  font-size: 15px;
-  line-height: 1;
-  font-weight: 860;
-}
-.product-input-strip span,
-.product-control-strip span {
-  display: block;
-  margin-top: 8px;
-  color: var(--text);
-  font-size: 10.4px;
-  line-height: 1.12;
-  font-weight: 700;
+  grid-template-rows: 64px 270px;
+  gap: 10px;
+  margin-top: 14px;
+  height: 344px;
 }
 .product-system-flow {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1.08fr) 22px minmax(0, 1.04fr) 22px minmax(0, 1.04fr) 22px minmax(0, 1.05fr);
+  grid-template-columns: minmax(0, 1.05fr) 22px minmax(0, 0.95fr) 22px minmax(0, 1fr) 22px minmax(0, 0.9fr) 22px minmax(0, 0.9fr);
   gap: 8px;
-  align-items: stretch;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.7);
 }
 .product-system-node {
   min-width: 0;
-  padding: 18px 18px 16px;
-  border-radius: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.13);
-  border-top: 5px solid var(--orange);
-  background: rgba(255, 255, 255, 0.76);
-  display: flex;
-  flex-direction: column;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 .product-system-node small {
-  color: var(--orange);
-  font-family: var(--font-sans);
-  font-size: 9px;
-  line-height: 1;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  font-weight: 900;
+  display: none;
 }
 .product-system-node h2 {
-  margin: 18px 0 10px;
+  margin: 0;
   color: var(--black);
-  font-size: 23px;
-  line-height: 1;
+  font-size: 16.4px;
+  line-height: 0.96;
   letter-spacing: 0;
+  font-weight: 880;
 }
 .product-system-node p {
-  margin: 0;
-  color: var(--text);
-  font-size: 11.4px;
-  line-height: 1.16;
-  font-weight: 700;
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 8.8px;
+  line-height: 1.08;
+  font-weight: 760;
 }
-.product-system-node-dark {
-  background:
-    radial-gradient(circle at 82% 16%, rgba(255, 67, 1, 0.16), transparent 34%),
-    var(--black);
-  border-color: rgba(255, 67, 1, 0.2);
+.product-system-node-dark,
+.product-system-node-accent {
+  background: transparent;
+  border: 0;
 }
 .product-system-node-dark h2,
-.product-system-node-dark p {
-  color: var(--white);
-}
-.product-system-node-dark p {
-  color: #d4d4d4;
-}
-.product-system-node-accent {
-  background: rgba(255, 67, 1, 0.08);
+.product-system-node-accent h2 {
+  color: var(--orange);
 }
 .product-system-arrow {
   display: grid;
   place-items: center;
   color: var(--orange);
   font-family: var(--font-sans);
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 900;
 }
-.product-control-strip {
+.product-hero-grid {
+  display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  height: 100%;
+  min-height: 0;
 }
-.product-control-strip div {
-  border-left: 5px solid var(--orange);
-  background: rgba(255, 255, 255, 0.82);
+.product-hero {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  overflow: hidden;
+  padding: 11px;
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  background: rgba(255, 255, 255, 0.66);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 8px;
+}
+.product-hero h2 {
+  margin: 0 0 6px;
+  color: var(--orange);
+  font-family: var(--font-sans);
+  font-size: 8.7px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  font-weight: 920;
+  text-transform: uppercase;
+}
+.product-hero p {
+  margin: 0;
+  color: var(--black);
+  font-size: 10.4px;
+  line-height: 1.13;
+  font-weight: 740;
+}
+.product-visual {
+  min-height: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: var(--black);
+  overflow: hidden;
+  position: relative;
+}
+.product-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.product-visual-overlay {
+  position: absolute;
+  inset: auto 8px 8px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 8px;
+  background: rgba(0, 0, 0, 0.72);
+  color: var(--white);
+  font-size: 7.8px;
+  line-height: 1;
+  font-weight: 840;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.product-visual-overlay b {
+  color: var(--acid);
+}
+.product-accounts-visual {
+  padding: 10px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: 8px;
+  background:
+    radial-gradient(circle at 80% 8%, rgba(255, 67, 1, 0.24), transparent 34%),
+    #111111;
+}
+.account-visual-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--white);
+  font-size: 8.6px;
+  line-height: 1;
+  font-weight: 860;
+}
+.account-visual-title span {
+  color: var(--acid);
+}
+.account-platforms {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 5px;
+}
+.account-platforms div {
+  display: grid;
+  place-items: center;
+  min-height: 34px;
+  border: 1px solid rgba(255,255,255,0.13);
+  background: rgba(255,255,255,0.07);
+}
+.account-platforms img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+.account-platforms .wide-icon img {
+  width: 30px;
+}
+.account-note {
+  color: #d4d4d4;
+  font-size: 8.6px;
+  line-height: 1.12;
+  font-weight: 700;
+}
+.product-system-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: var(--muted);
+  font-size: 8.8px;
+  line-height: 1;
+  font-weight: 780;
+}
+.product-system-footer b {
+  color: var(--black);
+}
+.product-system-footer span:last-child {
+  color: var(--orange);
+  font-weight: 900;
 }
 
 .creative-proof-board {
   display: grid;
-  grid-template-columns: 292px minmax(0, 1fr);
-  gap: 18px;
-  margin-top: 18px;
-  height: 434px;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+  height: 440px;
   align-items: stretch;
 }
 .creative-stats-panel {
   height: 100%;
   box-sizing: border-box;
-  padding: 18px;
+  padding: 16px;
   border-radius: 4px;
   background:
     radial-gradient(circle at 80% 14%, rgba(255, 67, 1, 0.12), transparent 30%),
@@ -3386,12 +3670,12 @@ h1.one-line-title {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(3, minmax(0, 1fr));
-  gap: 12px;
+  gap: 10px;
   height: 100%;
 }
 .creative-volume-contrast > div {
   min-height: 0;
-  padding: 13px 15px 12px;
+  padding: 12px 13px 11px;
   border-radius: 4px;
   background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.11);
@@ -3413,7 +3697,7 @@ h1.one-line-title {
   display: block;
   color: #a1a1a1;
   font-family: var(--font-sans);
-  font-size: 8.4px;
+  font-size: 8px;
   line-height: 1.12;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -3422,7 +3706,7 @@ h1.one-line-title {
 .creative-volume-contrast b {
   display: block;
   color: var(--orange);
-  font-size: 50px;
+  font-size: 43px;
   line-height: 0.86;
 }
 .creative-volume-contrast > div:nth-child(2) b {
@@ -3431,7 +3715,7 @@ h1.one-line-title {
 .creative-volume-contrast span {
   display: block;
   color: #d4d4d4;
-  font-size: 11.4px;
+  font-size: 10.9px;
   line-height: 1.04;
   font-weight: 750;
 }
@@ -3439,7 +3723,7 @@ h1.one-line-title {
   display: block;
   margin-top: 6px;
   color: #a1a1a1;
-  font-size: 9px;
+  font-size: 8.6px;
   line-height: 1.08;
   font-style: normal;
   font-weight: 760;
@@ -3685,265 +3969,186 @@ h1.one-line-title {
   font-weight: 800;
 }
 
-.decision-loop-board {
+.cadence-page {
   display: grid;
-  grid-template-columns: 350px minmax(0, 1fr);
-  gap: 18px;
-  margin-top: 22px;
-  height: 376px;
-  align-items: stretch;
+  grid-template-rows: auto 1fr;
+  gap: 30px;
 }
-.decision-loop-context {
-  padding: 22px 22px 20px;
-  border-radius: 4px;
-  background:
-    radial-gradient(circle at 82% 15%, rgba(255, 67, 1, 0.16), transparent 34%),
-    #0a0a0a;
-  color: var(--white);
-  border: 1px solid rgba(255, 67, 1, 0.18);
-  display: flex;
-  flex-direction: column;
+.cadence-intro {
+  padding-bottom: 26px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
-.decision-loop-context small,
-.decision-step-number {
-  color: var(--orange);
+.cadence-kicker {
+  color: var(--lime);
   font-family: var(--font-sans);
-  font-size: 9.2px;
+  font-size: 12px;
   line-height: 1;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  font-weight: 850;
-}
-.decision-loop-context h2 {
-  margin: 18px 0 12px;
-  color: var(--white);
-  font-size: 31px;
-  line-height: 0.98;
-}
-.decision-loop-context p {
-  margin: 0;
-  color: #d4d4d4;
-  font-size: 12.4px;
-  line-height: 1.18;
-  font-weight: 680;
-}
-.decision-cadence-list {
-  display: grid;
-  gap: 7px;
-  margin-top: auto;
-}
-.decision-cadence-list div {
-  display: grid;
-  grid-template-columns: 78px 1fr;
-  gap: 10px;
-  align-items: center;
-  padding-top: 7px;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-.decision-cadence-list b {
-  color: var(--orange);
-  font-size: 10.5px;
-  line-height: 1;
-}
-.decision-cadence-list span {
-  color: #d4d4d4;
-  font-size: 9.8px;
-  line-height: 1.08;
-  font-weight: 760;
-}
-.decision-loop-steps {
-  display: grid;
-  grid-template-rows: repeat(4, minmax(0, 1fr));
-  gap: 10px;
-}
-.decision-loop-step {
-  display: grid;
-  grid-template-columns: 74px minmax(0, 1fr) 178px;
-  gap: 16px;
-  align-items: center;
-  min-height: 0;
-  padding: 15px 18px;
-  border-left: 5px solid var(--orange);
-  border-radius: 4px;
-  background: rgba(255, 255, 255, 0.72);
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-.decision-loop-step h2 {
-  margin: 0 0 5px;
-  color: var(--black);
-  font-size: 22px;
-  line-height: 0.98;
-}
-.decision-loop-step p {
-  margin: 0;
-  color: var(--text);
-  font-size: 11.4px;
-  line-height: 1.14;
-  font-weight: 680;
-}
-.decision-action {
-  color: var(--orange);
-  font-family: var(--font-sans);
-  font-size: 8.6px;
-  line-height: 1.16;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 900;
 }
-.decision-loop-step.final {
-  background: var(--black);
-  border-color: rgba(255, 67, 1, 0.5);
-}
-.decision-loop-step.final h2 {
+.cadence-intro h1 {
+  margin: 28px 0 22px;
   color: var(--white);
+  font-size: 52px;
+  line-height: 0.98;
+  font-weight: 820;
 }
-.decision-loop-step.final p {
-  color: #d4d4d4;
+.cadence-intro p {
+  width: 760px;
+  margin: 0;
+  color: #c9c6d3;
+  font-size: 25px;
+  line-height: 1.34;
+  font-weight: 650;
 }
-
+.cadence-table {
+  display: grid;
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+.cadence-row {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr) 180px;
+  gap: 26px;
+  align-items: center;
+  min-height: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+}
+.cadence-row b {
+  color: var(--lime);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.cadence-row p {
+  margin: 0;
+  color: #d8d5df;
+  font-size: 21px;
+  line-height: 1.15;
+  font-weight: 650;
+}
+.cadence-row span {
+  justify-self: end;
+  padding: 9px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255,255,255,0.66);
+  font-family: var(--font-sans);
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
 .problem-combo {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
   gap: 24px;
   margin-top: 30px;
 }
-.measurement-board {
+.measurement-page {
   display: grid;
-  grid-template-columns: 0.82fr 1.18fr;
+  grid-template-rows: auto 1fr auto;
   gap: 26px;
-  margin-top: 30px;
-  align-items: stretch;
 }
-.risk-board {
-  border-top: 1px solid rgba(255, 255, 255, 0.16);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-}
-.risk-row {
-  display: grid;
-  grid-template-columns: 124px 1fr;
-  gap: 18px;
-  min-height: 92px;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.13);
-}
-.risk-row:last-child { border-bottom: 0; }
-.risk-row b {
-  color: var(--orange);
-  font-size: 13px;
-  line-height: 1;
-  font-weight: 820;
-}
-.risk-row h3 {
-  margin: 0 0 8px;
-  color: var(--white);
-  font-size: 22px;
-  line-height: 1;
-}
-.risk-row p {
-  margin: 0;
-  color: #d4d4d4;
-  font-size: 12.4px;
-  line-height: 1.18;
-  font-weight: 650;
-}
-.scoreboard-compare {
-  min-height: 302px;
-  padding: 20px;
-  border: 1px solid rgba(255, 67, 1, 0.16);
-  border-radius: 4px;
-  background:
-    radial-gradient(circle at 78% 22%, rgba(255, 67, 1, 0.18), transparent 28%),
-    #0a0a0a;
-  display: grid;
-  grid-template-columns: 1fr 64px 1fr;
-  gap: 16px;
-  align-items: stretch;
-}
-.scorecard {
-  padding: 24px 22px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: rgba(255, 255, 255, 0.055);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.scorecard small {
-  color: #a1a1a1;
-  font-size: 10px;
-  line-height: 1;
-  font-weight: 820;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-.scorecard b {
-  margin-top: 22px;
-  color: var(--orange);
-  font-size: 62px;
-  line-height: 0.9;
-  font-weight: 820;
-}
-.scorecard.truth b { color: var(--orange); }
-.scorecard p {
-  margin: 18px 0 0;
-  color: #d4d4d4;
-  font-size: 12.6px;
-  line-height: 1.2;
-  font-weight: 650;
-}
-.scorebridge {
-  display: grid;
-  place-items: center;
-  color: var(--orange);
-  font-size: 13px;
-  font-weight: 820;
-  text-align: center;
-}
-.scoreboard-stack {
-  display: flex;
-  flex-direction: column;
-}
-.scoreboard-note {
-  margin-top: 12px;
-  padding: 12px 14px;
-  border-left: 4px solid var(--orange);
-  color: #d4d4d4;
-  background: rgba(255,255,255,0.055);
-  font-size: 12px;
-  line-height: 1.18;
-  font-weight: 760;
-}
-.measurement-checks {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
-  margin-top: 12px;
-}
-.measurement-check {
-  min-height: 78px;
-  padding: 12px 12px 11px;
-  border-radius: 4px;
-  background: rgba(255,255,255,0.055);
-  border: 1px solid rgba(255,255,255,0.11);
-}
-.measurement-check b {
-  display: block;
+.measurement-kicker {
   color: var(--orange);
   font-family: var(--font-sans);
-  font-size: 8.5px;
+  font-size: 12px;
   line-height: 1;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 900;
 }
-.measurement-check span {
+.measurement-headline {
+  margin: 26px 0 0;
+  color: var(--black);
+  font-size: 45px;
+  line-height: 1.04;
+  font-weight: 820;
+  letter-spacing: 0;
+}
+.measurement-headline span {
   display: block;
-  margin-top: 9px;
+  color: var(--orange);
+}
+.measurement-pair-board {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 58px minmax(0, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 16px;
+}
+.measurement-scorecard {
+  min-height: 252px;
+  padding: 34px 38px 28px;
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  background: rgba(255, 255, 255, 0.72);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+.measurement-scorecard.truth {
+  background: var(--black);
+  border-color: rgba(255, 67, 1, 0.44);
+  color: var(--white);
+}
+.measurement-scorecard small {
+  color: var(--muted);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.measurement-scorecard.truth small {
+  color: var(--lime);
+}
+.measurement-scorecard b {
+  align-self: end;
+  color: var(--black);
+  font-size: 86px;
+  line-height: 0.84;
+  font-weight: 820;
+}
+.measurement-scorecard.truth b {
+  color: var(--orange);
+}
+.measurement-scorecard p {
+  margin: 24px 0 0;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 1.18;
+  font-weight: 650;
+}
+.measurement-scorecard.truth p {
   color: #d4d4d4;
-  font-size: 10.5px;
-  line-height: 1.12;
-  font-weight: 730;
+}
+.measurement-vs {
+  display: grid;
+  place-items: center;
+  color: var(--orange);
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.measurement-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+}
+.measurement-footer b {
+  color: var(--orange);
 }
 .problem-list {
   display: grid;
@@ -4063,11 +4268,87 @@ h1.one-line-title {
 
 .scale-gate-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.95fr);
-  gap: 18px;
+  grid-template-columns: 0.82fr 1.18fr;
+  gap: 22px;
   margin-top: 22px;
   height: 426px;
   align-items: stretch;
+}
+.commitment-gate {
+  min-height: 0;
+  padding: 26px 26px 24px;
+  border-radius: 4px;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(255, 67, 1, 0.18), transparent 34%),
+    var(--black);
+  color: var(--white);
+  border: 1px solid rgba(255, 67, 1, 0.24);
+  display: flex;
+  flex-direction: column;
+}
+.commitment-gate small {
+  color: var(--orange);
+  font-family: var(--font-sans);
+  font-size: 9.5px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.commitment-gate b {
+  display: block;
+  margin-top: 26px;
+  color: var(--orange);
+  font-size: 104px;
+  line-height: 0.82;
+  letter-spacing: 0;
+  font-weight: 900;
+}
+.commitment-gate h2 {
+  margin: 16px 0 0;
+  color: var(--white);
+  font-size: 27px;
+  line-height: 0.98;
+}
+.commitment-gate p {
+  margin: 12px 0 0;
+  color: #d4d4d4;
+  font-size: 13px;
+  line-height: 1.18;
+  font-weight: 700;
+}
+.commitment-points {
+  display: grid;
+  gap: 9px;
+  margin-top: auto;
+}
+.commitment-points div {
+  padding: 10px 11px 9px;
+  border-left: 3px solid var(--orange);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  font-size: 11.2px;
+  line-height: 1.1;
+  font-weight: 850;
+}
+.commitment-points span {
+  color: #a1a1a1;
+  font-weight: 750;
+}
+.execution-gates {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.execution-gates > h3 {
+  margin: 0 0 11px;
+  color: var(--orange);
+  font-family: var(--font-sans);
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 900;
 }
 .scale-gate-board {
   display: grid;
@@ -4078,8 +4359,8 @@ h1.one-line-title {
 }
 .scale-gate-row {
   display: grid;
-  grid-template-columns: 112px minmax(0, 1fr) 126px;
-  gap: 14px;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 18px;
   align-items: center;
   min-height: 0;
   padding: 13px 0;
@@ -4109,20 +4390,6 @@ h1.one-line-title {
   font-size: 11.4px;
   line-height: 1.14;
   font-weight: 650;
-}
-.scale-gate-action {
-  justify-self: stretch;
-  padding: 11px 12px 10px;
-  border-radius: 4px;
-  background: var(--black);
-  color: var(--white);
-  font-family: var(--font-sans);
-  font-size: 9.2px;
-  line-height: 1.12;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-weight: 850;
-  text-align: center;
 }
 .scale-gate-kicker {
   margin-top: 12px;
@@ -4441,6 +4708,469 @@ h1.one-line-title {
 .dark .footnote strong,
 .orange .footnote strong { color: #a1a1a1; }
 
+.deck-bottom-line {
+  position: absolute;
+  left: 72px;
+  right: 72px;
+  bottom: 52px;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+  z-index: 2;
+}
+.deck-bottom-note {
+  max-width: 620px;
+  padding-left: 14px;
+  border-left: 4px solid var(--orange);
+  color: #a1a1a1;
+  font-size: 10.2px;
+  line-height: 1.18;
+  font-weight: 720;
+}
+.deck-tagline {
+  color: var(--orange);
+  font-family: var(--font-sans);
+  font-size: 10.4px;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  font-weight: 900;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.lime-word { color: var(--acid); }
+.slide.dark h1 .lime-word { color: var(--acid) !important; }
+h1.problem-title span,
+h1.commercial-title span {
+  display: block;
+}
+
+.problem-content,
+.outcome-content,
+.commercial-content {
+  bottom: 96px;
+}
+.problem-board {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 34px;
+}
+.problem-column {
+  min-height: 282px;
+  padding: 24px 24px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.045);
+}
+.problem-column.old {
+  opacity: 0.72;
+}
+.problem-column.future {
+  border-color: rgba(233, 255, 83, 0.34);
+  background:
+    linear-gradient(180deg, rgba(233, 255, 83, 0.08), rgba(255, 67, 1, 0.04)),
+    rgba(255, 255, 255, 0.055);
+}
+.problem-column h2 {
+  margin: 0 0 20px;
+  color: var(--white);
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.problem-column.future h2 { color: var(--acid); }
+.problem-column ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 16px;
+}
+.problem-column li {
+  position: relative;
+  padding-left: 18px;
+  color: #d4d4d4;
+  font-size: 17px;
+  line-height: 1.14;
+  font-weight: 720;
+}
+.problem-column.old li { color: #a3a3a3; }
+.problem-column li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.44em;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--orange);
+}
+.problem-column.future li::before { background: var(--acid); }
+.problem-single-board {
+  display: grid;
+  gap: 16px;
+  margin-top: 28px;
+}
+.problem-pain-panel {
+  min-height: 286px;
+  padding: 28px 30px 26px;
+  border-left: 5px solid var(--orange);
+  opacity: 1;
+}
+.problem-pain-panel h2 {
+  margin-bottom: 22px;
+  color: var(--orange);
+}
+.problem-pain-panel ul {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 30px;
+  row-gap: 18px;
+}
+.problem-pain-panel li {
+  color: #d4d4d4;
+  font-size: 19px;
+  line-height: 1.12;
+}
+.problem-preview-line {
+  padding: 14px 16px 13px;
+  border: 1px solid rgba(233, 255, 83, 0.28);
+  border-left: 5px solid var(--acid);
+  border-radius: 4px;
+  background: rgba(233, 255, 83, 0.05);
+  color: #d4d4d4;
+  font-size: 15px;
+  line-height: 1.12;
+  font-weight: 760;
+}
+.problem-preview-line b {
+  color: var(--acid);
+  font-weight: 900;
+}
+.before-after-board {
+  display: grid;
+  grid-template-columns: 0.92fr 1.08fr;
+  gap: 22px;
+  margin-top: 24px;
+  align-items: stretch;
+}
+.before-after-board .problem-column {
+  min-height: 392px;
+  padding: 25px 26px 24px;
+}
+.before-after-board .problem-column.old {
+  opacity: 1;
+}
+.before-after-board .problem-column ul {
+  gap: 13px;
+}
+.before-after-board .problem-column li {
+  font-size: 16px;
+  line-height: 1.14;
+}
+.after-column {
+  border-color: rgba(233, 255, 83, 0.32);
+  border-left: 5px solid var(--acid);
+  background:
+    radial-gradient(circle at 74% 24%, rgba(233, 255, 83, 0.13), transparent 30%),
+    rgba(255, 255, 255, 0.055);
+}
+.after-model {
+  margin-top: 15px;
+  padding: 29px 28px 25px;
+  border: 1px solid rgba(233, 255, 83, 0.26);
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.18);
+}
+.after-model-line {
+  display: grid;
+  gap: 10px;
+  color: var(--white);
+  font-size: 34px;
+  line-height: 1;
+  font-weight: 870;
+}
+.after-model-line .arrow {
+  color: var(--orange);
+}
+.after-model-primary,
+.after-model-secondary {
+  display: block;
+}
+.after-model-line .day {
+  color: var(--acid);
+  white-space: nowrap;
+}
+.after-model-line em {
+  color: #d4d4d4;
+  font-size: 13px;
+  line-height: 1;
+  font-style: normal;
+  font-weight: 760;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.after-model p {
+  margin: 14px 0 0;
+  color: #d4d4d4;
+  font-size: 13.4px;
+  line-height: 1.18;
+  font-weight: 720;
+}
+.after-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 15px;
+}
+.after-tile {
+  min-height: 96px;
+  padding: 14px 13px 13px;
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 4px;
+  background: rgba(255,255,255,0.05);
+}
+.after-tile b {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--acid);
+  font-size: 8.6px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.after-tile span {
+  color: #d4d4d4;
+  font-size: 11px;
+  line-height: 1.14;
+  font-weight: 720;
+}
+
+.outcome-model {
+  margin-top: 28px;
+  padding: 38px 42px 36px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-left: 6px solid var(--acid);
+  border-radius: 4px;
+  background:
+    radial-gradient(circle at 72% 22%, rgba(233, 255, 83, 0.18), transparent 30%),
+    rgba(255, 255, 255, 0.045);
+}
+.outcome-model-line {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: var(--white);
+  font-size: 52px;
+  line-height: 1;
+  font-weight: 850;
+}
+.outcome-model-line .spend { color: var(--white); }
+.outcome-model-line .arrow { color: var(--orange); }
+.outcome-model-line .day { color: var(--acid); }
+.outcome-model p {
+  margin: 18px 0 0;
+  color: #d4d4d4;
+  font-size: 20px;
+  line-height: 1.28;
+  font-weight: 700;
+}
+.outcome-model small {
+  display: block;
+  margin-top: 9px;
+  color: #8b8b8b;
+  font-size: 12.5px;
+  line-height: 1.2;
+  font-weight: 720;
+}
+.outcome-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+.outcome-tile {
+  min-height: 96px;
+  padding: 16px 18px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.045);
+}
+.outcome-tile b {
+  display: block;
+  margin-bottom: 14px;
+  color: var(--acid);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.15em;
+  font-weight: 900;
+}
+.outcome-tile span {
+  color: #d4d4d4;
+  font-size: 15px;
+  line-height: 1.18;
+  font-weight: 720;
+}
+
+.commercial-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 30px;
+}
+.commercial-tier {
+  min-height: 322px;
+  padding: 22px 22px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-top: 5px solid var(--orange);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.74);
+  display: flex;
+  flex-direction: column;
+}
+.commercial-tier.featured {
+  background: var(--black);
+  color: var(--white);
+}
+.commercial-tier h2 {
+  margin: 0 0 20px;
+  color: var(--orange);
+  font-size: 32px;
+  line-height: 0.95;
+  font-weight: 860;
+}
+.commercial-tier.featured h2 { color: var(--acid); }
+.commercial-rows {
+  display: grid;
+  gap: 13px;
+}
+.commercial-row small {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--muted);
+  font-size: 8.8px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  font-weight: 900;
+}
+.commercial-row span {
+  display: block;
+  color: var(--black);
+  font-size: 15.5px;
+  line-height: 1.12;
+  font-weight: 760;
+}
+.commercial-tier.featured .commercial-row small { color: #a1a1a1; }
+.commercial-tier.featured .commercial-row span { color: var(--white); }
+.commercial-promise {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  margin-top: 18px;
+  padding: 14px 18px;
+  border-left: 5px solid var(--orange);
+  border-radius: 4px;
+  background: var(--black);
+  color: var(--white);
+}
+.commercial-promise b {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--acid);
+  font-size: 16px;
+  line-height: 1.1;
+}
+.commercial-promise span {
+  display: block;
+  color: #d4d4d4;
+  font-size: 13px;
+  line-height: 1.16;
+  font-weight: 700;
+}
+.commercial-promise em {
+  color: var(--white);
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.08;
+  font-weight: 820;
+}
+.commercial-cta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+}
+.commercial-booking {
+  min-width: 214px;
+  padding: 12px 14px 11px;
+  border: 1px solid rgba(233, 255, 83, 0.46);
+  border-radius: 4px;
+  background: rgba(233, 255, 83, 0.08);
+  color: var(--white);
+  text-decoration: none;
+}
+.commercial-booking small {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--acid);
+  font-family: var(--font-mono);
+  font-size: 7.6px;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.commercial-booking b {
+  display: block;
+  margin: 0;
+  color: var(--white);
+  font-size: 15px;
+  line-height: 1;
+  font-weight: 850;
+}
+.commercial-cta-title {
+  max-width: 112px;
+  color: var(--white);
+  font-family: var(--font-mono);
+  font-size: 8px;
+  line-height: 1.12;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+.commercial-qr-group {
+  display: flex;
+  gap: 10px;
+}
+.commercial-qr {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+}
+.commercial-qr img {
+  width: 76px;
+  height: 76px;
+  display: block;
+  background: #fff;
+}
+.commercial-qr span {
+  color: #d4d4d4;
+  font-family: var(--font-mono);
+  font-size: 7.2px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 850;
+}
+.commercial-content .deck-bottom-note {
+  color: var(--text);
+}
+
 @media (max-width: 900px) {
   .deck { padding: 12px 0 28px; gap: 16px; }
   .slide { width: calc(100vw - 20px); }
@@ -4517,6 +5247,7 @@ slides.push(slide(1, "Confidential", `
       <div class="cover-tags">
         <span>Mobile Application</span>
         <span>AI/SaaS</span>
+        <span>Scale-stage</span>
         <span>Performance Ads</span>
         <span>Managed Service</span>
       </div>
@@ -4527,67 +5258,105 @@ slides.push(slide(1, "Confidential", `
       </div>
       <div>
         <div class="stat-row">
-          ${stat("15 years", "ADS SELLING\nAND GROWTH EXPERIENCE*")}
+          ${stat("18 years", "ADS SELLING\nAND GROWTH EXPERIENCE*")}
           ${stat("$3B+", "CUMULATIVE MANAGED SPEND*")}
         </div>
         <div class="cover-note-left">*Includes prior agency and operator experience of the delivery team.</div>
       </div>
     </aside>
   </main>
-`, "dark", false, "01 / 10"));
+`, "dark", false, "01 / 11"));
 
-slides.push(slide(2, "Proof", `
+slides.push(slide(2, "Before → After", `
+  <main class="content problem-content">
+    ${splitTitle({
+      eyebrow: "THE SHIFT",
+      titleA: "Most growth still runs on guesswork.",
+      sub: "",
+      className: "problem-title"
+    }, "We run on banked revenue.")}
+    <div class="before-after-board">
+      <section class="problem-column old">
+        <h2>Before</h2>
+        <ul>
+          <li>Campaigns are built and tuned by hand</li>
+          <li>Creative testing moves only as fast as manual review</li>
+          <li>Platform dashboards claim victory before revenue does</li>
+          <li>Teams copy last quarter's playbook and call it strategy</li>
+          <li>Spend moves on gut, meetings, and folklore</li>
+          <li>Nobody can say when today's $100K comes back</li>
+        </ul>
+      </section>
+      <section class="problem-column future after-column">
+        <h2>After Hellyeah</h2>
+        <div class="after-model">
+          <div class="after-model-line">
+            <span class="after-model-primary">Spend $100K today <span class="arrow">→</span></span>
+            <span class="after-model-secondary">break even on <span class="day">Day 60</span> <em>(illustrative · modeled from your cohorts)</em></span>
+          </div>
+        </div>
+        <div class="after-tiles">
+          <article class="after-tile"><b>Predictable</b><span>Payback is modeled before the first budget move</span></article>
+          <article class="after-tile"><b>Signal-led</b><span>Creative format and media plan follow live performance signals</span></article>
+          <article class="after-tile"><b>Revenue-backed</b><span>Decisions use real LTV, ARPU, CAC, and payback data</span></article>
+        </div>
+      </section>
+    </div>
+  </main>
+`, "dark", false, "02 / 11"));
+
+slides.push(slide(3, "Proof", `
   <main class="content">
     <div class="outcome-proof-layout">
-      <div class="eyebrow">SELECTED OUTCOMES</div>
-      <h1 class="outcome-proof-title">Selected outcomes.</h1>
-      <p class="outcome-proof-sub">Proof before process: three published outcomes show the operating pattern before we explain the model.</p>
+      <div class="eyebrow">Case studies</div>
+      <h1 class="outcome-proof-title">Results first.</h1>
+      <p class="outcome-proof-sub">Proof before process: three case outcomes show the operating pattern before we explain the model.</p>
       <div class="outcome-proof-grid">
-        <article class="outcome-proof-card">
+        <article class="outcome-proof-card has-proof-art">
           <div class="outcome-card-head">
-            <small>PLAYCO · GAMING</small>
-            <div class="outcome-case-logo logo-playco">${logo("web-logo-playco.svg", "Playco logo")}</div>
+            <small>Mobile gaming</small>
+            <div class="outcome-case-logo logo-marvel-snap">${logo("web-logo-marvel-snap.png", "Marvel Snap logo")}</div>
           </div>
+          <figure class="outcome-awards-strip">
+            <img src="assets/asset-marvel-snap-awards.png" alt="Marvel Snap award-winning strategy game proof">
+          </figure>
           <div>
-            <b>-31%</b>
-            <h3>CPI</h3>
-            <p>Creative iteration at instant-game scale lowered mobile acquisition cost.</p>
-            <div class="outcome-intervention">Intervention: creative iteration + UA testing across UGC and paid social.</div>
+            <b>$2B+</b>
+            <h3>Revenue goal exceeded</h3>
+            <p>A make-or-break Marvel launch rebuilt around trust, then scaled on proof to last for years.</p>
+            <div class="outcome-intervention">Solution: monetization redesign + three-phase gated launch.</div>
             <div class="outcome-supporting">
-              <div><strong>5.7x</strong><span>creative throughput</span></div>
-              <div><strong>20M</strong><span>monthly active users</span></div>
+              <div><strong>~$50M/mo</strong><span>peak launch spend</span></div>
+              <div><strong>Top 1%</strong><span>sustained revenue titles</span></div>
             </div>
           </div>
         </article>
         <article class="outcome-proof-card featured">
           <div class="outcome-card-head">
-            <small>FINAL ROUND AI · CONSUMER TECH</small>
-            <div class="outcome-case-logo logo-finalround">${logo("web-logo-finalround-black-white.svg", "Final Round AI logo")}</div>
+            <small>Travel</small>
+            <div class="outcome-case-logo logo-expedia-proof">${logo("web-logo-expedia.svg", "Expedia logo")}</div>
           </div>
           <div>
-            <b>4.2x</b>
-            <h3>ROAS</h3>
-            <p>Paid acquisition was tied back to paying-customer behavior, not isolated channel metrics.</p>
-            <div class="outcome-intervention">Intervention: revenue-side measurement tied spend to paying customers.</div>
+            <b>CPA ↓</b>
+            <h3>~$200 → ~$120 target</h3>
+            <p>Dynamic ads matched the real live price, so acquisition cost fell and trust returned.</p>
+            <div class="outcome-intervention">Solution: custom Meta API feed with deep-links and auto price/creative swaps.</div>
             <div class="outcome-supporting">
-              <div><strong>$12M</strong><span>ARR generated</span></div>
-              <div><strong>14mo</strong><span>timeline</span></div>
+              <div><strong>20</strong><span>creative variants per property</span></div>
+              <div><strong>6+ mo</strong><span>sustained engagement</span></div>
             </div>
           </div>
         </article>
         <article class="outcome-proof-card">
           <div class="outcome-card-head">
-            <small>FISH AUDIO · CONSUMER AI</small>
-            <div class="outcome-case-logo logo-fish" aria-label="Fish Audio logo">
-              <img class="fish-proof-mark" src="assets/web-logo-fish-audio-official.svg" alt="">
-              <span class="fish-proof-word">Fish Audio</span>
-            </div>
+            <small>Consumer AI</small>
+            <div class="outcome-case-logo logo-fish">${logo("web-logo-fish-audio-mint.png", "Fish Audio logo")}</div>
           </div>
           <div>
             <b>-54%</b>
             <h3>CAC</h3>
             <p>Organic and paid acquisition moved together around signup growth and acquisition economics.</p>
-            <div class="outcome-intervention">Intervention: signup economics + paid and demand-source coordination.</div>
+            <div class="outcome-intervention">Solution: signup economics + paid and demand-source coordination.</div>
             <div class="outcome-supporting">
               <div><strong>+340%</strong><span>signup growth</span></div>
               <div><strong>MoM</strong><span>time window</span></div>
@@ -4595,138 +5364,186 @@ slides.push(slide(2, "Proof", `
           </div>
         </article>
       </div>
-      <div class="outcome-proof-note">Published customer-case metrics. Case-specific outcomes, not a universal forecast.</div>
+      <div class="outcome-proof-note">Case-specific operator and customer outcomes. Not a universal forecast.</div>
     </div>
   </main>
-`, "dark", true, "02 / 10"));
+`, "dark", true, "03 / 11"));
 
-slides.push(slide(3, "Customers", `
+slides.push(slide(4, "Customers", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "CUSTOMERS",
-      titleA: "Customer coverage.",
-      sub: "Mobile Application and AI/SaaS are the core categories; Others support breadth without becoming the main ICP."
+      eyebrow: "Customers",
+      titleA: "Customer coverage."
     })}
     <div class="logo-wall-layout">
-      <section class="logo-wall-section logo-wall-mobile">
-        <h2>Mobile Application <span>games, entertainment, apps</span></h2>
-        <div class="logo-wall-grid">
-          ${wallLogo({ name: "Pokemon", file: "web-logo-pokemon-official.png", className: "logo-wall-pokemon" })}
-          ${wallLogo({ name: "Marvel Snap", file: "web-logo-marvel-snap.png", className: "logo-wall-marvel" })}
-          ${wallLogo({ name: "Product Madness", file: "web-logo-product-madness-pinzak.png", className: "logo-wall-product-madness" })}
-          ${wallLogo({ name: "IGG", file: "web-logo-igg-pinzak.png", className: "logo-wall-igg" })}
-          ${wallLogo({ name: "Lords Mobile", file: "web-logo-lords-mobile-user.png", wordmark: true })}
-          ${wallLogo({ name: "DeNA", file: "web-logo-dena-google.png", wordmark: true })}
-          ${wallLogo({ name: "WPT", file: "web-logo-wpt.png", className: "logo-wall-wpt" })}
-          ${wallLogo({ name: "Second Dinner", file: "web-logo-second-dinner-official.png", className: "logo-wall-second" })}
-          ${wallLogo({ name: "Playco", file: "web-logo-playco.svg", className: "logo-wall-playco" })}
-          ${wallLogo({ name: "Mavia", file: "web-logo-mavia-google.png", wordmark: true })}
-          ${wallLogo({ name: "The Dyrt", file: "web-logo-the-dyrt-icon.png" })}
-          ${wallLogo({ name: "Spoon", file: "web-logo-spoon-pinzak.png", className: "logo-wall-spoon" })}
-          ${wallLogo({ name: "Dolphin Browser", file: "web-logo-dolphin-pinzak.png", className: "logo-wall-dolphin" })}
-          ${wallLogo({ name: "Skrice Studios", file: "web-logo-skrice-google.png", wordmark: true })}
+      <section class="logo-wall-section logo-wall-mobile-icp">
+        <h2>Mobile Apps</h2>
+        <div class="logo-subgroup">
+          <h3>Gaming / Live Service / Casino</h3>
+          <div class="logo-wall-grid">
+            ${wallLogo({ name: "Pokemon", file: "web-logo-pokemon-official.png", className: "logo-wall-pokemon" })}
+            ${wallLogo({ name: "Marvel Snap", file: "web-logo-marvel-snap.png", className: "logo-wall-marvel" })}
+            ${wallLogo({ name: "DeNA", file: "web-logo-dena-google.png", wordmark: true })}
+            ${wallLogo({ name: "Second Dinner", file: "web-logo-second-dinner-official.png", className: "logo-wall-second" })}
+            ${wallLogo({ name: "Hard Rock Casino", file: "web-logo-hard-rock-casino.png", className: "logo-wall-hard-rock" })}
+            ${wallLogo({ name: "WPT", file: "web-logo-wpt.png", className: "logo-wall-wpt" })}
+            ${wallLogo({ name: "IGG", file: "web-logo-igg-pinzak.png", className: "logo-wall-igg" })}
+            ${wallLogo({ name: "Product Madness", file: "web-logo-product-madness-user.png", className: "logo-wall-product-madness" })}
+            ${wallLogo({ name: "Goodgame Studios", file: "web-logo-goodgame-studios.svg", className: "logo-wall-goodgame" })}
+            ${wallLogo({ name: "Betbull", file: "web-logo-betbull-pinzak-dark.png", className: "logo-wall-betbull" })}
+            ${wallLogo({ name: "ClubWPT Gold", file: "web-logo-clubwpt-gold-user.png", className: "logo-wall-clubwpt" })}
+            ${wallLogo({ name: "Mavia", file: "web-logo-mavia-google.png", wordmark: true })}
+            ${wallLogo({ name: "Lightfox Games", file: "web-logo-lightfox-user-black.png", className: "logo-wall-lightfox" })}
+            ${wallLogo({ name: "Skrice Studios", file: "web-logo-skrice-google.png", wordmark: true })}
+          </div>
+        </div>
+        <div class="logo-subgroup">
+          <h3>Mobile Apps / Consumer</h3>
+          <div class="logo-wall-grid">
+            ${wallLogo({ name: "VIPKID", file: "web-logo-vipkid-google.png", wordmark: true })}
+            ${wallLogo({ name: "Dolphin Browser", file: "web-logo-dolphin-pinzak.png", className: "logo-wall-dolphin" })}
+            ${wallLogo({ name: "The Dyrt", file: "web-logo-the-dyrt-user-wordmark.png" })}
+            ${wallLogo({ name: "BeFreed", file: "web-logo-befreed-cropped.png", className: "logo-wall-befreed" })}
+            ${wallLogo({ name: "Spoon", file: "web-logo-spoon-pinzak.png", className: "logo-wall-spoon" })}
+          </div>
         </div>
       </section>
       <section class="logo-wall-section logo-wall-saas">
-        <h2>AI/SaaS <span>consumer AI, SaaS, devtools</span></h2>
+        <h2>AI/SaaS</h2>
         <div class="logo-wall-grid">
-          ${wallLogo({ name: "VIPKID", file: "web-logo-vipkid-google.png", wordmark: true })}
-          ${wallLogo({ name: "Tavus", file: "web-logo-tavus-google.png", wordmark: true })}
-          ${wallLogo({ name: "Bear AI", file: "web-logo-bear-ai-google.png", wordmark: true })}
-          ${wallLogo({ name: "Hyperspell", file: "web-logo-hyperspell-webflow-cropped.png", className: "logo-wall-hyperspell" })}
           ${wallLogo({ name: "Final Round AI", file: "web-logo-finalround.svg", className: "logo-wall-finalround" })}
           ${wallLogo({ name: "Fish Audio", file: "web-logo-fish-audio-mint.png", className: "logo-wall-fish" })}
-          ${wallLogo({ name: "BeFreed", file: "web-logo-befreed-cropped.png" })}
           ${wallLogo({ name: "CHAI", file: "web-logo-chai-official.svg", className: "logo-wall-chai" })}
-          ${wallLogo({ name: "Viggle", file: "web-logo-viggle-googleplay.png", className: "logo-wall-viggle" })}
+          ${wallLogo({ name: "Viggle", file: "web-logo-viggle-user.png", className: "logo-wall-viggle" })}
+          ${wallLogo({ name: "Tavus", file: "web-logo-tavus-google.png", wordmark: true })}
+          ${wallLogo({ name: "Hyperspell", file: "web-logo-hyperspell-webflow-cropped.png", className: "logo-wall-hyperspell" })}
           ${wallLogo({ name: "middleware", file: "web-logo-middleware-google.png", wordmark: true })}
-          ${wallLogo({ name: "Eragon", file: "web-logo-eragon-transparent.png", className: "logo-wall-eragon" })}
-          ${wallLogo({ name: "InsForge", file: "web-logo-insforge-google.png", wordmark: true })}
-          ${wallLogo({ name: "DOPPLE AI", file: "web-logo-dopple-google.png", wordmark: true })}
           ${wallLogo({ name: "Ace Studio", file: "web-logo-ace-studio-google.png", wordmark: true })}
+          ${wallLogo({ name: "InsForge", file: "web-logo-insforge-google.png", wordmark: true })}
+          ${wallLogo({ name: "Eragon", file: "web-logo-eragon-transparent.png", className: "logo-wall-eragon" })}
+          ${wallLogo({ name: "DOPPLE AI", file: "web-logo-dopple-google.png", wordmark: true })}
+          ${wallLogo({ name: "Runner AI", file: "web-logo-runner-ai-icon.png", wordmark: true, className: "logo-wall-runner" })}
           ${wallLogo({ name: "TEA AI", file: "web-logo-tea-ai-google.png", wordmark: true })}
           ${wallLogo({ name: "Visko AI", file: "web-logo-visko-google.png", wordmark: true })}
-          ${wallLogo({ name: "Runner AI", file: "web-logo-runner-ai-icon.png", wordmark: true, className: "logo-wall-runner" })}
           ${wallLogo({ name: "Cookiy AI", file: "web-logo-cookiy-google.png", wordmark: true })}
           ${wallLogo({ name: "Mocksi", file: "web-logo-mocksi-google.png", wordmark: true })}
           ${wallLogo({ name: "Polargrid", file: "web-logo-polargrid-icon.png", wordmark: true, className: "logo-wall-polargrid" })}
         </div>
       </section>
-      <section class="logo-wall-section logo-wall-other">
-        <h2>Others <span>finance, logistics, retail</span></h2>
-        <div class="logo-wall-grid">
-          ${wallLogo({ name: "Truist", file: "web-logo-truist.svg", className: "logo-wall-truist" })}
-          ${wallLogo({ name: "Aonic", file: "web-logo-aonic-prnewswire-transparent.png", className: "logo-wall-aonic" })}
-          ${wallLogo({ name: "J&T Express", file: "web-logo-jt-express.svg", className: "logo-wall-jt" })}
-          ${wallLogo({ name: "harmay", file: "web-logo-harmay-google.png", className: "logo-wall-harmay" })}
-          ${wallLogo({ name: "Spectra Capital", file: "web-logo-spectra-capital-google.png", wordmark: true, className: "logo-wall-spectra" })}
-          ${wallLogo({ name: "Betbull", file: "web-logo-betbull-pinzak-dark.png", className: "logo-wall-betbull" })}
-          ${wallLogo({ name: "MEX", file: "web-logo-mex-pinzak.png", className: "logo-wall-mex" })}
+      <section class="logo-wall-section logo-wall-scale">
+        <h2>Scale-stage Companies</h2>
+        <div class="scale-stage-groups">
+          <div class="scale-stage-group scale-stage-group-web">
+            <h3>Web / Travel</h3>
+            <div class="scale-stage-grid">
+              ${wallLogo({ name: "Expedia", file: "web-logo-expedia.svg", className: "logo-wall-expedia" })}
+              ${wallLogo({ name: "Hotels.com", file: "web-logo-hotels.svg", className: "logo-wall-hotels" })}
+              ${wallLogo({ name: "Vrbo", file: "web-logo-vrbo.svg", className: "logo-wall-vrbo" })}
+            </div>
+          </div>
+          <div class="scale-stage-group scale-stage-group-fintech">
+            <h3>Fintech / Crypto / Logistics</h3>
+            <div class="scale-stage-grid">
+              ${wallLogo({ name: "Truist", file: "web-logo-truist.svg", className: "logo-wall-truist" })}
+              ${wallLogo({ name: "J&T Express", file: "web-logo-jt-express.svg", className: "logo-wall-jt" })}
+              ${wallLogo({ name: "Huobi", file: "web-logo-huobi-user.png", className: "logo-wall-huobi" })}
+              ${wallLogo({ name: "TRX / Tron", file: "web-logo-tron-user.png", className: "logo-wall-tron" })}
+              ${wallLogo({ name: "harmay", file: "web-logo-harmay-google.png", className: "logo-wall-harmay" })}
+              ${wallLogo({ name: "Spectra Capital", file: "web-logo-spectra-capital-google.png", wordmark: true, className: "logo-wall-spectra" })}
+              ${wallLogo({ name: "Aonic", file: "web-logo-aonic-prnewswire-transparent.png", className: "logo-wall-aonic" })}
+              ${wallLogo({ name: "Achain", file: "web-logo-achain-user.png", wordmark: true, className: "logo-wall-achain" })}
+              ${wallLogo({ name: "MEX", file: "web-logo-mex-pinzak.png", className: "logo-wall-mex" })}
+              ${wallLogo({ name: "UK fintech / cards", wordmark: true })}
+            </div>
+          </div>
         </div>
       </section>
     </div>
   </main>
-`, "light", true, "03 / 10"));
+`, "light", true, "04 / 11"));
 
-slides.push(slide(4, "Product", `
+slides.push(slide(5, "Product", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "PRODUCT",
-      titleA: "Product system.",
-      sub: "A buyer-readable operating loop: signals enter one queue, AI recommends actions, operators approve material moves, campaigns update, and learnings feed back."
-    })}
+      eyebrow: "Product",
+      titleA: "One system runs every channel.",
+      sub: "Signals enter one queue. AI proposes, operators approve, and the system updates itself across every channel, every minute."
+    }, "Then learns.")}
     <div class="product-system-layout">
-      <section class="product-input-strip">
-        <article><b>Ad channels</b><span>Meta, Google, TikTok, Snap, ASA, account health, delivery, spend</span></article>
-        <article><b>Creative history</b><span>Hooks, scripts, statics, videos, fatigue, approvals, variants</span></article>
-        <article><b>Revenue data</b><span>MMP, post-install events, Stripe/revenue source, CAC, payback</span></article>
-        <article><b>Market signal</b><span>Competitors, seasonality, audience shifts, client notes, feedback</span></article>
-      </section>
       <section class="product-system-flow" aria-label="Hellyeah product system flow">
         <article class="product-system-node">
-          <small>01</small>
-          <h2>Inputs</h2>
-          <p>Normalize channel, creative, revenue, and market signals into one working queue.</p>
+          <h2>Signals</h2>
+          <p>channels / creative / revenue / market</p>
         </article>
         <div class="product-system-arrow">→</div>
         <article class="product-system-node product-system-node-dark">
-          <small>02</small>
           <h2>AI queue</h2>
-          <p>Detect fatigue, CPI spikes, event gaps, winner patterns, and next creative moves.</p>
+          <p>fatigue / gaps / winners / moves</p>
         </article>
         <div class="product-system-arrow">→</div>
         <article class="product-system-node">
-          <small>03</small>
           <h2>Operator approval</h2>
-          <p>Senior operators approve budget shifts, pauses, launches, and measurement fixes.</p>
+          <p>budget / launch / pause / fix</p>
         </article>
         <div class="product-system-arrow">→</div>
         <article class="product-system-node">
-          <small>04</small>
-          <h2>Campaign action</h2>
-          <p>Launch variants, reallocate budget, pause weak ads, or repair tracking before scale.</p>
+          <h2>Action</h2>
+          <p>launch / reallocate / repair</p>
         </article>
         <div class="product-system-arrow">→</div>
         <article class="product-system-node product-system-node-accent">
-          <small>05</small>
-          <h2>Learning loop</h2>
-          <p>Results update the next creative brief, channel thesis, and revenue scoreboard.</p>
+          <h2>Learn</h2>
+          <p>next brief / next bid / next test</p>
         </article>
       </section>
-      <section class="product-control-strip">
-        <div><b>Omnichannel allocation</b><span>Budget moves across channels when evidence supports it.</span></div>
-        <div><b>Warmed-up accounts</b><span>Execution starts faster without forcing every setup step first.</span></div>
-        <div><b>Approval boundary</b><span>AI recommends. Operators approve material spend changes.</span></div>
+      <section class="product-hero-grid" aria-label="Product differentiation">
+        <article class="product-hero">
+          <div>
+            <h2>Omnichannel</h2>
+            <p>Budget moves to the channel with evidence: Meta, Google, TikTok, Snap, ASA.</p>
+          </div>
+          <div class="product-visual">
+            <img src="assets/asset-campaign-analytics-headline-crop.png" alt="Campaign analytics dashboard with live performance signals">
+            <div class="product-visual-overlay"><span>Across every channel</span><b>live signal</b></div>
+          </div>
+        </article>
+        <article class="product-hero">
+          <div>
+            <h2>White-label accounts</h2>
+            <p>Pre-warmed agency infrastructure gets the first controlled test live in days. The learning phase still runs.</p>
+          </div>
+          <div class="product-visual product-accounts-visual" aria-label="Connected advertising account concept">
+            <div class="account-visual-title"><b>Account infrastructure</b><span>connected</span></div>
+            <div class="account-platforms">
+              <div><img src="assets/platform-meta.svg" alt="Meta"></div>
+              <div class="wide-icon"><img src="assets/platform-google-user.png" alt="Google"></div>
+              <div><img src="assets/platform-tiktok.svg" alt="TikTok"></div>
+              <div><img src="assets/platform-snapchat-user-cropped.png" alt="Snapchat"></div>
+              <div><img src="assets/platform-appstore-user.png" alt="Apple Search Ads"></div>
+            </div>
+            <div class="account-note">Setup friction drops. Evidence still decides scale.</div>
+          </div>
+        </article>
+        <article class="product-hero">
+          <div>
+            <h2>Agentic creative</h2>
+            <p>AI generates and tests at 10-20x. Minute-level signals update the next batch.</p>
+          </div>
+          <div class="product-visual">
+            <img src="assets/asset-creative-gallery-mid-aligned.png" alt="Creative queue with many static and video variants">
+            <div class="product-visual-overlay"><span>Creative page shows the full queue</span><b>41 variants</b></div>
+          </div>
+        </article>
       </section>
     </div>
   </main>
-`, "light", true, "04 / 10"));
+`, "light", true, "05 / 11"));
 
-slides.push(slide(5, "Creative", `
+slides.push(slide(6, "Creative", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "CREATIVE",
-      titleA: "Creative engine.",
+      eyebrow: "Creative engine",
+      titleA: "More variants, faster learning.",
       sub: "Manual review cycles test 5-10 concepts. This campaign queue shows 41 variants in review, with image and video mixed together."
     })}
     <div class="creative-proof-board">
@@ -4745,458 +5562,266 @@ slides.push(slide(5, "Creative", `
       </figure>
     </div>
   </main>
-`, "light", true, "05 / 10"));
+`, "light", true, "06 / 11"));
 
-slides.push(slide(6, "Access", `
-  <main class="content">
-    ${splitTitle({
-      eyebrow: "ACCOUNT ACCESS",
-      titleA: "Account access.",
-      sub: "Warmed up accounts get the execution faster."
-    })}
-    <div class="access-board">
-      <section class="access-core">
-        <div class="console-label">White-label account access</div>
-        <h2>Start from working infrastructure, not setup delay.</h2>
-        <p>Clients do not need to open every account, permission path, billing path, and operating checklist before Hellyeah can diagnose and prepare the first controlled test.</p>
-        <div class="access-line">read first / launch controlled / hand off cleanly</div>
-      </section>
-      <section class="access-grid">
-        <div class="access-item"><b>01</b><h3>Read-only audit</h3><p>Review existing accounts, event quality, creative history, budget, and revenue reporting before changes.</p></div>
-        <div class="access-item"><b>02</b><h3>Agency account path</h3><p>Use prebuilt account infrastructure where it removes setup friction and speeds launch readiness.</p></div>
-        <div class="access-item"><b>03</b><h3>Permission control</h3><p>Separate diagnosis, launch, budget changes, billing, and reporting into clear owner permissions.</p></div>
-        <div class="access-item"><b>04</b><h3>Billing + prepay</h3><p>Clarify spend path, prepay requirements, alerts, and invoice handling before campaign execution.</p></div>
-        <div class="access-item"><b>05</b><h3>Tracking readiness</h3><p>Confirm MMP/events, revenue joins, and scoreboard gaps before any scale decision.</p></div>
-        <div class="access-item"><b>06</b><h3>Clean handoff</h3><p>Keep launch state, approvals, blockers, and next actions visible to client and operator.</p></div>
-      </section>
+slides.push(slide(7, "One Source of Truth", `
+  <main class="content measurement-page">
+    <section>
+      <div class="measurement-kicker">One source of truth</div>
+      <h1 class="measurement-headline">Platforms see credit.<span>Revenue tells the truth.</span></h1>
+    </section>
+    <section class="measurement-pair-board" aria-label="Platform ROAS versus revenue ROAS">
+      <article class="measurement-scorecard">
+        <small>Platform-reported ROAS</small>
+        <b>2,757%</b>
+        <p>View-through attribution, duplicated credit, and platform-defined windows make performance look extraordinary.</p>
+      </article>
+      <div class="measurement-vs">vs</div>
+      <article class="measurement-scorecard truth">
+        <small>Stripe-net revenue ROAS</small>
+        <b>48%</b>
+        <p>Actual collected revenue, net of refunds, joined back to the acquisition source. Same campaign. Different truth.</p>
+      </article>
+    </section>
+    <div class="measurement-footer">
+      <span>Illustrative internal audit example from the Final Round growth stack.</span>
+      <span><b>Hard gate:</b> no clean data, no paid media.</span>
     </div>
   </main>
-`, "light", true, "06 / 10"));
+`, "light", true, "07 / 11"));
 
-slides.push(slide(7, "Optimization", `
-  <main class="content">
-    ${splitTitle({
-      eyebrow: "OPTIMIZATION",
-      titleA: "Optimization loop.",
-      sub: "Always-on monitoring collects signals; AI queues actions; operators approve material moves; each result updates the next test."
-    })}
-    <div class="decision-loop-board">
-      <section class="decision-loop-context">
-        <small>operating cadence</small>
-        <h2>Always on does not mean unsupervised.</h2>
-        <p>The system handles signal collection and routine repetition. Senior operators retain control of strategy, material budget changes, and exceptions.</p>
-        <div class="decision-cadence-list">
-          <div><b>Every min</b><span>Spend, delivery, tracking, and account-health monitoring.</span></div>
-          <div><b>Hourly</b><span>Creative fatigue flags and underperformer review queue.</span></div>
-          <div><b>Daily</b><span>Budget and bid review against CPI, ROAS, and revenue signal.</span></div>
-          <div><b>Weekly</b><span>Cohort read, scaling decision, and next-week creative brief.</span></div>
-        </div>
-      </section>
-      <section class="decision-loop-steps">
-        <article class="decision-loop-step">
-          <div class="decision-step-number">01 / monitor</div>
-          <div><h2>Read the account.</h2><p>Spend, delivery, tracking, creative fatigue, events, and revenue-side signal enter one queue.</p></div>
-          <div class="decision-action">automated signal collection</div>
-        </article>
-        <article class="decision-loop-step">
-          <div class="decision-step-number">02 / recommend</div>
-          <div><h2>Queue the move.</h2><p>AI flags anomalies, weak ads, CPI spikes, fatigue, budget shifts, and tracking fixes.</p></div>
-          <div class="decision-action">AI + rules recommend action</div>
-        </article>
-        <article class="decision-loop-step">
-          <div class="decision-step-number">03 / approve</div>
-          <div><h2>Operators decide.</h2><p>Material budget moves, bid changes, and cross-channel reallocations require human approval.</p></div>
-          <div class="decision-action">operator-approved changes</div>
-        </article>
-        <article class="decision-loop-step final">
-          <div class="decision-step-number">04 / learn</div>
-          <div><h2>Update the next test.</h2><p>Winner patterns, failed concepts, and cohort reads become the next creative and media brief.</p></div>
-          <div class="decision-action">senior operator weekly reset</div>
-        </article>
-      </section>
-    </div>
+slides.push(slide(8, "Operating cadence", `
+  <main class="content cadence-page">
+    <section class="cadence-intro">
+      <div class="cadence-kicker">The engine</div>
+      <h1>Always on, operator-led.</h1>
+      <p>The system handles signal collection and routine repetition. Senior operators retain control of strategy, material budget changes, and exceptions.</p>
+    </section>
+    <section class="cadence-table" aria-label="Operating cadence by interval">
+      <article class="cadence-row"><b>Every minute</b><p>Spend, delivery, tracking, and account-health monitoring</p><span>Automated</span></article>
+      <article class="cadence-row"><b>Hourly</b><p>Creative fatigue flags, anomaly detection, and underperformer review queue</p><span>AI + rules</span></article>
+      <article class="cadence-row"><b>Daily</b><p>Budget reallocation, bid adjustments, and cross-channel performance review</p><span>Operator approved</span></article>
+      <article class="cadence-row"><b>Weekly</b><p>Creative direction reset, cohort read, scaling decision, and next-week brief</p><span>Senior operator</span></article>
+    </section>
   </main>
-`, "light", true, "07 / 10"));
-
-slides.push(slide(8, "Measurement", `
-  <main class="content">
-    ${splitTitle({
-      eyebrow: "MEASUREMENT",
-      titleA: "Measurement.",
-      sub: "Before scale, the buyer needs to know whether the dashboard is measuring business outcomes or just platform credit."
-    })}
-    <div class="measurement-board">
-      <section class="risk-board">
-        <div class="risk-row"><b>CREDIT</b><div><h3>Platform windows over-credit success.</h3><p>View-through attribution, duplicated credit, and platform-defined windows can make campaign results look extraordinary.</p></div></div>
-        <div class="risk-row"><b>EVENTS</b><div><h3>Event quality decides what can be trusted.</h3><p>MMP, post-install events, attribution, and server-side validation need to be clean before spend increases.</p></div></div>
-        <div class="risk-row"><b>REVENUE</b><div><h3>Business truth needs a revenue join.</h3><p>Spend has to connect to collected revenue, activation, paying users, CAC, payback, or recognized revenue.</p></div></div>
-      </section>
-      <section class="scoreboard-stack">
-        <div class="scoreboard-compare">
-          <article class="scorecard"><small>Platform-reported ROAS</small><b>2,757%</b><p>Campaign success looks exceptional inside the ad-platform window.</p></article>
-          <div class="scorebridge">same spend<br>different truth</div>
-          <article class="scorecard truth"><small>Stripe-net revenue ROAS</small><b>48%</b><p>Collected revenue tells the team whether scale is real or waste.</p></article>
-        </div>
-        <div class="scoreboard-note">This is why measurement comes before scale: the next page turns dashboard risk into explicit gates.</div>
-        <div class="measurement-checks">
-          <div class="measurement-check"><b>MMP</b><span>system of record for installs and post-install events</span></div>
-          <div class="measurement-check"><b>Events</b><span>tutorial, purchase, day 7 active, activation, or revenue</span></div>
-          <div class="measurement-check"><b>Attribution</b><span>SKAN, deferred links, validation, and leak checks</span></div>
-          <div class="measurement-check"><b>Dashboard</b><span>LTV, ROAS, CAC, cohort, source, geo, and creative</span></div>
-        </div>
-      </section>
-    </div>
-  </main>
-`, "dark", true, "08 / 10"));
+`, "dark", true, "08 / 11"));
 
 slides.push(slide(9, "Scale gate", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "SCALE GATE",
-      titleA: "Scale gate.",
-      sub: "The gate turns measurement into action: fix tracking, replace creative, hold spend, or scale in controlled steps."
+      eyebrow: "Scale gate",
+      titleA: "Scale only when evidence earns it.",
+      sub: "First we decide whether we should take the deal. Then we decide whether spend can scale."
     })}
     <div class="scale-gate-layout">
-      <div class="scale-gate-board">
-        <article class="scale-gate-row">
-          <b>tracking health</b>
-          <div class="scale-gate-copy"><h2>Events match revenue truth.</h2><p>MMP events, attribution, and revenue source agree closely enough to judge spend quality.</p></div>
-          <div class="scale-gate-action">fix before scale</div>
-        </article>
-        <article class="scale-gate-row">
-          <b>phase-fit KPI</b>
-          <div class="scale-gate-copy"><h2>The KPI matches the test phase.</h2><p>Tech testing, retention testing, monetization testing, and launch do not use the same success metric.</p></div>
-          <div class="scale-gate-action">reset target</div>
-        </article>
-        <article class="scale-gate-row">
-          <b>winner quality</b>
-          <div class="scale-gate-copy"><h2>Creative wins repeat.</h2><p>A concept beats baseline across variants, placements, audiences, or channels, not just one lucky read.</p></div>
-          <div class="scale-gate-action">make variants</div>
-        </article>
-        <article class="scale-gate-row">
-          <b>payback signal</b>
-          <div class="scale-gate-copy"><h2>Cost points toward payback.</h2><p>CAC, CPI, ROAS, activation, retained user quality, or cohort revenue supports the commercial target.</p></div>
-          <div class="scale-gate-action">scale controlled</div>
-        </article>
-      </div>
-      <figure class="analytics-shot">
-        <img src="assets/asset-campaign-analytics-headline-crop.png" alt="Campaign analytics screenshot with creative variant evidence">
-      </figure>
+      <section class="commitment-gate">
+        <small>Gate 0 / commitment gate</small>
+        <b>20%+</b>
+        <h2>We only take deals we can move.</h2>
+        <p>Before we sign, we pressure-test a 20%+ lift — if we can't, we walk.</p>
+        <div class="commitment-points">
+          <div>Mutual limits, understood upfront.</div>
+          <div>Floor, not ceiling <span>20% is the minimum; many double.</span></div>
+        </div>
+      </section>
+      <section class="execution-gates">
+        <h3>Gate 1-4 / execution gates</h3>
+        <div class="scale-gate-board">
+          <article class="scale-gate-row">
+            <b>tracking health</b>
+            <div class="scale-gate-copy"><h2>Events match revenue truth.</h2><p>MMP, attribution, and revenue agree.</p></div>
+          </article>
+          <article class="scale-gate-row">
+            <b>phase-fit KPI</b>
+            <div class="scale-gate-copy"><h2>KPI matches the phase.</h2><p>Testing and launch use different success metrics.</p></div>
+          </article>
+          <article class="scale-gate-row">
+            <b>winner quality</b>
+            <div class="scale-gate-copy"><h2>Creative wins repeat.</h2><p>Wins repeat across variants, not one lucky read.</p></div>
+          </article>
+          <article class="scale-gate-row">
+            <b>payback signal</b>
+            <div class="scale-gate-copy"><h2>Cost points toward payback.</h2><p>CAC, ROAS, and cohort quality hold against target.</p></div>
+          </article>
+        </div>
+      </section>
     </div>
   </main>
-`, "light", true, "09 / 10"));
+`, "light", true, "09 / 11"));
 
 slides.push(slide(10, "Test plan", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "30-DAY TEST",
-      titleA: "30-day test.",
-      sub: "Audit first, test second, scale third. The goal is not more meetings, it is a clean decision."
+      eyebrow: "30-day test",
+      titleA: "Audit first, test second, scale third.",
+      sub: "The goal is not more meetings, it is a clean decision."
     })}
     <div class="test-plan-board">
-      <section class="test-cadence">
-        <section class="cadence-card">
-          <strong>Day 1-5</strong>
-          <div><h3>Audit + instrument</h3><p>Account access, MMP/events, revenue source, creative backlog, target KPI, and invalid-test risks.</p></div>
-        </section>
-        <section class="cadence-card">
-          <strong>Day 6-15</strong>
-          <div><h3>Deploy + learn</h3><p>Launch controlled campaigns and creative directions against the agreed success metric.</p></div>
-        </section>
-        <section class="cadence-card">
-          <strong>Day 16-23</strong>
-          <div><h3>Replace + reallocate</h3><p>Kill weak ads, ship new variants, pause bad reads, and move budget to cleaner signal.</p></div>
-        </section>
-        <section class="cadence-card">
-          <strong>Day 24-30</strong>
-          <div><h3>Prove + scale gate</h3><p>Decide scale, hold, or rebuild based on tracking quality, KPI band, and winner evidence.</p></div>
-        </section>
-        <div class="calibration-strip">
-          <div><b>$500</b><span>sample test budget</span></div>
-          <div><b>$0.20</b><span>sample target CPI</span></div>
-          <div><b>T3</b><span>sample Android geo</span></div>
-          <div><b>EN+3</b><span>sample language plan</span></div>
+      <section class="test-execution-matrix" aria-label="30-day execution matrix">
+        <div class="test-matrix-head">
+          <span>Time</span>
+          <span>Work</span>
+          <span>Gate</span>
+          <span>Decision</span>
         </div>
+        <article class="test-matrix-row">
+          <strong class="test-day">Day 1-5</strong>
+          <div class="test-work"><h3>Audit + instrument</h3><p>Account access, MMP/events, revenue, target KPI.</p></div>
+          <div class="test-gate">Data layer clean.</div>
+          <div class="test-action">Launch or fix tracking.</div>
+        </article>
+        <article class="test-matrix-row">
+          <strong class="test-day">Day 6-15</strong>
+          <div class="test-work"><h3>Deploy + learn</h3><p>Launch controlled campaigns vs the agreed metric.</p></div>
+          <div class="test-gate">Event quality and KPI band hold.</div>
+          <div class="test-action">Keep winners; stop weak reads.</div>
+        </article>
+        <article class="test-matrix-row">
+          <strong class="test-day">Day 16-23</strong>
+          <div class="test-work"><h3>Replace + reallocate</h3><p>Kill weak ads, ship variants, move budget.</p></div>
+          <div class="test-gate">CAC/CPI drift, CTR/CVR drop, or tracking conflict.</div>
+          <div class="test-action">Move budget or replace creative.</div>
+        </article>
+        <article class="test-matrix-row">
+          <strong class="test-day">Day 24-30</strong>
+          <div class="test-work"><h3>Prove + scale gate</h3><p>Scale, hold, or rebuild on the evidence.</p></div>
+          <div class="test-gate">Creative repeats and revenue-side read holds.</div>
+          <div class="test-action">Scale, hold, fix, or stop.</div>
+        </article>
       </section>
-      <aside class="decision-panel">
-        <h2>Scale, kill, replace, or fix.</h2>
-        <div class="decision-list">
-          <article class="decision-card">
-            <h3>Scale budget</h3>
-            <div class="decision-card-copy">
-              <p><b>Gate</b>KPI inside agreed band, tracking clean, winner creative repeats.</p>
-              <p><b>Action</b>Increase spend in controlled steps.</p>
-            </div>
-          </article>
-          <article class="decision-card">
-            <h3>Kill ad</h3>
-            <div class="decision-card-copy">
-              <p><b>Gate</b>Minimum learning spend reached, weak event quality, or CAC/CPI far from target.</p>
-              <p><b>Action</b>Stop spend and record the failure pattern.</p>
-            </div>
-          </article>
-          <article class="decision-card">
-            <h3>Replace creative</h3>
-            <div class="decision-card-copy">
-              <p><b>Gate</b>CTR/CVR drops, frequency rises, hook fatigue appears, or concept stalls.</p>
-              <p><b>Action</b>Launch new static/video variants.</p>
-            </div>
-          </article>
-          <article class="decision-card">
-            <h3>Fix tracking</h3>
-            <div class="decision-card-copy">
-              <p><b>Gate</b>Platform ROAS conflicts with revenue-side result, event loss, duplicate attribution, or MMP mismatch.</p>
-              <p><b>Action</b>Pause scale until measurement is clean.</p>
-            </div>
-          </article>
-        </div>
-        <div class="test-plan-cta">Bring ad account access, event data, revenue source, and current creative history.</div>
-      </aside>
+      <section class="expectation-band" aria-label="What to expect and why">
+        <header>
+          <small>What to expect</small>
+          <h2>Phase-fit KPIs prevent false panic.</h2>
+        </header>
+        <article class="expectation-step">
+          <b>Week 1</b>
+          <h3>CPI</h3>
+          <p>Optimize volume at lowest cost; ROAS looks low by design.</p>
+        </article>
+        <article class="expectation-step">
+          <b>Week 2</b>
+          <h3>CPE</h3>
+          <p>Shift toward retention events; signal sharpens.</p>
+        </article>
+        <article class="expectation-step">
+          <b>Week 3+</b>
+          <h3>ROAS</h3>
+          <p>Optimize for value after proof; spend ramps when evidence earns it.</p>
+        </article>
+        <p class="expectation-footnote">Early reads are incomplete: D7 ROAS is an early-window signal; full payback is tracked to D90+.</p>
+      </section>
     </div>
   </main>
-`, "orange", false, "10 / 10"));
+`, "orange", false, "10 / 11"));
 
-slides.push(slide(11, "Appendix", `
-  <main class="content">
+slides.push(slide(11, "Commercial model", `
+  <main class="content commercial-content">
     ${splitTitle({
-      eyebrow: "MOBILE CASES",
-      titleA: "Mobile cases.",
-      sub: "Increase the learning rate. Then let CPI follow. Playco carries the main mobile proof; BeFreed and The Dyrt stay as supporting mobile app results.",
-      className: "one-line-title"
-    })}
-    <div class="appendix-a1-layout">
-      ${appendixMainCase({
-        logoFile: "web-logo-playco.svg",
-        logoName: "Playco",
-        category: "Gaming & Entertainment",
-        title: "Creative iteration at instant-game scale.",
-        metric: "5.7x",
-        metricLabel: "Creative throughput",
-        metrics: [
-          { value: "-31%", label: "CPI" },
-          { value: "20M", label: "Monthly active users" }
-        ],
-        blocks: [
-          {
-            label: "Constraint",
-            title: "Creative demand grows with portfolio scale",
-            body: "More titles, audiences, placements, and lifecycle moments create a testing burden that manual production cannot sustain."
-          },
-          {
-            label: "System",
-            title: "UGC engine plus paid social",
-            body: "Creative generation, iteration, and campaign feedback were connected so production responded to real performance signals."
-          }
-        ]
-      })}
-      <div class="appendix-side-stack">
-        ${appendixSideCase({
-          logoFile: "web-logo-befreed-cropped.png",
-          logoName: "BeFreed",
-          logoClass: "case-logo-befreed",
-          category: "Mobile Apps",
-          summary: "AI learning app scaled UGC creative engine to 240 ads per week.",
-          metrics: [
-            { value: "240", label: "Ads / week" },
-            { value: "-38%", label: "CPI" }
-          ],
-          tags: ["UGC", "Mobile UA", "Creative"]
-        })}
-        ${appendixSideCase({
-          logoFile: "web-logo-the-dyrt-icon.png",
-          logoName: "The Dyrt",
-          category: "Mobile Apps",
-          summary: "Camping app drove 4.0x organic acquisition with growth intelligence.",
-          metrics: [
-            { value: "4.0x", label: "Organic acquisition" },
-            { value: "+62%", label: "Subscriptions" }
-          ],
-          tags: ["Lifecycle", "Performance", "Organic"]
-        })}
-      </div>
+      eyebrow: "Commercial model",
+      titleA: "The more you put behind growth,",
+      sub: "",
+      className: "commercial-title"
+    }, "the more we put behind you.")}
+    <div class="commercial-grid">
+      <article class="commercial-tier featured">
+        <h2>$1M+ / mo</h2>
+        <div class="commercial-rows">
+          <div class="commercial-row"><small>TEAM</small><span>Dedicated pod + engineers</span></div>
+          <div class="commercial-row"><small>CADENCE</small><span>Daily feedback</span></div>
+          <div class="commercial-row"><small>SERVICE</small><span>Custom solutions</span></div>
+          <div class="commercial-row"><small>DASHBOARD</small><span>Full · real-time</span></div>
+        </div>
+      </article>
+      <article class="commercial-tier">
+        <h2>$500K+ / mo</h2>
+        <div class="commercial-rows">
+          <div class="commercial-row"><small>TEAM</small><span>Senior operator + account manager</span></div>
+          <div class="commercial-row"><small>CADENCE</small><span>2-3x / week</span></div>
+          <div class="commercial-row"><small>SERVICE</small><span>Priority queue</span></div>
+          <div class="commercial-row"><small>DASHBOARD</small><span>Full · real-time</span></div>
+        </div>
+      </article>
+      <article class="commercial-tier">
+        <h2>$100K+ / month</h2>
+        <div class="commercial-rows">
+          <div class="commercial-row"><small>TEAM</small><span>Account manager</span></div>
+          <div class="commercial-row"><small>CADENCE</small><span>Weekly reporting</span></div>
+          <div class="commercial-row"><small>SERVICE</small><span>Standard queue</span></div>
+          <div class="commercial-row"><small>DASHBOARD</small><span>Full · real-time</span></div>
+        </div>
+      </article>
     </div>
+    <section class="commercial-promise">
+      <div>
+        <b>Every tier gets full, real-time dashboard access.</b>
+      </div>
+      <div class="commercial-cta">
+        <a class="commercial-booking" href="https://cal.com/team/hellyeah" target="_blank" rel="noreferrer">
+          <small>Book a call</small>
+          <b>cal.com/team/hellyeah</b>
+        </a>
+        <div class="commercial-cta-title">Follow Hellyeah</div>
+        <div class="commercial-qr-group">
+          <div class="commercial-qr">
+            <img src="assets/brand-qr-linkedin.svg" alt="Hellyeah LinkedIn QR code">
+            <span>LinkedIn</span>
+          </div>
+          <div class="commercial-qr">
+            <img src="assets/brand-qr-twitter.svg" alt="Hellyeah X QR code">
+            <span>X / Twitter</span>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
-`, "light", true, "A1 / A5"));
+`, "light", false, "11 / 11"));
 
 slides.push(slide(12, "Appendix", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "AI SOFTWARE CASES",
-      titleA: "AI/SaaS cases.",
-      sub: "Final Round and Fish Audio use the Overview case-study structure: result first, then operating problem and system."
+      eyebrow: "Case study",
+      titleA: "Expedia.",
+      sub: "Performance marketing proof: dynamic feed access, offer truth, creative variants, and lower CPA."
     })}
-    <div class="appendix-a2-layout">
-      ${appendixOverviewCase({
-        logoFile: "web-logo-finalround.svg",
-        logoName: "Final Round AI",
-        category: "Consumer Tech",
-        title: "Paid acquisition was only one part of the growth system.",
-        metrics: [
-          { value: "$12M", label: "ARR in 14 months" },
-          { value: "4.2x", label: "ROAS" }
-        ],
-        blocks: [
-          {
-            label: "Problem",
-            title: "Each channel had its own definition of success",
-            body: "Paid measured registrations, SEO measured traffic, and influencer measured reach. Commercial truth required a common outcome."
-          },
-          {
-            label: "Approach",
-            title: "Connect acquisition to paying-customer behavior",
-            body: "Campaigns and content were evaluated against revenue outcomes rather than isolated channel metrics."
-          }
-        ],
-        tags: ["Paid Search", "Content", "Revenue tracking"]
-      })}
-      ${appendixOverviewCase({
-        logoFile: "web-logo-fish-audio-official.svg",
-        logoName: "Fish Audio",
-        logoClass: "case-logo-fish",
-        category: "Consumer AI",
-        title: "Organic and paid should compound, not compete for credit.",
-        metrics: [
-          { value: "+340%", label: "Month-over-month signups" },
-          { value: "-54%", label: "CAC" }
-        ],
-        blocks: [
-          {
-            label: "Arena",
-            title: "Generative voice acquisition",
-            body: "The public case covers a consumer AI company combining organic demand, paid search, and affiliates rather than relying on a single channel."
-          },
-          {
-            label: "System",
-            title: "One operating view across demand sources",
-            body: "Organic and paid programs were coordinated around signup growth and acquisition economics."
-          }
-        ],
-        tags: ["Paid Search", "Organic", "Affiliates"]
-      })}
-    </div>
+    ${operatorCase({
+      brand: "Expedia",
+      category: "Travel & performance marketing",
+      title: "Ads told the truth, and CPA came down with it.",
+      sub: "The case supports Hellyeah's measurement and feed-automation story: business data has to match what the ad promises.",
+      beats: [
+        {
+          label: "Challenge",
+          title: "The price was wrong before the click",
+          body: "Travel prices moved by the minute, so the price in the ad was stale before a user tapped and did not match checkout. Users bounced and CPA climbed."
+        },
+        {
+          label: "Move",
+          title: "Unlocked a custom Meta feed that updated itself",
+          body: "A direct Meta API was negotiated for top-tier spend access, then a feed was built to show the real offer, deep-link to the property, and swap creative plus price automatically."
+        },
+        {
+          label: "Result",
+          title: "Lower cost and restored trust",
+          body: "When every ad matched the real offer, acquisition cost came down and the operating pattern expanded into more projects."
+        }
+      ],
+      metrics: [
+        { value: "CPA down", label: "approx $200 to ~$120 target, illustrative" },
+        { value: "20", label: "creative variants per property" },
+        { value: "6+ mo", label: "sustained engagement" },
+        { value: "Ongoing", label: "expanded into more projects" }
+      ],
+      tags: ["Dynamic feed", "Meta API", "Measurement", "Creative variants"],
+      proofNote: "Access point cited in the operator case: custom Meta API reserved for $10M+/mo spenders."
+    })}
   </main>
-`, "light", true, "A2 / A5"));
+`, "light", true, "A1 / A4"));
 
 slides.push(slide(13, "Appendix", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "OTHER CASES",
-      titleA: "Other cases.",
-      sub: "Different categories. The same paid-growth discipline. These support breadth without becoming a third core ICP."
-    })}
-    <div class="appendix-a3-layout">
-      ${appendixOverviewCase({
-        logoFile: "web-logo-harmay-google.png",
-        logoName: "HARMAY",
-        logoClass: "case-logo-harmay",
-        logoOnly: true,
-        category: "Retail / International Expansion",
-        title: "International travelers, limited budgets, cross-market messaging, and lead generation had to work together.",
-        metrics: [
-          { value: "$1.11", label: "CPM vs projection" },
-          { value: "$3.26", label: "CPL after testing" },
-          { value: "8M", label: "Users reached" }
-        ],
-        blocks: [
-          {
-            label: "Challenge",
-            title: "Global expansion without waste",
-            body: "HARMAY needed awareness and leads across markets while keeping spend tight."
-          },
-          {
-            label: "Move",
-            title: "Localized testing system",
-            body: "Messaging and paid tests were adapted by market, then judged by reach and lead cost."
-          }
-        ],
-        tags: ["Lead Gen", "Performance", "Brand"]
-      })}
-      ${appendixOverviewCase({
-        logoFile: "web-logo-jt-express.svg",
-        logoName: "J&T Express",
-        logoClass: "case-logo-jt",
-        logoOnly: true,
-        category: "Logistics / Global Brand",
-        title: "World Cup attention created a narrow window for global visibility and efficient media delivery.",
-        metrics: [
-          { value: "120M", label: "Influencer reach" },
-          { value: "-55%", label: "CPM vs forecast" },
-          { value: "1.4B", label: "Impressions" }
-        ],
-        blocks: [
-          {
-            label: "Challenge",
-            title: "Turn attention into reach",
-            body: "The campaign had to convert a Messi-led moment into measurable global exposure."
-          },
-          {
-            label: "Move",
-            title: "Multi-channel orchestration",
-            body: "Influencer, paid, and brand channels were coordinated around reach and CPM control."
-          }
-        ],
-        tags: ["Influencer", "Performance", "Brand"]
-      })}
-      ${appendixOverviewCase({
-        logoFile: "web-logo-truist.svg",
-        logoName: "Truist",
-        logoClass: "case-logo-truist",
-        logoOnly: true,
-        category: "Finance / App Growth",
-        title: "Mobile banking acquisition needed lower CAC, stronger retention, and trust-safe creative testing.",
-        metrics: [
-          { value: "<$200", label: "CAC from ~$450" },
-          { value: "47%", label: "Retention rate" },
-          { value: "500K", label: "App installs" }
-        ],
-        blocks: [
-          {
-            label: "Challenge",
-            title: "Quality installs, not cheap clicks",
-            body: "Growth had to respect a regulated brand context while improving acquisition economics."
-          },
-          {
-            label: "Move",
-            title: "Lifecycle-led app growth",
-            body: "Creative testing, education messaging, and install quality were optimized together."
-          }
-        ],
-        tags: ["Mobile UA", "Performance", "Lifecycle"]
-      })}
-      ${appendixOverviewCase({
-        logoFile: "web-logo-the-dyrt-user-wordmark.png",
-        logoName: "The Dyrt",
-        logoClass: "case-logo-dyrt",
-        logoOnly: true,
-        category: "Mobile App / Subscription",
-        title: "Subscription app growth required efficient installs, faster creative learning, and conversion lift.",
-        metrics: [
-          { value: "-30%", label: "CPI" },
-          { value: "#1", label: "US camping app" },
-          { value: "200%", label: "Premium conversions" }
-        ],
-        blocks: [
-          {
-            label: "Challenge",
-            title: "Install volume had to convert",
-            body: "The goal was not just app rank; it was efficient growth into paid subscriptions."
-          },
-          {
-            label: "Move",
-            title: "Weekly creative, daily cuts",
-            body: "A/B tests, weekly refreshes, and fast budget shifts cut weak ads and scaled winners."
-          }
-        ],
-        tags: ["Mobile UA", "Creative", "Performance"]
-      })}
-    </div>
-  </main>
-`, "light", true, "A3 / A5"));
-
-slides.push(slide(14, "Appendix", `
-  <main class="content">
-    ${splitTitle({
-      eyebrow: "OPERATOR CASE",
+      eyebrow: "Case study",
       titleA: "Marvel Snap.",
       sub: "Mobile gaming launch proof: monetization reset, phased launch, and sustained revenue scale."
     })}
@@ -5234,49 +5859,96 @@ slides.push(slide(14, "Appendix", `
       proofNote: "Awards cited in the operator case: Best Game of the Year, Best Launch, Best Marketing."
     })}
   </main>
-`, "light", true, "A4 / A5"));
+`, "light", true, "A2 / A4"));
+
+slides.push(slide(14, "Appendix", `
+  <main class="content">
+    ${splitTitle({
+      eyebrow: "Case studies",
+      titleA: "Fish Audio + Final Round.",
+      sub: "Two AI/SaaS cases: result first, then the operating problem and system."
+    })}
+    <div class="appendix-a2-layout">
+      ${appendixOverviewCase({
+        logoFile: "web-logo-fish-audio-official.svg",
+        logoName: "Fish Audio",
+        logoClass: "case-logo-fish",
+        category: "Consumer AI",
+        title: "Organic and paid should compound, not compete for credit.",
+        metrics: [
+          { value: "+340%", label: "Month-over-month signups" },
+          { value: "-54%", label: "CAC" }
+        ],
+        blocks: [
+          {
+            label: "Arena",
+            title: "Generative voice acquisition",
+            body: "The public case covers a consumer AI company combining GEO, paid search, and affiliates rather than relying on a single channel."
+          },
+          {
+            label: "System",
+            title: "One operating view across demand sources",
+            body: "Organic and paid programs were coordinated around signup growth and acquisition economics."
+          }
+        ],
+        tags: ["Paid Search", "Organic", "Affiliates"]
+      })}
+      ${appendixOverviewCase({
+        logoFile: "web-logo-finalround.svg",
+        logoName: "Final Round AI",
+        category: "Consumer Tech",
+        title: "Paid acquisition was only one part of the growth system.",
+        metrics: [
+          { value: "$12M", label: "ARR in 14 months" },
+          { value: "4.2x", label: "ROAS" }
+        ],
+        blocks: [
+          {
+            label: "Problem",
+            title: "Each channel had its own definition of success",
+            body: "Paid measured registrations, SEO measured traffic, and influencer measured reach. Commercial truth required a common outcome."
+          },
+          {
+            label: "Approach",
+            title: "Connect acquisition to paying-customer behavior",
+            body: "Campaigns and content were evaluated against revenue outcomes rather than isolated channel metrics."
+          }
+        ],
+        tags: ["Paid Search", "Content", "Revenue tracking"]
+      })}
+    </div>
+  </main>
+`, "light", true, "A3 / A4"));
 
 slides.push(slide(15, "Appendix", `
   <main class="content">
     ${splitTitle({
-      eyebrow: "OPERATOR CASE",
-      titleA: "Expedia.",
-      sub: "Performance marketing proof: dynamic feed access, offer truth, creative variants, and lower CPA."
+      eyebrow: "Transparency",
+      titleA: "Every action visible.",
+      sub: "The cadence promise gets visual proof: workspace status, approvals, and live campaign reads stay visible."
     })}
-    ${operatorCase({
-      brand: "Expedia",
-      category: "Travel & performance marketing",
-      title: "Ads told the truth, and CPA came down with it.",
-      sub: "The case supports Hellyeah's measurement and feed-automation story: business data has to match what the ad promises.",
-      beats: [
-        {
-          label: "Challenge",
-          title: "The price was wrong before the click",
-          body: "Travel prices moved by the minute, so the price in the ad was stale before a user tapped and did not match checkout. Users bounced and CPA climbed."
-        },
-        {
-          label: "Move",
-          title: "Unlocked a custom Meta feed that updated itself",
-          body: "A direct Meta API was negotiated for top-tier spend access, then a feed was built to show the real offer, deep-link to the property, and swap creative plus price automatically."
-        },
-        {
-          label: "Result",
-          title: "Lower cost and restored trust",
-          body: "When every ad matched the real offer, acquisition cost came down and the operating pattern expanded into more projects."
-        }
-      ],
-      metrics: [
-        { value: "CPA down", label: "approx $200 to ~$120 target, illustrative" },
-        { value: "20", label: "creative variants per property" },
-        { value: "6+ mo", label: "sustained engagement" },
-        { value: "Ongoing", label: "expanded into more projects" }
-      ],
-      tags: ["Dynamic feed", "Meta API", "Measurement", "Creative variants"],
-      proofNote: "Access point cited in the operator case: custom Meta API reserved for $10M+/mo spenders."
-    })}
+    <div class="transparency-proof-grid">
+      <article class="transparency-shot">
+        <header>
+          <h2>Client Hub</h2>
+          <span>workspace + approvals</span>
+        </header>
+        <figure class="transparency-shot-frame client-hub">
+          <img src="assets/asset-overview-transparency-08.png" alt="Client Hub dashboard screenshot">
+        </figure>
+      </article>
+      <article class="transparency-shot">
+        <header>
+          <h2>Analytics Dashboard</h2>
+          <span>live campaign read</span>
+        </header>
+        <figure class="transparency-shot-frame analytics-dashboard">
+          <img src="assets/asset-campaign-analytics-full.png" alt="Live campaign analytics dashboard screenshot">
+        </figure>
+      </article>
+    </div>
   </main>
-`, "light", true, "A5 / A5"));
-
+`, "light", true, "A4 / A4"));
 const html = `<!doctype html>
 <html lang="en">
 <head>
